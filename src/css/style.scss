@@ -1,0 +1,48 @@
+@import 'variable';
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: $google-font;
+    color: #333;
+}
+ul {
+    li {
+        list-style: none;
+    }
+}
+html {
+    font-size: 10px;
+    overflow-x: hidden;
+    main {
+        min-height: 100vh;
+        .container {
+            max-width: 1000px;
+            margin: 0px auto;
+        }
+        button {
+            font-size: 2.4rem;
+            letter-spacing: 5px;
+            font-weight: 700;
+            color: #fff;
+            background-color: #ff7f7f;
+            padding: 10px 100px;
+            border-style: none;
+            border-width: 0px;
+            cursor: pointer;
+        }
+    }
+    .no-mobile {
+        display: block;
+        @include mq(sm) {
+            display: none !important;
+        }
+    }
+}
+
+@import 'header';
+@import 'footer';
+@import 'index';
+@import 'archive';
+@import 'product';

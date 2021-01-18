@@ -1,0 +1,18 @@
+$google-font: 'Noto Sans JP', sans-serif;
+
+$h1-font-size:2.8rem;
+$h2-font-size:2.2rem;
+$h1-font-size-mobile:2rem;
+
+$breakpoints: (
+  'sm': 'screen and (max-width: 415px)',
+  'md': 'screen and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1000px)',
+  'xl': 'screen and (max-width: 1200px)',
+) !default;
+
+@mixin mq($breakpoint: md) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}

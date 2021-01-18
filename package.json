@@ -1,0 +1,37 @@
+{
+  "name": "menu-deliver",
+  "description": "",
+  "scripts": {
+    "dev": "cross-env ENABLE_MOCK=true webpack-dev-server --inline --hot --open-page . --define ENABLE_MOCK=true",
+    "start": "cross-env ENABLE_MOCK=false webpack-dev-server --inline --hot --open-page . --define ENABLE_MOCK=false",
+    "build": "cross-env NODE_ENV=production ENABLE_MOCK=false webpack --progress --hide-modules --define ENABLE_MOCK=false",
+    "build-test": "cross-env NODE_ENV=production ENABLE_MOCK=true webpack --progress --hide-modules --define ENABLE_MOCK=true",
+    "predeploy": "npm run build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^4.0.0",
+    "css-loader": "^0.28.11",
+    "file-loader": "^0.11.1",
+    "i": "^0.3.6",
+    "jquery": "^3.5.1",
+    "jquery-mockjax": "^2.5.1",
+    "json-loader": "^0.5.7",
+    "npm": "^6.14.5",
+    "sass": "^1.26.5",
+    "sass-loader": "^7.3.1",
+    "style-loader": "^1.2.1",
+    "surge": "^0.19.0",
+    "v-calendar": "^1.0.0-beta.23",
+    "vue": "^2.6.11",
+    "vue-loader": "^12.0.3",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.7.0",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {}
+}
