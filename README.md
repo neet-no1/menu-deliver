@@ -75,4 +75,3 @@ $.mockjax(new AjaxMock().success(
     }
 ```
 ※`URL.POST_LOGOUT`は`src/scripts/common/api_url.js`に記載  
-"# menu-deliver" 
