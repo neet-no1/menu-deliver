@@ -1,48 +1,24 @@
-@import 'variable';
+// リセットCSSだけ使用
+@import './bootstrap/bootstrap';
 
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: $google-font;
-    color: #333;
-}
-ul {
-    li {
-        list-style: none;
-    }
-}
-html {
-    font-size: 10px;
-    overflow-x: hidden;
-    main {
-        min-height: 100vh;
-        .container {
-            max-width: 1000px;
-            margin: 0px auto;
-        }
-        button {
-            font-size: 2.4rem;
-            letter-spacing: 5px;
-            font-weight: 700;
-            color: #fff;
-            background-color: #ff7f7f;
-            padding: 10px 100px;
-            border-style: none;
-            border-width: 0px;
-            cursor: pointer;
-        }
-    }
-    .no-mobile {
-        display: block;
-        @include mq(sm) {
-            display: none !important;
-        }
-    }
-}
+// アイコンのCSS
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 
-@import 'header';
-@import 'footer';
-@import 'index';
-@import 'archive';
-@import 'product';
+// サイト固有の変数とmixin
+@import './variable';
+@import './mixins';
+
+// サイト固有のSASSコンポーネント
+@import './common';
+@import './base';
+@import './layout';
+@import './login';
+@import './create_account';
+@import './create_account_pre_done';
+@import './create_account_done';
+@import './header';
+@import './news';
+@import './top';
+@import './footer';
+@import './account';
+@import './question';

@@ -1,16 +1,20 @@
 import * as URL from '../common/api_url'
 import ApiUtils from '../scripts/api_utils'
 import Vue from 'vue'
-import PageHeader from '../pages/PageHeader.vue'
-import PageFooter from '../pages/PageFooter.vue'
-import ProductContainer from '../pages/module/ProductContainer.vue'
+import PageHeader from '../pages/module/PageHeader.vue'
+import PageFooter from '../pages/module/PageFooter.vue'
+//import ProductContainer from '../pages/module/ProductContainer.vue'
+import News from '../pages/module/News.vue'
+import Navigation from '../pages/module/Navigation.vue'
 
 export default {
   name: 'Top',
   components: {
     PageHeader,
     PageFooter,
-    ProductContainer
+    //ProductContainer,
+    News,
+    Navigation
   },
   data() {
     return {

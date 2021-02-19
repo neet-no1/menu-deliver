@@ -1,0 +1,31 @@
+@mixin reset-button {
+    overflow : visible;
+    margin : 0;
+    padding : 0;
+    border : 0;
+    background : transparent;
+    font : inherit;
+    line-height : normal;
+    cursor : pointer;
+    -moz-user-select : text;
+    
+    &:-moz-focus-inner {
+        padding : 0;
+        border : 0;
+    }
+}
+
+/*
+@mixin  menu-square() {
+    width: #{$header-height}px;
+    height: #{$header-height}px;
+}
+
+@mixin menu-icon-position {
+    position: relative;
+    top: ($header-height / 2) + px;
+    left: (($header-height - $ggs-menu-width) / 2) + px;
+}
+
+*/
+

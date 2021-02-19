@@ -1,0 +1,750 @@
+<div>
+    <PageHeader />
+    <main class="ly_account">
+        <div class="ly_account_inner">
+            <div class="bl_tabs">
+                <div class="el_tab">
+                    <div class="el_tab_square" v-bind:class="{el_tab_square_red: isActive_mypage}"></div>
+                    <input id="all" type="radio" name="tab_item" v-bind:value="mypage" v-model="active_tab">
+                    <label class="tab_item" for="all">マイページ</label>
+                </div>
+                <div class="el_tab">
+                    <div class="el_tab_square" v-bind:class="{el_tab_square_orange: isActive_edit}"></div>
+                    <input id="edit" type="radio" name="tab_item" v-bind:value="edit" v-model="active_tab">
+                    <label class="tab_item" for="edit">情報編集</label>
+                </div>
+                <div class="el_tab">
+                    <div class="el_tab_square" v-bind:class="{el_tab_square_yello: isActive_password_edit}"></div>
+                    <input id="password_edit" type="radio" name="tab_item" v-bind:value="password_edit"
+                        v-model="active_tab">
+                    <label class="tab_item" for="password_edit">パスワード変更</label>
+                </div>
+                <div class="el_tab">
+                    <div class="el_tab_square" v-bind:class="{el_tab_square_green: isActive_follow_list}"></div>
+                    <input id="follow_list" type="radio" name="tab_item" v-bind:value="follow_list"
+                        v-model="active_tab">
+                    <label class="tab_item" for="follow_list">フォロー一覧</label>
+                </div>
+                <div class="el_tab">
+                    <div class="el_tab_square" v-bind:class="{el_tab_square_liteblue: isActive_posted_menu}"></div>
+                    <input id="posted_menu" type="radio" name="tab_item" v-bind:value="posted_menu"
+                        v-model="active_tab">
+                    <label class="tab_item" for="posted_menu">投稿記事</label>
+                </div>
+                <div class="el_tab">
+                    <div class="el_tab_square" v-bind:class="{el_tab_square_blue: isActive_posted_article}"></div>
+                    <input id="posted_article" type="radio" name="tab_item" v-bind:value="posted_article"
+                        v-model="active_tab">
+                    <label class="tab_item" for="posted_article">投稿献立</label>
+                </div>
+                <div class="el_tab">
+                    <div class="el_tab_square" v-bind:class="{el_tab_square_purple: isActive_favorite}"></div>
+                    <input id="favorite" type="radio" name="tab_item" v-bind:value="favorite" v-model="active_tab">
+                    <label class="tab_item" for="favorite">お気に入り</label>
+                </div>
+            </div>
+            <div class="tab_content" id="all_content" v-if="isActive_mypage">
+                <div class="ly_mypage">
+                    <div class="ly_mypage_inner">
+                        <div class="ly_mypage_user_icon">
+                            <div class="el_user_icon_circle el_user_icon_circle__large"></div>
+                        </div>
+                        <div class="ly_mypage_user_info">
+                            <div class="bl_info_area">
+                                <div class="el_info">
+                                    <span>●ニックネーム</span>
+                                </div>
+                                <div class="el_info">
+                                    <span>testaaa</span>
+                                </div>
+                            </div>
+                            <div class="bl_info_area">
+                                <div class="el_info">
+                                    <span>●メールアドレス</span>
+                                </div>
+                                <div class="el_info">
+                                    <span>sample@example.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_content" id="all_content" v-if="isActive_edit">
+                <div class="ly_edit">
+                    <div class="ly_edit_inner">
+                        <div class="ly_edit_user_icon">
+                            <div class="el_user_icon_circle el_user_icon_circle__large"></div>
+                        </div>
+                        <div class="ly_edit_user_info">
+                            <div class="bl_info_area">
+                                <div class="el_info">
+                                    <span>●ニックネーム</span>
+                                </div>
+                                <div class="el_info_edit">
+                                    <input class="el_info_edit_box" type="password" name="password" id="password"
+                                        placeholder="">
+                                </div>
+                            </div>
+                            <div class="bl_info_area">
+                                <div class="el_info">
+                                    <span>●メールアドレス</span>
+                                </div>
+                                <div class="el_info_edit">
+                                    <input class="el_info_edit_box" type="password" name="password" id="password"
+                                        placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bl_edit_btn">
+                            <div class="el_edit_btn">
+                                <span class="el_edit_btn_name">更新</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_content" id="all_content" v-if="isActive_password_edit">
+                <div class="ly_password_edit">
+                    <div class="ly_password_edit_inner">
+                        <div class="ly_password_edit_info">
+                            <div class="bl_info_area">
+                                <div class="el_info">
+                                    <span>現在のパスワード</span>
+                                </div>
+                                <div class="el_password_edit">
+                                    <input class="el_password_edit_box" type="password" name="password" id="password"
+                                        placeholder="">
+                                </div>
+                            </div>
+                            <div class="bl_info_area">
+                                <div class="el_info">
+                                    <span>新しいパスワード</span>
+                                </div>
+                                <div class="el_password_edit">
+                                    <input class="el_password_edit_box" type="password" name="password" id="password"
+                                        placeholder="">
+                                </div>
+                            </div>
+                            <div class="bl_info_area">
+                                <div class="el_info">
+                                    <span>新しいパスワードを再入力</span>
+                                </div>
+                                <div class="el_password_edit">
+                                    <input class="el_password_edit_box" type="password" name="password" id="password"
+                                        placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bl_edit_btn">
+                            <div class="el_edit_btn">
+                                <span class="el_edit_btn_name">変更</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_content" id="all_content" v-if="isActive_follow_list">
+                <div class="ly_follow_list">
+                    <div class="ly_follow_list_inner">
+                        <div class="ly_follow_switch">
+                            <button class="el_follow_list_switch_btn btn btn--stripe"
+                                v-on:click="switch_follow_list('follow')">フォロー</button>
+                            <button class="el_follow_list_switch_btn btn btn--stripe"
+                                v-on:click="switch_follow_list('follower')">フォロワー</button>
+                        </div>
+                        <div class="bl_follow_list" v-if="isOpen_follow">
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォローフォローフォローフォロー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロー</span></div>
+                            </div>
+                        </div>
+                        <div class="bl_follower_list" v-if="isOpen_follower">
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロワー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロワーフォロワーフォロワー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロワー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロワー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロワー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロワー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロワー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロワー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロワー</span></div>
+                            </div>
+                            <div class="el_follow_user">
+                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div><span>フォロワー</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_content" id="all_content" v-if="isActive_posted_menu">
+                <div class="ly_posted_article">
+                    <div class="ly_posted_article_inner">
+                        <div class="ly_posted_article_list">
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/recommend_5.jpg">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination__wrapper">
+                            <nav class="pagination">
+                                <ul class="page-numbers">
+                                    <li><a class="pagination-next page-numbers" href="前のページ"><i
+                                                class="fa fa-chevron-left"></i></a></li>
+                                    <li><a class="page-numbers" href="1ページ目">1</a></li>
+                                    <li><span aria-current="page" class="page-numbers pagenation-current">2</span></li>
+                                    <li><a class="page-numbers" href="3ページ目">3</a></li>
+                                    <li><a class="pagination-next page-numbers" href="次のページ"><i
+                                                class="fa fa-chevron-right"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_content" id="all_content" v-if="isActive_posted_article">
+                <div class="ly_posted_menu">
+                    <div class="ly_posted_menu_inner">
+                        <div class="ly_posted_menu_list">
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/recommend_5.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_content" id="all_content" v-if="isActive_favorite">
+                <div class="ly_favorite">
+                    <div class="ly_favorite_inner">
+                        <div class="ly_favorite_switch">
+                            <div class="bl_favorite_switch">
+                                <button class="el_follow_list_switch_btn btn btn--stripe"
+                                    v-on:click="switch_favorite('menu')">献立</button>
+                                <button class="el_follow_list_switch_btn btn btn--stripe"
+                                    v-on:click="switch_favorite('article')">記事</button>
+                            </div>
+                        </div>
+                        <div class="bl_favorite_menu_list" v-if="isOpen_favorite_menu">
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/recommend_5.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+                            <div class="el_menu">
+                                <div class="el_menu_img el_menu_img__small">
+                                    <img src="../../../public/img/menu_no_image.jpg">
+                                    <!-- 豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁-->
+                                </div>
+                                <div class="el_menu_title el_menu_title__small">
+                                    <span>豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="bl_favorite_article_list" v-if="isOpen_favorite_article">
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/article_no_image.png">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el_atricle_item el_atricle_item__small">
+                                <div class="el_article_item_img el_article_item_img__small">
+                                    <img src="../../../public/img/recommend_5.jpg">
+                                </div>
+                                <div class="bl_article_media">
+                                    <div class="el_article_item_title__small">
+                                        <span>記事のタイトル記事のタイトル記事のタイトル記事の…</span>
+                                    </div>
+                                    <div class="el_article_item_meta_info">
+                                        <div class="el_article_item_meta_info_date__small">
+                                            <span>2021/01/29</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <PageFooter />
+</div>

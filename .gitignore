@@ -1,3 +1,6 @@
 
 node_modules/
 dist/
+
+src/css/style.css
+src/css/style.css.map

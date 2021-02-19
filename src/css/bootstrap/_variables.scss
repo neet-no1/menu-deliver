@@ -1,0 +1,31 @@
+
+// Variables
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 415px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$font-size-base:              1rem;
+
+$h1-font-size:                $font-size-base * 2;
+$h2-font-size:                $font-size-base * 1.75;
+$h3-font-size:                $font-size-base * 1.5;
+$h4-font-size:                $font-size-base * 1.25;
+$h5-font-size:                $font-size-base * 1.15;
+$h6-font-size:                $font-size-base;
+
+$font-family-sans-serif:      'Noto Serif JP', sans-serif;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:            $font-family-sans-serif;
+
+
+$border-width:                1px !default;
+//$border-color:                $gray-300 !default;
+
+$border-radius:               .8rem;
+$border-radius-lg:            .3rem !default;
+$border-radius-sm:            .2rem !default;

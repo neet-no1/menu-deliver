@@ -1,0 +1,44 @@
+<main class="ly_main">
+    <div class="ly_main_inner">
+        <div class="ly_logo">
+            <div class="bl_logo bl_logo__medium">
+                <img src="../../../public/img/logo.png" alt="ロゴ" title="ロゴ">
+            </div>
+        </div>
+        <div class="ly_form">
+            <div class="ly_form_inner">
+                <div class="bl_input">
+                    <div class="el_input">
+                        <div class="el_input_title">
+                            <span>メールアドレス</span>
+                        </div>
+                        <div>
+                            <input class="el_input_box" type="text" name="email" id="email" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="bl_input">
+                    <div class="el_input">
+                        <div class="el_input_title">
+                            <span>パスワード</span>
+                        </div>
+                        <div>
+                            <input class="el_input_box" type="password" name="password" id="password" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="bl_btn">
+                    <div class="el_btn" @click="api_login">
+                        <span class="el_btn_name">Login</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ly_login_missing_message">
+            <div class="bl_login_missing_message">
+                <span class="el_login_missing_message">☆新規登録は<a href="/create_account">こちら</a></span>
+                <span class="el_login_missing_message">☆<a href="/password_reset">パスワード</a>をお忘れの方</span>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,356 @@
+<div>
+    <PageHeader />
+    <main class="ly_question">
+        <div class="ly_question_inner">
+            <div class="ly_post_question">
+                <div class="bl_question_btn">
+                    <div class="el_question_btn">
+                        <span class="el_question_btn_name">質問・相談</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ly_search_question">
+                <div class="bl_question_title">
+                    <span>Search</span>
+                </div>
+                <div class="bl_search_question">
+                    <div class="el_search_box">
+                        <div class="bl_search_select_box">
+                            <div class="bl_search_box_title">
+                                <span>質問の状態</span>
+                            </div>
+                            <div class="bl_search_select_box_list">
+                                <div class="el_search_select_box">
+                                    <input class="el_search_select_btn" type="checkbox" id="unsolved" />
+                                    <label class="btn-sticky" for="unsolved">未解決</label>
+                                </div>
+                                <div class="el_search_select_box">
+                                    <input class="el_search_select_btn" type="checkbox" id="solved" />
+                                    <label class="btn-sticky" for="solved">解決済み</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bl_serach_keyword">
+                            <div class="bl_search_box_title">
+                                <span>キーワード</span>
+                            </div>
+                            <div class="bl_search_keyword_input">
+                                <div class="bl_question_input">
+                                    <div class="el_question_input">
+                                        <input class="el_question_input_box" type="text" name="keyword" id="keyword"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bl_search_btn">
+                            <div class="el_search_btn">
+                                <span class="el_search_btn_name">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ly_question_content">
+                <div class="bl_question_title">
+                    <span>Q&A</span>
+                </div>
+                <div class="ly_question_tab">
+                    <div class="bl_tabs">
+                        <div class="el_tab">
+                            <div class="el_tab_square" v-bind:class="{el_tab_square_red: isActive_new_question}"></div>
+                            <input id="all" type="radio" name="tab_item" v-bind:value="new_question"
+                                v-model="active_tab">
+                            <label class="tab_item" for="all">新着</label>
+                        </div>
+                        <div class="el_tab">
+                            <div class="el_tab_square"
+                                v-bind:class="{el_tab_square_orange: isActive_unsolved_question}"></div>
+                            <input id="unsolved_question" type="radio" name="tab_item" v-bind:value="unsolved_question"
+                                v-model="active_tab">
+                            <label class="tab_item" for="unsolved_question">未解決</label>
+                        </div>
+                        <div class="el_tab">
+                            <div class="el_tab_square" v-bind:class="{el_tab_square_yello: isActive_solved_question}">
+                            </div>
+                            <input id="solved_question" type="radio" name="tab_item" v-bind:value="solved_question"
+                                v-model="active_tab">
+                            <label class="tab_item" for="solved_question">解決済み</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ly_question_list">
+                    <div class="ly_question_list_inner">
+                        <div v-if="isActive_new_question">
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>新着</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="pagination__wrapper">
+                                <nav class="pagination">
+                                    <ul class="page-numbers">
+                                        <li><a class="pagination-next page-numbers" href="前のページ"><i
+                                                    class="fa fa-chevron-left"></i></a></li>
+                                        <li><a class="page-numbers" href="1ページ目">1</a></li>
+                                        <li><span aria-current="page" class="page-numbers pagenation-current">2</span>
+                                        </li>
+                                        <li><a class="page-numbers" href="3ページ目">3</a></li>
+                                        <li><a class="pagination-next page-numbers" href="次のページ"><i
+                                                    class="fa fa-chevron-right"></i></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div v-if="isActive_unsolved_question">
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>未解決</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="pagination__wrapper">
+                                <nav class="pagination">
+                                    <ul class="page-numbers">
+                                        <li><a class="pagination-next page-numbers" href="前のページ"><i
+                                                    class="fa fa-chevron-left"></i></a></li>
+                                        <li><a class="page-numbers" href="1ページ目">1</a></li>
+                                        <li><span aria-current="page" class="page-numbers pagenation-current">2</span>
+                                        </li>
+                                        <li><a class="page-numbers" href="3ページ目">3</a></li>
+                                        <li><a class="pagination-next page-numbers" href="次のページ"><i
+                                                    class="fa fa-chevron-right"></i></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div v-if="isActive_solved_question">
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>解決済み</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="bl_question">
+                                <div class="el_question_icon">
+                                    <span>Q.</span>
+                                </div>
+                                <div class="el_question_content">
+                                    <span>なんだかおなかの調子が悪いのですが、胃腸薬の代わりはありますか？</span>
+                                </div>
+                            </div>
+                            <div class="pagination__wrapper">
+                                <nav class="pagination">
+                                    <ul class="page-numbers">
+                                        <li><a class="pagination-next page-numbers" href="前のページ"><i
+                                                    class="fa fa-chevron-left"></i></a></li>
+                                        <li><a class="page-numbers" href="1ページ目">1</a></li>
+                                        <li><span aria-current="page" class="page-numbers pagenation-current">2</span>
+                                        </li>
+                                        <li><a class="page-numbers" href="3ページ目">3</a></li>
+                                        <li><a class="pagination-next page-numbers" href="次のページ"><i
+                                                    class="fa fa-chevron-right"></i></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <PageFooter />
+</div>

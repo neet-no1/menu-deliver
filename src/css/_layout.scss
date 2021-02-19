@@ -1,0 +1,36 @@
+// 全体部分
+.ly_main {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    padding-bottom: 40px;
+}
+
+.ly_main_inner {
+    width: 100%;
+    max-width: #{$container-width};
+    padding-right: #{$container-padding};
+    padding-left: #{$container-padding};
+}
+
+.ly_header {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: #E6E4F9;
+}
+
+.ly_header_inner {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    max-width: #{$container-width};
+    padding-right: #{$container-padding};
+    padding-left: #{$container-padding};
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,8 +1,8 @@
 import * as URL from '../common/api_url'
 import ApiUtils from '../scripts/api_utils'
 import Vue from 'vue'
-import PageHeader from '../pages/PageHeader.vue'
-import PageFooter from '../pages/PageFooter.vue'
+import PageHeader from '../pages/module/PageHeader.vue'
+import PageFooter from '../pages/module/PageFooter.vue'
 
 export default {
     name: 'Archive',

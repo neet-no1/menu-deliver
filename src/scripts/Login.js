@@ -9,15 +9,15 @@ export default {
         api_login: function(event) {
             console.log('login URL:' + URL.POST_LOGIN);
             let response = new ApiUtils().postAccess(URL.POST_LOGIN, {'user_id': 'user', 'user_password': 'password'}, (response) => {
-                // ���X�|���X�̎g�������L�ڂ���B
+                // ???X?|???X??g???????L?????B
                 console.log('response: ');
                 console.log(response);
             });
         },
         api_test: function(event) {
-            console.log('���i�擾 URL:' + URL.GET_NEW_ARRIVAL_PRODUCTS);
+            console.log('???i?? URL:' + URL.GET_NEW_ARRIVAL_PRODUCTS);
             let response = new ApiUtils().getAccess(URL.GET_NEW_ARRIVAL_PRODUCTS, {}, (response) => {
-                // ���X�|���X�̎g�������L�ڂ���B
+                // ???X?|???X??g???????L?????B
                 console.log('response: ');
                 console.log(response);
             });

@@ -1,0 +1,3 @@
+/usr/local/bin/youtube-dl -f 251 -x --audio-format wav -o ”’“ú.wav https://youtu.be/ony539T074w
+/usr/local/bin/youtube-dl -f 251 -x --audio-format mp3 -o ”’“ú.mp3 https://youtu.be/ony539T074w
+/usr/local/bin/youtube-dl -f 251 -x --audio-format mp3 -o ”’“ú.mp3 https://youtu.be/ony539T074w

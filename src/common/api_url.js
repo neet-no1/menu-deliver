@@ -1,7 +1,7 @@
 /**
  * 基底URL
  */
-export const BASE_URL = '/VA-Rie/api';
+export const BASE_URL = '/api';
 
 /**
  * ログインAPI

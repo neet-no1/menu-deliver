@@ -1,0 +1,401 @@
+.ly_account {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.ly_account_inner {
+    width: 100%;
+    max-width: #{$container-width};
+    padding-right: #{$container-padding};
+    padding-left: #{$container-padding};
+}
+
+/*タブ切り替え全体のスタイル*/
+.bl_tabs {
+    //margin-top: 50px;
+    //padding-bottom: 40px;
+    //background-color: #fff;
+    //box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    //box-shadow: 0px 3px 6px #00000091;
+    width: 100%;
+    //margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.el_tab {
+    width: 100%;
+    min-width: 141px;
+    //padding: auto;
+
+    /*ラジオボタンを全て消す*/
+    input[type="radio"] {
+        display: none;
+    }
+}
+  
+/*タブのスタイル*/
+.tab_item {
+    //width: calc(100%/7);
+    height: 50px;
+    border-bottom: 3px solid #E6E6E6;
+    //background-color: #d9d9d9;
+    line-height: 50px;
+    text-align: center;
+    color: #565656;
+    display: block;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 29px;
+    transition: all 0.2s ease;
+
+    width: 100%;
+    margin: auto;
+
+    cursor: pointer;
+}
+
+.tab_item:hover {
+    opacity: 0.75;
+}
+  
+  /*タブ切り替えの中身のスタイル*/
+.tab_content {
+    padding: 40px;
+    clear: both;
+    overflow: hidden;
+
+    background-color: #E6E6E6;
+}
+  
+  
+  /*選択されているタブのコンテンツのみを表示*/
+  /*
+  #all:checked ~ #all_content,
+  #programming:checked ~ #programming_content,
+  #design:checked ~ #design_content {
+    display: block;
+  }
+  */
+  
+  /*選択されているタブのスタイルを変える*/
+.bl_tabs input:checked + .tab_item {
+    background-color: #E6E6E6;
+    color: #000;
+}
+
+.visible_display {
+    display: block !important;
+}
+
+.el_tab_square {
+    width: 100%;
+    height: 5px;
+}
+
+.el_tab_square_red {
+    background-color: #FF6363;
+}
+
+.el_tab_square_orange {
+    background-color: #FF9900;
+}
+
+.el_tab_square_yello {
+    background-color: #EEFF00;
+}
+
+.el_tab_square_green {
+    background-color: #00FF11;
+}
+
+.el_tab_square_liteblue {
+    background-color: #00DCFF;
+}
+
+.el_tab_square_blue {
+    background-color: #272EFF;
+}
+
+.el_tab_square_purple {
+    background-color: #C754FF;
+}
+
+.ly_mypage {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.ly_mypage_inner {
+    width: 100%;
+    max-width: 300px;
+}
+
+.ly_mypage_user_icon {
+    display: flex;
+    justify-content: center;
+}
+
+.ly_mypage_user_info {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.bl_info_area {
+    padding-bottom: 30px;
+
+    font-size: 18px;
+    font-weight: 24px;
+}
+
+.el_info {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.ly_edit {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.ly_edit_inner {
+    width: 100%;
+    max-width: 300px;
+}
+
+.ly_edit_user_icon {
+    display: flex;
+    justify-content: center;
+}
+
+.ly_edit_user_info {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.el_info_edit {
+    width: 100%;
+
+    .el_info_edit_box {
+        width: 100%;
+        padding-top: 2px;
+        border: 2px solid #000;
+        border-radius: 9px;
+        height: 32px;
+    }
+}
+
+.bl_edit_btn {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.el_edit_btn {
+    width: 100%;
+    height: 37px;
+    max-width: 158px;
+    display: flex;
+    justify-content: center;
+
+    //border: 1px solid #000;
+    border-radius: 9px;
+    background-color: #000;
+
+    cursor: pointer;
+
+    .el_edit_btn_name {
+        font-size: 25px;
+        font-weight: 30px;
+        color: #FFF;
+    }
+}
+
+
+.ly_password_edit {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.ly_password_edit_inner {
+    width: 100%;
+    max-width: 300px;
+}
+
+.ly_password_edit_info {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.el_password_edit {
+    width: 100%;
+
+    .el_password_edit_box {
+        width: 100%;
+        padding-top: 2px;
+        border: 2px solid #000;
+        border-radius: 9px;
+        height: 32px;
+    }
+}
+
+.el_follow_list_switch_btn {
+    width: 212px;
+}
+
+.ly_follow_list {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.ly_follow_list_inner {
+    width: 100%;
+    max-width: 450px;
+}
+
+.ly_follow_switch {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.bl_follow_list {
+    width: 100%;
+
+    display: flex;
+    //justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bl_follower_list {
+    width: 100%;
+
+    display: flex;
+    //justify-content: center;
+    flex-wrap: wrap;
+}
+
+.el_follow_user {
+    min-width: 214px;
+    max-width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    margin-top: 5px;
+    margin-left: 5px;
+
+    padding: 3px;
+
+    background-color: #FFF;
+    box-shadow: 0px 3px 6px #00000091;
+
+    border-radius: 9px;
+}
+
+.ly_posted_article {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.ly_posted_article_inner {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.ly_posted_article_list {
+    width: 100%;
+    padding-top: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.ly_posted_menu {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.ly_posted_menu_inner {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.ly_posted_menu_list {
+    width: 100%;
+    padding-top: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.ly_favorite {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.ly_favorite_inner {
+    width: 100%;
+    align-items: center;
+}
+
+.ly_favorite_switch {
+    width: 100%;
+
+    display: flex;
+    justify-content: center
+}
+
+.bl_favorite_switch {
+    width: 100%;
+    max-width: 450px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.bl_favorite_menu_list {
+    width: 100%;
+    padding-top: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.bl_favorite_article_list {
+    width: 100%;
+    padding-top: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

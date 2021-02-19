@@ -58,6 +58,13 @@ module.exports = {
       { 
         test: /\.json$/,
         loader: 'json' 
+      },
+      {
+          test: /\.(png|jpg|gif|svg)$/,
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]'
+          }
       }
     ]
   },
@@ -67,6 +74,7 @@ module.exports = {
     }
   },
   devServer: {
+    host: '0.0.0.0',
     historyApiFallback: true,
     noInfo: true
   },

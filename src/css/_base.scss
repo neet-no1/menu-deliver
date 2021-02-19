@@ -1,0 +1,12 @@
+body {
+    font-family: #{$base-font-family};
+    font-style: #{$base-font-style};
+    font-weight: 900;
+    background-color: #{$background-color};
+
+    height: 100%;
+}
+
+img {
+    width: 100%;
+}
