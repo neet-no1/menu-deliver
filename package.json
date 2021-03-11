@@ -11,7 +11,9 @@
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
+    "@editorjs/image": "^2.6.0",
     "@fortawesome/fontawesome-free": "^5.15.2",
+    "axios": "^0.21.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.6.1",
@@ -19,7 +21,7 @@
     "copy-webpack-plugin": "^7.0.0",
     "cross-env": "^4.0.0",
     "css-loader": "^0.28.11",
-    "css.gg": "^2.0.0",
+    "deepmerge": "^4.2.2",
     "file-loader": "^0.11.2",
     "i": "^0.3.6",
     "imagemin-gifsicle": "^7.0.0",
@@ -40,8 +42,12 @@
     "vue": "^2.6.11",
     "vue-loader": "^12.0.3",
     "vue-template-compiler": "^2.3.3",
+    "vuetify": "^2.4.5",
     "webpack": "^2.7.0",
     "webpack-dev-server": "^2.4.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@editorjs/editorjs": "^2.19.1",
+    "@editorjs/header": "^2.6.1"
+  }
 }

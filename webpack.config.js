@@ -13,6 +13,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.json$/,
+        use: {
+          loader: 'json-loader'
+        }
+      },
+      {
         test: /\.vue$/,
         use: {
           loader: 'vue-loader'
@@ -29,8 +35,9 @@ module.exports = {
       {
         test: /\.scss$/, // 対象となるファイルの拡張子
         use: [
+          'vue-style-loader',
           // linkタグに出力する機能
-          'style-loader',
+          //'style-loader',
           // CSSをバンドルするための機能
           {
             loader: 'css-loader',
@@ -55,10 +62,10 @@ module.exports = {
           }
         ],
       },
-      { 
-        test: /\.json$/,
-        loader: 'json' 
-      },
+      // { 
+      //   test: /\.json$/,
+      //   loader: 'json' 
+      // },
       {
           test: /\.(png|jpg|gif|svg)$/,
           loader: 'file-loader',
@@ -91,7 +98,7 @@ module.exports = {
 
 if (process.env.ENABLE_MOCK === 'false') {
   module.exports.devServer.proxy = {
-    '/Menu-Maker/api': 'http://localhost:48080'
+    '/api': 'http://localhost:48080'
   }
 }
 

@@ -9,7 +9,7 @@ font-style: normal;
 // ベース
 $base-font-family: tbudrgothic-std, sans-serif;
 $base-font-style: nornal;
-$background-color: #FFF3FD;
+$background-color: #EFEFEF;
 
 // レイアウト
 $container-size: 1020px;
@@ -21,9 +21,21 @@ $footer-size: 750px;
 $footer-width: $footer-size + ($container-padding * 2);
 
 
-// ボタン
+// カラー
 $color-gray: #666;
+$color-light-gray: #b6b6b6;
 $color-black: #000;
+$color-success: lighten(#009854, 5%);
+$color-sutatus: lighten(#00afcc, 5%);
+$color-error: lighten(#ff0000, 5%);
+$color-white: #FFF;
+
+// グラデーション
+$gradient-success: linear-gradient(45deg, #92e001, #548100);
+$gradient-status: linear-gradient(45deg, #97faff, #97faff);
+$gradient-error: linear-gradient(45deg, #ff2243, #ff2243);
+
+// ボタン
 $stripe-height: 7px;
 $btn-color: $color-gray;
 $btn-background: #fff;

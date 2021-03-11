@@ -1,5 +1,6 @@
 import AjaxMock from "./ajax_mock";
 import * as URL from "../../common/api_url";
+import menu_success from "./data/menu.json";
 
 export default class ApiMock {
 
@@ -7,12 +8,39 @@ export default class ApiMock {
         console.log('ApiMock constructor');
         console.log($);
         this.load = this.load.bind(this);
-        //this.schema = 'https:';
-        //this.hostname = 'localhost';
-        //this.port = '48080';
     }
 
     load() {
+        $.mockjax(new AjaxMock().success(
+            URL.GET_UPLOADED_IMAGE,
+            {
+                success: 1,
+                file: {
+                    url: 'https://app.neet-professional.work/public/img/menu_no_image.jpg',
+                    // any other image data you want to store, such as width, height, color, extension, etc
+                }
+            },
+            'post'
+        ));
+
+        $.mockjax(new AjaxMock().success(
+            URL.POST_UPLOAD_IMAGE,
+            {
+                success: 1,
+                file: {
+                    url: 'https://app.neet-professional.work/public/img/menu_no_image.jpg',
+                    // any other image data you want to store, such as width, height, color, extension, etc
+                }
+            },
+            'post'
+        ));
+
+        $.mockjax(new AjaxMock().success(
+            URL.GET_POSTED_MENU,
+            menu_success,
+            'get'
+        ));
+
         $.mockjax(new AjaxMock().success(
             URL.POST_LOGIN,
             { text: 'url' },

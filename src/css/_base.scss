@@ -1,5 +1,5 @@
 body {
-    font-family: #{$base-font-family};
+    font-family: #{$base-font-family} !important;
     font-style: #{$base-font-style};
     font-weight: 900;
     background-color: #{$background-color};
@@ -9,4 +9,18 @@ body {
 
 img {
     width: 100%;
+}
+
+main {
+    min-height: 100vh;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 0 10px;
+    outline: none;
+}
+
+textarea {
+    padding: 3px 10px;
+    outline: none;
 }

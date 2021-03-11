@@ -1,4 +1,14 @@
 <header class="ly_header">
+  <div id="overlay" v-if="select_post_type" @click="close_modal">
+    <div id="content" @click="close_modal_cancel($event)">
+      <div class="el_post_btn">
+        <button onclick="location.href='/post/article'">記事を投稿</button>
+      </div>
+      <div class="el_post_btn">
+        <button onclick="location.href='/post/menu'">献立を投稿</button>
+      </div>
+    </div>
+  </div>
   <div class="ly_header_inner">
     <div class="ly_header_logo">
       <div class="bl_logo">
@@ -12,7 +22,7 @@
         </div>
       </div>
       <div class="ly_nav_items">
-        <div class="bl_nav_item">
+        <div class="bl_nav_item" @click="post_menu_or_article">
           <div class="el_nav">
             <span class="el_nav_icon el_icon_plus_square">
               <i class="far fa-plus-square"></i>

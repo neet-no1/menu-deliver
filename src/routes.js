@@ -9,5 +9,7 @@ export default {
   '/account': 'Account',
   '/question': 'Question',
   '/article_list': 'ArticleList',
-  '/menu_list': 'MenuList'
+  '/menu_list': 'MenuList',
+  '/post/menu': 'PostMenu',
+  '/post/article': 'PostArticle'
 }

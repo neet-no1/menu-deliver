@@ -12,7 +12,7 @@
     height: 32px;
 
     .cls-2 {
-        fill: #FFDE00;
+        fill: #ffde00;
         stroke: #000;
         stroke-width: 10px;
     }
@@ -28,11 +28,11 @@
 }
 
 .el_icon_home {
-    color: #FF0000;
+    color: #ff0000;
 }
 
 .el_icon_utensils {
-    color: #F18D00;
+    color: #f18d00;
 }
 
 .el_icon_newspaper {
@@ -44,7 +44,7 @@
 }
 
 .el_icon_info_circle {
-    color: #F00;
+    color: #f00;
 }
 
 .el_nav_icon {
@@ -53,14 +53,18 @@
 }
 
 .el_asterisk {
-    color: #00AFCC;
+    color: #00afcc;
     font-size: 30px;
     font-weight: 30px;
 }
 
 @keyframes stripe-slide {
-    0% { background-position: 0% 0; }
-    100% { background-position: 100% 0; }
+    0% {
+        background-position: 0% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
 }
 
 .btn {
@@ -74,14 +78,14 @@
     border: 2px solid $border-color;
     border-radius: 6px;
     margin-bottom: 16px;
-    transition: all .5s ease;
-    
+    transition: all 0.5s ease;
+
     &--stripe {
         overflow: hidden;
         position: relative;
-        
+
         &:after {
-            content: '';
+            content: "";
             display: block;
             height: $stripe-height;
             width: 100%;
@@ -122,8 +126,8 @@
 }
 
 .pagination__wrapper {
-    width:100%;
-    margin:auto;
+    width: 100%;
+    margin: auto;
 }
 .pagination {
     width: 100%;
@@ -145,7 +149,8 @@
     margin: 4px;
     padding: 0;
 }
-.pagination a, .pagination .pagenation-current {
+.pagination a,
+.pagination .pagenation-current {
     display: flex;
     width: 40px;
     height: 40px;
@@ -153,7 +158,7 @@
     border-radius: 50%;
     text-decoration: none;
     color: #666;
-    border:2px solid #fff;
+    border: 2px solid #fff;
 
     justify-content: center;
     align-items: center;
@@ -166,8 +171,8 @@
     border-radius: 50%;
     text-decoration: none;
     color: #fff;
-    background:#999;
-    border:2px solid #999;
+    background: #999;
+    border: 2px solid #999;
 
     justify-content: center;
     align-items: center;
@@ -176,10 +181,268 @@
     color: #f96da5;
     cursor: default;
     margin: 0 3px 0 0;
-    border:2px solid #f96da5;
+    border: 2px solid #f96da5;
 }
 .page-numbers {
     width: auto;
     padding: 0;
-    background: transparent
+    background: transparent;
+}
+
+#overlay {
+    /*　要素を重ねた時の順番　*/
+    z-index: 1;
+
+    /*　画面全体を覆う設定　*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    /*　画面の中央に要素を表示させる設定　*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content {
+    z-index: 2;
+    width: 50%;
+    padding: 1em;
+    background: #fff;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.el_flex_around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.el_food_composition_header {
+    span {
+        -ms-writing-mode: tb-rl;
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
+        height: 100px !important;
+    }
+}
+
+.el_food_composition_header_unit {
+    padding: 5px 0;
+}
+
+.el_food_composition {
+    padding: 0 10px;
+}
+
+.bl_btn__center {
+    display: flex;
+    justify-content: center;
+}
+
+.el_add_btn {
+    cursor: pointer;
+    width: 300px;
+    height: 56px;
+    color: #afafaf;
+    font-size: 30px;
+}
+
+.ly_post_menu_title {
+    padding-top: 20px;
+}
+
+.bl_post_menu_title {
+    display: flex;
+    justify-content: center;
+}
+
+.el_menu_title {
+    font-size: 20px;
+
+    input {
+        border: 1px solid #{$color-gray};
+        border-radius: 9px;
+        width: 500px;
+        font-size: 15px;
+        height: 30px;
+    }
+}
+
+.ly_post_menu_create_method {
+    padding-top: 20px;
+}
+
+.bl_post_menu_create_method {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    //flex-direction: column;
+}
+
+.bl_post_menu_create_method_input {
+    display: flex;
+    justify-content: center;
+
+    textarea {
+        min-width: 600px;
+        min-height: 600px;
+        border: 1px solid #{$color-gray};
+    }
+}
+
+.ly_post_menu_btn {
+    padding-top: 20px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.bl_post_menu_btn {
+    width: 600px;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.bl_post_btn {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    //width: 100px;
+}
+
+.el_post_btn {
+    width: 100%;
+    width: 158px;
+    display: flex;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    .el_post_btn_name {
+        font-size: 25px;
+        font-weight: 30px;
+    }
+}
+
+.btn {
+    box-sizing: border-box;
+    box-shadow: none;
+    border: none;
+    font-size: 1.5em;
+    padding: 5px 20px;
+    letter-spacing: 5px;
+    color: white;
+    border: solid 4px transparent;
+    color: transparent;
+    // text-fill-color: transparent
+}
+
+.btn__success {
+    border-image: $gradient-success;
+    border-image-slice: 1;
+    background: $gradient-success;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.btn__status {
+    border-image: $gradient-status;
+    border-image-slice: 1;
+    background: $gradient-status;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.btn__error {
+    border-image: $gradient-error;
+    border-image-slice: 1;
+    background: $gradient-error;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.ly_post_menu_img {
+    padding-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bl_post_menu_img {
+    width: 250px;
+}
+
+.bl_post_menu_add_img {
+    width: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    span {
+        font-size: 2em;
+    }
+}
+
+.bl_post_menu_img_title {
+    padding-left: 33px;
+
+    input[type="text"] {
+        border: 1px solid #{$color-gray};
+    }
+}
+
+.ly_post_article_title,
+.ly_post_article {
+    padding-top: 20px;
+}
+
+.bl_post_article_title {
+    display: flex;
+    justify-content: center;
+
+    input[type="text"] {
+        background-color: #fff;
+        height: 56px;
+        width: 100%;
+        max-width: 650px;
+        border: 1px solid rgba(201, 201, 204, 0.48);
+        -webkit-box-shadow: inset 0 1px 2px 0 rgb(35 44 72 / 6%);
+        box-shadow: inset 0 1px 2px 0 rgb(35 44 72 / 6%);
+        border-radius: 3px;
+        padding: 10px 12px;
+    }
+}
+
+
+// editor.js関連
+.ce-block__content {
+    background-color: #fff;
+}
+
+.codex-editor__redactor {
+    padding-bottom: 50px !important;
+}
+
+.cdx-block {
+    font-family: "Noto Serif JP", sans-serif !important;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.image-tool__caption { display: none; }
+
+.image-tool__image {
+    max-width: 300px;
 }

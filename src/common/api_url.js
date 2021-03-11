@@ -9,6 +9,21 @@ export const BASE_URL = '/api';
 export const POST_LOGIN = BASE_URL + '/login';
 
 /**
+ * 献立情報取得
+ */
+export const GET_POSTED_MENU = BASE_URL + '/posted/menu'
+
+/**
+ * ファイルアップロード
+ */
+export const POST_UPLOAD_IMAGE = BASE_URL + '/upload/file'
+
+/**
+ * ファイル取得
+ */
+export const GET_UPLOADED_IMAGE = BASE_URL + '/uploaded/file'
+
+/**
  * 商品取得(新着)API
  */
 export const GET_NEW_ARRIVAL_PRODUCTS = BASE_URL + '/product/new_arrival';

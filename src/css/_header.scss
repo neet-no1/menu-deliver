@@ -74,3 +74,14 @@
     color: black;
     text-decoration: none;
 }
+
+.el_post_btn {
+    width: 100%;
+    padding: 10px;
+
+    button {
+        width: 100%;
+        border: 1px solid #d6d5d5;
+        height: 50px;
+    }
+}
