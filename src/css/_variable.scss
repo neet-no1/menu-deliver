@@ -20,6 +20,9 @@ $container-width: $container-size + ($container-padding * 2);
 $footer-size: 750px;
 $footer-width: $footer-size + ($container-padding * 2);
 
+// 記事投稿部分の幅
+$article-width: 750px;
+
 
 // カラー
 $color-gray: #666;
@@ -32,8 +35,8 @@ $color-white: #FFF;
 
 // グラデーション
 $gradient-success: linear-gradient(45deg, #92e001, #548100);
-$gradient-status: linear-gradient(45deg, #97faff, #97faff);
-$gradient-error: linear-gradient(45deg, #ff2243, #ff2243);
+$gradient-status: linear-gradient(45deg, #9ca3f5, #9ca3f5);
+$gradient-error: linear-gradient(45deg, #f78b95, #f78b95);
 
 // ボタン
 $stripe-height: 7px;

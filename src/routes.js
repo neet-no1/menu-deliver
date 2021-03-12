@@ -11,5 +11,6 @@ export default {
   '/article_list': 'ArticleList',
   '/menu_list': 'MenuList',
   '/post/menu': 'PostMenu',
-  '/post/article': 'PostArticle'
+  '/post/article': 'PostArticle',
+  '/article/item': 'ViewArticle'
 }

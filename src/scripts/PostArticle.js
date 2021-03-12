@@ -11,7 +11,7 @@ export default {
     methods: {
         create_editor() {
             let Font = Quill.import('formats/font')
-            Font.whitelist = ['ms-mincho', 'meiryo', 'ms-gothic', 'arial'];
+            Font.whitelist = ['ms-mincho', 'meiryo', 'ms-gothic', 'yu-gothic'];
             Quill.register(Font, true);
 
             Quill.register('modules/imageCompress', ImageCompress);
@@ -46,12 +46,12 @@ export default {
                     imageCompress: {
                         quality: 0.7,
                         maxWidth: 200,
-                        maxHeight: 300,
+                        maxHeight: 200,
                         imageType: 'image/*',
-                        debug: true,
+                        //debug: true,
                     }
                 },
-                placeholder: 'Compose an epic...',
+                placeholder: '記事の内容',
                 //readOnly: true,
                 theme: 'snow'
             };
