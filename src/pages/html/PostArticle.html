@@ -5,12 +5,45 @@
         </div>
     </div>
     <div class="ly_post_article">
-        <div id="editorjs"></div>
+        <div class="bl_post_article">
+            <!-- Create toolbar container -->
+            <div id="toolbar">
+                <!-- Add font size dropdown -->
+                <select class="ql-size">
+                    <!-- Note a missing, thus falsy value, is used to reset to default -->
+                    <option selected>通常</option>
+                    <option value="large">中項目</option>
+                    <option value="huge">大項目</option>
+                </select>
+                <select class="ql-font">
+                    <option value="ms-mincho" selected>MS明朝</option>
+                    <option value="meiryo">メイリオ</option>
+                    <option value="ms-gothic">MSゴシック</option>
+                </select>
+                <!-- Add a bold button -->
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+
+                <select class="ql-align">
+                    <option selected></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                </select>
+
+                <button class="ql-link"></button>
+                <button class="ql-image"></button>
+
+                <button class="ql-clean"></button>
+            </div>
+            <div id="editor"></div>
+        </div>
     </div>
     <div class="ly_post_menu_btn">
         <div class="bl_post_menu_btn">
-            <div class="bl_post_btn" @click="save">
-                <div class="btn btn__success">投稿</div>
+            <div class="bl_post_btn">
+                <div class="btn btn__success" @click="save">投稿</div>
             </div>
             <div class="bl_post_btn">
                 <div class="btn btn__status">保存</div>

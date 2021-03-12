@@ -406,6 +406,15 @@
 .ly_post_article_title,
 .ly_post_article {
     padding-top: 20px;
+
+    font-family: "Noto Serif JP", sans-serif !important;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.bl_post_article,
+.ql-toolbar {
+    background-color: #FFF;
 }
 
 .bl_post_article_title {
@@ -426,23 +435,34 @@
 }
 
 
-// editor.js関連
-.ce-block__content {
-    background-color: #fff;
+.ql-font-roboto {
+    font-family: 'Roboto', sans-serif;
+
 }
 
-.codex-editor__redactor {
-    padding-bottom: 50px !important;
+.ql-font-Arial {
+    font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
 }
 
-.cdx-block {
-    font-family: "Noto Serif JP", sans-serif !important;
-    font-style: normal;
-    font-weight: 400;
+.ql-font-ms-mincho {
+    font-family: 'MS Mincho', sans-serif;
 }
 
-.image-tool__caption { display: none; }
+.ql-font-meiryo {
+    font-family: 'Meiryo', sans-serif;
+}
 
-.image-tool__image {
-    max-width: 300px;
+.ql-font-ms-gothic {
+    font-family: 'MS Gothic', sans-serif;
+}
+
+#editor {
+    img {
+        width: auto;
+    }
 }
