@@ -33,7 +33,7 @@ module.exports = {
       },
       // Sassファイルの読み込みとコンパイル
       {
-        test: /\.scss$/, // 対象となるファイルの拡張子
+        test: /\.(scss|sass)$/, // 対象となるファイルの拡張子
         use: [
           'vue-style-loader',
           // linkタグに出力する機能

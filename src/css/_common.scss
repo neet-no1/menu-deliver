@@ -263,11 +263,13 @@
 
 .el_menu_title {
     font-size: 20px;
+    text-align: center;
 
     input {
         border: 1px solid #{$color-gray};
         border-radius: 9px;
-        width: 500px;
+        width: 90vw;
+        max-width: 500px;
         font-size: 15px;
         height: 30px;
     }
@@ -289,8 +291,9 @@
     justify-content: center;
 
     textarea {
-        min-width: 600px;
-        min-height: 600px;
+        height: 600px;
+        max-width: 600px;
+        width: 100%;
         border: 1px solid #{$color-gray};
     }
 }
@@ -419,7 +422,7 @@
 
 .bl_post_article,
 .ql-toolbar {
-    background-color: #FFF;
+    background-color: #fff;
 }
 
 .bl_post_article_title {
@@ -440,20 +443,19 @@
 }
 
 .ql-font-ms-mincho {
-    font-family: 'MS Mincho', sans-serif;
+    font-family: "MS Mincho", sans-serif;
 }
 
 .ql-font-meiryo {
-    font-family: 'Meiryo', sans-serif;
+    font-family: "Meiryo", sans-serif;
 }
 
 .ql-font-yu-gothic {
-    font-family: 'Yu Gothic', sans-serif;
+    font-family: "Yu Gothic", sans-serif;
 }
 
 #editor {
-
-    font-family: 'MS Mincho', sans-serif;
+    font-family: "MS Mincho", sans-serif;
 
     img {
         width: auto;
@@ -471,7 +473,7 @@
 }
 
 .bl_article_view_title__inner {
-    background-color: #FFF;
+    background-color: #fff;
     min-height: 56px;
     width: 100%;
     max-width: #{$article-width};
@@ -486,15 +488,15 @@
     }
 }
 
-.ly_article_content,
+.ly_article_contents,
 .ly_article_info {
     display: flex;
     justify-content: center;
 }
 
-.bl_article_content,
+.bl_article_contents,
 .bl_article_posted_user {
-    background-color: #FFF;
+    background-color: #fff;
     margin-top: 20px;
     width: 100%;
     max-width: #{$article-width};
@@ -506,7 +508,7 @@
 
 .bl_article_posted_user {
     padding: 32px;
-    
+
     display: flex;
 }
 
@@ -516,4 +518,31 @@
 
 .bl_user_info_name {
     font-size: 14px;
+}
+
+// フォローボタン
+.el_follow_btn {
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+.btn-flat-double-border {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: double 4px #67c5ff;
+    border-radius: 3px;
+    transition: 0.4s;
+}
+.btn-flat-double-border:hover {
+    background: #fffbef;
+}
+
+.el_compositions_expanded_item {
+
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #{$color-light-gray};
 }

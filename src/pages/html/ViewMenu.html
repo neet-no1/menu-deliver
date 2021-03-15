@@ -1,0 +1,208 @@
+<v-app>
+    <PageHeader />
+    <News />
+    <main>
+        <div class="ly_post_menu_title">
+            <div class="bl_post_menu_title">
+                <div class="el_menu_title">
+                    <span>献立名</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="el_food_composition d-block d-md-none">
+            <v-data-table :headers="mobile_headers" :items="compositions" :single-expand="singleExpand"
+                :expanded.sync="expanded" item-key="id" show-expand class="elevation-1" disable-sort hide-default-footer  :items-per-page="50">
+                <template slot="expanded-item" slot-scope="props">
+                        <td :colspan="4">
+                            <div class="el_compositions_expanded_item"><span>エネルギー</span><span>{{ props.item.energy }}kcal</span></div>
+                            <div class="el_compositions_expanded_item"><span>たんぱく質</span><span>{{ props.item.protein }}g</span></div>
+                            <div class="el_compositions_expanded_item"><span>脂質</span><span>{{ props.item.lipid }}g</span></div>
+                            <div class="el_compositions_expanded_item"><span>炭水化物</span><span>{{ props.item.carbohydrate }}g</span></div>
+                            <div class="el_compositions_expanded_item"><span>カルシウム</span><span>{{ props.item.calcium }}mg</span></div>
+                            <div class="el_compositions_expanded_item"><span>鉄</span><span>{{ props.item.iron }}mg</span></div>
+                            <div class="el_compositions_expanded_item"><span>コレステロール</span><span>{{ props.item.cholesterol }}mg</span></div>
+                            <div class="el_compositions_expanded_item"><span>食物繊維</span><span>{{ props.item.dietaryFiber }}g</span></div>
+                            <div class="el_compositions_expanded_item"><span>食塩相当量</span><span>{{ props.item.saltEquivalent }}g</span></div>
+                        </td>
+                </template>
+            </v-data-table>
+        </div>
+        <div class="el_food_composition d-none d-md-block">
+            <v-data-table :headers="headers" :items="compositions" hide-default-footer :loading="loading"
+                loading-text="Loading... Please wait" :items-per-page="50">
+                <!-- 使用量ヘッダ -->
+                <template v-slot:header.amount="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(g)</span>
+                    </div>
+                </template>
+                <!-- 廃棄込み使用量ヘッダ -->
+                <template v-slot:header.waste="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(g)</span>
+                    </div>
+                </template>
+                <!-- エネルギーヘッダ -->
+                <template v-slot:header.energy="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(kcal)</span>
+                    </div>
+                </template>
+                <!-- たんぱく質ヘッダ -->
+                <template v-slot:header.protein="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(g)</span>
+                    </div>
+                </template>
+                <!-- 脂質ヘッダ -->
+                <template v-slot:header.lipid="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(g)</span>
+                    </div>
+                </template>
+                <!-- 炭水化物ヘッダ -->
+                <template v-slot:header.carbohydrate="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(g)</span>
+                    </div>
+                </template>
+                <!-- カルシウムヘッダ -->
+                <template v-slot:header.calcium="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(mg)</span>
+                    </div>
+                </template>
+                <!-- 鉄ヘッダ -->
+                <template v-slot:header.iron="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(mg)</span>
+                    </div>
+                </template>
+                <!-- コレステロールヘッダ -->
+                <template v-slot:header.cholesterol="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(mg)</span>
+                    </div>
+                </template>
+                <!-- 食物繊維ヘッダ -->
+                <template v-slot:header.dietaryFiber="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(g)</span>
+                    </div>
+                </template>
+                <!-- 食塩相当量ヘッダ -->
+                <template v-slot:header.saltEquivalent="{ header }">
+                    <div class="el_food_composition_header">
+                        <span>{{ header.text }}</span>
+                    </div>
+                    <div class="el_food_composition_header_unit">
+                        <span>(g)</span>
+                    </div>
+                </template>
+
+                <!-- 材料項目 -->
+                <template v-slot:item.material="props">
+                    <v-edit-dialog :return-value.sync="props" v-if="props.item.material.length == 0">
+                        <div></div>
+                        <template v-slot:input>
+                            <v-autocomplete v-model="props.item.material" :items="select_items" label="Select"
+                                return-object single-line>
+                            </v-autocomplete>
+                        </template>
+                    </v-edit-dialog>
+                    <v-edit-dialog :return-value.sync="props">
+                        <div>
+                            {{ props.item.material }}
+                        </div>
+                        <template v-slot:input>
+                            <v-autocomplete v-model="props.item.material" :items="select_items" label="Select"
+                                return-object single-line>
+                            </v-autocomplete>
+                        </template>
+                    </v-edit-dialog>
+                </template>
+                <!-- 使用量項目 -->
+                <template v-slot:item.amount="props">
+                    <v-edit-dialog :return-value.sync="props.item.amount" large persistent>
+                        <div>{{ props.item.amount }}</div>
+                        <template v-slot:input>
+                            <v-text-field v-model="props.item.amount" type="number" label="Edit" single-line autofocus>
+                            </v-text-field>
+                        </template>
+                    </v-edit-dialog>
+                </template>
+
+                <template v-slot:item.vitamin="props">
+                    <div class="el_flex_around">
+                        <span>{{ props.item.vitaminA }}</span>
+                        <span>{{ props.item.vitaminD }}</span>
+                        <span>{{ props.item.vitaminE }}</span>
+                        <span>{{ props.item.vitaminK }}</span>
+                        <span>{{ props.item.vitaminC }}</span>
+                    </div>
+                </template>
+            </v-data-table>
+            <div class="bl_btn__center">
+                <button class="el_add_btn" @click="add_material">
+                    <span><i class="fas fa-plus"></i>追加</span>
+                </button>
+            </div>
+        </div>
+        <div class="ly_post_menu_create_method">
+            <div class="bl_post_menu_create_method">
+                <div>
+                    <span>作り方</span>
+                </div>
+            </div>
+            <div class="bl_post_menu_create_method_input">
+                <textarea></textarea>
+            </div>
+            <div class="ly_post_menu_img">
+                <div class="bl_post_menu_img" v-for="(img, index) in menu_imgs">
+                    <v-img v-if="img.uploadImageUrl" :src="img.uploadImageUrl" max-height="150" max-width="250"
+                        contain />
+                    <v-file-input :id="'menu_img_' + index" v-model="img.input_image" accept="image/*" label="画像を選択"
+                        @change="onImagePicked" @click="selectImage(index)"></v-file-input>
+                    <div class="bl_post_menu_img_title">
+                        <input type="text" placeholder="画像の説明">
+                    </div>
+                </div>
+                <div class="bl_post_menu_add_img" @click="add_menu_img">
+                    <span><i class="fas fa-plus"></i></span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <PageFooter />
+</v-app>
