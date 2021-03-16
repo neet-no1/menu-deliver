@@ -47,6 +47,14 @@
     color: #f00;
 }
 
+.el_icon_crown {
+    color: #FCDB04;
+}
+
+.el_icon_edit {
+    color: #000;
+}
+
 .el_nav_icon {
     font-size: 35px;
     line-height: 0;
@@ -495,15 +503,20 @@
 }
 
 .bl_article_contents,
-.bl_article_posted_user {
+.bl_article_posted_user,
+.bl_question_posted_user {
     background-color: #fff;
     margin-top: 20px;
     width: 100%;
-    max-width: #{$article-width};
 
     .ql-container {
         border: unset;
     }
+}
+
+.bl_article_contents_width,
+.bl_article_posted_user_width {
+    max-width: #{$article-width};
 }
 
 .bl_article_posted_user {
@@ -512,8 +525,18 @@
     display: flex;
 }
 
+.bl_question_posted_user {
+    padding: 32px 32px 16px 32px;
+
+    display: flex;
+}
+
 .bl_user_icon {
     margin-right: 16px;
+}
+
+.bl_user_info {
+    margin: auto 0;
 }
 
 .bl_user_info_name {
@@ -545,4 +568,82 @@
     justify-content: space-between;
 
     border-bottom: 1px solid #{$color-light-gray};
+}
+
+// 質問詳細
+.cp_box *, .cp_box *:before, .cp_box *:after {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.cp_box {
+	position: relative;
+    margin-top: 20px;
+
+    background-color: #FFF;
+
+    label {
+        margin: 0;
+    }
+}
+.cp_box label {
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	width: 100%;
+	height: 140px; /* グラデーションの高さ */
+	cursor: pointer;
+	text-align: center;
+	/* 以下グラデーションは背景を自身のサイトに合わせて設定してください */
+	background: linear-gradient(to bottom, rgba(250, 252, 252, 0) 0%, rgba(250, 252, 252, 0.95) 90%);
+}
+.cp_box input:checked + label {
+	background: inherit; /* 開いた時にグラデーションを消す */
+}
+.cp_box label:after {
+	line-height: 2.5rem;
+	position: absolute;
+	z-index: 2;
+	bottom: 20px;
+	left: 50%;
+	width: 16rem;
+	font-family: "Font Awesome 5 Free";
+	content: '\f13a'' 続きをよむ';
+	transform: translate(-50%, 0);
+	letter-spacing: 0.05em;
+	color: #ffffff;
+	border-radius: 20px;
+	background-color: rgba(27, 37, 56, 1);
+}
+.cp_box input {
+	display: none;
+}
+.cp_box .cp_container {
+	overflow: hidden;
+	height: 250px; /* 開く前に見えている部分の高さ */
+	transition: all 0.5s;
+    padding: 20px;
+}
+.cp_box input:checked + label {
+	display: none ; //閉じるボタンを消す場合解放 */
+}
+.cp_box input:checked + label:after {
+	font-family: "Font Awesome 5 Free";
+	content: '\f139'' 閉じる';
+}
+.cp_box input:checked ~ .cp_container {
+	height: auto;
+	padding-bottom: 20px; /* 閉じるボタンのbottomからの位置 */
+	transition: all 0.5s;
+}
+
+.bl_post_question_img {
+    max-width: 300px;
+    padding-left: 30px;
+}
+
+.bl_post_question_btn {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
 }

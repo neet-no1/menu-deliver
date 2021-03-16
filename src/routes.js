@@ -13,5 +13,6 @@ export default {
   '/post/menu': 'PostMenu',
   '/post/article': 'PostArticle',
   '/article/item': 'ViewArticle',
-  '/menu/item': 'ViewMenu'
+  '/menu/item': 'ViewMenu',
+  '/question/detail': 'QuestionDetail'
 }

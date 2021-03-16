@@ -24,6 +24,12 @@
     padding-top: 15px;
 }
 
+.ly_posted_question {
+    width: 100%;
+
+    padding-top: 30px;
+}
+
 .bl_question_btn {
     display: flex;
     flex-direction: row-reverse;
@@ -278,4 +284,20 @@
 .el_question_content {
     font-size: 15px;
     font-weight: 25px;
+}
+
+.bl_posted_question_contents {
+    background-color: #FFF;
+    padding: 20px;
+}
+
+.bl_post_question_answer {
+
+    padding: 10px 20px;
+
+    textarea {
+        width: 100%;
+        min-height: 200px;
+        border: 1px solid #{$color-light-gray};
+    }
 }
