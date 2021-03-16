@@ -55,6 +55,10 @@
     color: #000;
 }
 
+.el_icon_question {
+    color: #000;
+}
+
 .el_nav_icon {
     font-size: 35px;
     line-height: 0;
@@ -325,6 +329,10 @@
     display: flex;
     justify-content: center;
     //width: 100px;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .el_post_btn {

@@ -1,0 +1,46 @@
+<div>
+    <PageHeader />
+    <News />
+    <main>
+        <div class="ly_question">
+            <div class="ly_question_inner">
+                <div class="ly_posted_question">
+                    <div class="bl_question_title">
+                        <span class="el_question_title">質問</span>
+                    </div>
+                    <div class="cp_box">
+                        <div class="bl_posted_question">
+                            <div class="bl_question_posted_user">
+                                <div class="bl_user_icon">
+                                    <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon">
+                                    </div>
+                                </div>
+                                <div class="bl_user_info">
+                                    <div class="bl_user_info_name">username</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bl_post_question_answer">
+                            <textarea></textarea>
+                        </div>
+                        <div class="bl_post_question_img" v-for="(img, index) in menu_imgs">
+                            <v-img v-if="img.uploadImageUrl" :src="img.uploadImageUrl" max-height="150" max-width="250"
+                                contain />
+                            <v-file-input :id="'menu_img_' + index" v-model="img.input_image" accept="image/*"
+                                label="画像を選択" @change="onImagePicked" @click="selectImage(index)"
+                                prepend-icon="fas fa-camera"></v-file-input>
+                        </div>
+                        <div class="bl_post_question_btn">
+                            <div class="bl_post_btn">
+                                <a href="/question">
+                                    <div class="btn btn__success">質問する</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <PageFooter />
+</div>

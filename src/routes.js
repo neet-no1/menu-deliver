@@ -14,5 +14,6 @@ export default {
   '/post/article': 'PostArticle',
   '/article/item': 'ViewArticle',
   '/menu/item': 'ViewMenu',
-  '/question/detail': 'QuestionDetail'
+  '/question/detail': 'QuestionDetail',
+  '/post/question': 'PostQuestion'
 }
