@@ -19,4 +19,12 @@
       </div>
     </div>
   </div>
+  <div>
+    <div class="el_article_status_posted" v-if="status_posted">
+      <span>投稿済み</span>
+    </div>
+    <div class="el_article_status_edit" v-if="status_editing">
+      <span>編集中</span>
+    </div>
+  </div>
 </div>

@@ -296,6 +296,22 @@
     }
 }
 
+.el_menu_status_posted {    
+    display: flex;
+    justify-content: center;
+
+    color: #FFF;
+    background-color: $color-success;
+}
+
+.el_menu_status_edit {    
+    display: flex;
+    justify-content: center;
+
+    color: #FFF;
+    background-color: $color-sutatus;
+}
+
 .ly_post_menu_create_method {
     padding-top: 20px;
 }

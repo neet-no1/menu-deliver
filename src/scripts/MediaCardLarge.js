@@ -11,5 +11,13 @@ export default {
                 'background-image': 'url(' + this.article.user_icon + ')'
             }
         }
+    },
+    computed: {
+        status_posted() {
+            return this.article.status === 'posted'
+        },
+        status_editing() {
+            return this.article.status === 'editing'
+        }
     }
 }

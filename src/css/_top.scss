@@ -99,7 +99,7 @@
 }
 
 .el_menu {
-    background-color: #FFF;
+    background-color: #fff;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
@@ -111,7 +111,6 @@
 }
 
 .el_menu_img {
-
     display: flex;
     justify-content: center;
 
@@ -160,7 +159,7 @@
 }
 
 .el_new_icon {
-    color: #F00;
+    color: #f00;
     font-size: 16px;
     font-weight: 24px;
 
@@ -168,7 +167,7 @@
 }
 
 .el_atricle_item {
-    background-color: #FFF;
+    background-color: #fff;
     width: 100%;
 
     margin-right: 10px;
@@ -254,23 +253,49 @@
     align-items: flex-end;
 }
 
+.el_article_status_posted,
+.el_article_status_edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 24px;
+    height: 100%;
+
+    span {
+        -ms-writing-mode: tb-rl;
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
+    }
+}
+
+.el_article_status_posted {
+    color: #fff;
+    background-color: $color-success;
+}
+
+.el_article_status_edit {
+    color: #fff;
+    background-color: $color-sutatus;
+}
+
 .el_user_icon_circle {
     //background-image: url("./public/img/user_1.jpg");  /* 表示する画像 */
-    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-    background-position: left top;  /* 横長画像の左上を基準に表示 */
-    display: inline-block;          /* 複数の画像を横に並べたい場合 */
-    background-position: center ;
-    background-size:cover;
+    border-radius: 50%; /* 角丸半径を50%にする(=円形にする) */
+    background-position: left top; /* 横長画像の左上を基準に表示 */
+    display: inline-block; /* 複数の画像を横に並べたい場合 */
+    background-position: center;
+    background-size: cover;
 }
 
 .el_user_icon_circle__small {
-    width:  50px;       /* ※縦横を同値に */
-    height: 50px;       /* ※縦横を同値に */
+    width: 50px; /* ※縦横を同値に */
+    height: 50px; /* ※縦横を同値に */
 }
 
 .el_user_icon_circle__medium {
-    width:  70px;       /* ※縦横を同値に */
-    height: 70px;       /* ※縦横を同値に */
+    width: 70px; /* ※縦横を同値に */
+    height: 70px; /* ※縦横を同値に */
 }
 
 .el_user_icon_circle__large {

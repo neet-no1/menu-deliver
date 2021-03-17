@@ -5,4 +5,10 @@
     <div class="el_menu_title" :class="menu.title_class">
         <span>{{ menu.title }}</span>
     </div>
+    <div class="el_menu_status_posted" v-if="status_posted">
+        <span>投稿済み</span>
+    </div>
+    <div class="el_menu_status_edit" v-if="status_editing">
+        <span>編集中</span>
+    </div>
 </div>

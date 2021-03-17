@@ -111,48 +111,56 @@ export default {
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
+          , status: 'posted'
         },
         {
           img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
+          , status: 'editing'
         },
         {
           img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
+          , status: 'posted'
         },
         {
           img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
+          , status: 'editing'
         },
         {
           img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
+          , status: 'editing'
         },
         {
           img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
+          , status: 'posted'
         },
         {
           img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
+          , status: 'posted'
         },
         {
           img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
+          , status: 'posted'
         }
       ],
       articles: [
@@ -168,6 +176,7 @@ export default {
           , date_class: ['el_article_item_meta_info_date__small']
           , isDetail: false
           , isIcon: false
+          , status: 'posted'
         },
         {
           title: "記事のタイトル記事のタイトル記事のタイトル記事の…"
@@ -181,6 +190,7 @@ export default {
           , date_class: ['el_article_item_meta_info_date__small']
           , isDetail: false
           , isIcon: false
+          , status: 'posted'
         },
         {
           title: "記事のタイトル記事のタイトル記事のタイトル記事の…"
@@ -194,6 +204,7 @@ export default {
           , date_class: ['el_article_item_meta_info_date__small']
           , isDetail: false
           , isIcon: false
+          , status: 'editing'
         }
       ],
     }
