@@ -17,6 +17,61 @@ export default {
         return {
             expanded: [],
             singleExpand: true,
+            total_row: {
+                isMobile: true
+            },
+            mobile_total_headers: [
+                {
+                    text: '栄養素',
+                    align: 'start',
+                    value: 'composition_name',
+                    groupable: false
+                },
+                {
+                    text: '合計値',
+                    align: 'end',
+                    value: 'total',
+                    groupable: false
+                }
+            ],
+            composition_total: [
+                {
+                    composition_name: 'エネルギー',
+                    total: 1234
+                },
+                {
+                    composition_name: 'たんぱく質',
+                    total: 1234
+                },
+                {
+                    composition_name: '脂質',
+                    total: 1234
+                },
+                {
+                    composition_name: '炭水化物',
+                    total: 1234
+                },
+                {
+                    composition_name: 'カルシウム',
+                    total: 1234
+                },
+                {
+                    composition_name: '鉄',
+                    total: 1234
+                },
+                {
+                    composition_name: 'コレステロール',
+                    total: 1234
+                },
+                {
+                    composition_name: '食物繊維',
+                    total: 1234
+                },
+                {
+                    composition_name: '食塩相当量',
+                    total: 1234
+                }
+            ],
             mobile_headers: [
                 {
                     text: '材料',

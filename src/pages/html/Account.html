@@ -47,7 +47,7 @@
                 <div class="ly_mypage">
                     <div class="ly_mypage_inner">
                         <div class="ly_mypage_user_icon">
-                            <div class="el_user_icon_circle el_user_icon_circle__large"></div>
+                            <div class="el_user_icon_circle el_user_icon_circle__large" :style="user_icon"></div>
                         </div>
                         <div class="ly_mypage_user_info">
                             <div class="bl_info_area">
@@ -74,7 +74,7 @@
                 <div class="ly_edit">
                     <div class="ly_edit_inner">
                         <div class="ly_edit_user_icon">
-                            <div class="el_user_icon_circle el_user_icon_circle__large"></div>
+                            <div class="el_user_icon_circle el_user_icon_circle__large" :style="user_icon"></div>
                         </div>
                         <div class="ly_edit_user_info">
                             <div class="bl_info_area">
@@ -148,92 +148,92 @@
                 <div class="ly_follow_list">
                     <div class="ly_follow_list_inner">
                         <div class="ly_follow_switch">
-                            <button class="el_follow_list_switch_btn btn btn--stripe"
+                            <button class="el_follow_list_switch_btn btn_stripe btn_stripe--stripe"
                                 v-on:click="switch_follow_list('follow')">フォロー</button>
-                            <button class="el_follow_list_switch_btn btn btn--stripe"
+                            <button class="el_follow_list_switch_btn btn_stripe btn_stripe--stripe"
                                 v-on:click="switch_follow_list('follower')">フォロワー</button>
                         </div>
                         <div class="bl_follow_list" v-if="isOpen_follow">
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォローフォローフォローフォロー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロー</span></div>
                             </div>
                         </div>
                         <div class="bl_follower_list" v-if="isOpen_follower">
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロワー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロワーフォロワーフォロワー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロワー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロワー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロワー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロワー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロワー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロワー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロワー</span></div>
                             </div>
                             <div class="el_follow_user">
-                                <div class="el_user_icon_circle el_user_icon_circle__small"></div>
+                                <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon"></div>
                                 <div><span>フォロワー</span></div>
                             </div>
                         </div>
@@ -502,9 +502,9 @@
                     <div class="ly_favorite_inner">
                         <div class="ly_favorite_switch">
                             <div class="bl_favorite_switch">
-                                <button class="el_follow_list_switch_btn btn btn--stripe"
+                                <button class="el_follow_list_switch_btn btn_stripe btn_stripe--stripe"
                                     v-on:click="switch_favorite('menu')">献立</button>
-                                <button class="el_follow_list_switch_btn btn btn--stripe"
+                                <button class="el_follow_list_switch_btn btn_stripe btn_stripe--stripe"
                                     v-on:click="switch_favorite('article')">記事</button>
                             </div>
                         </div>

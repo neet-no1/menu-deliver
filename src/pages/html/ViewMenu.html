@@ -35,6 +35,12 @@
                     </td>
                 </template>
             </v-data-table>
+            <div class="bl_foot_composition_total">
+                <v-data-table :headers="mobile_total_headers" :items="composition_total"
+                    class="elevation-1" disable-sort hide-default-footer
+                    hide-default-header :items-per-page="50">
+                </v-data-table>
+            </div>
         </div>
         <div class="el_food_composition d-none d-md-block">
             <v-data-table :headers="headers" :items="compositions" hide-default-footer :loading="loading"
@@ -171,14 +177,21 @@
                     </v-edit-dialog>
                 </template>
 
-                <template v-slot:item.vitamin="props">
-                    <div class="el_flex_around">
-                        <span>{{ props.item.vitaminA }}</span>
-                        <span>{{ props.item.vitaminD }}</span>
-                        <span>{{ props.item.vitaminE }}</span>
-                        <span>{{ props.item.vitaminK }}</span>
-                        <span>{{ props.item.vitaminC }}</span>
-                    </div>
+                <template slot="body.append" isMobile>
+                    <tr>
+                        <th class="text-center title">Total</th>
+                        <th class="text-center title">150</th>
+                        <th class="text-center title">150</th>
+                        <th class="text-center title">150</th>
+                        <th class="text-center title">150</th>
+                        <th class="text-center title">150</th>
+                        <th class="text-center title">150</th>
+                        <th class="text-center title">150</th>
+                        <th class="text-center title">150</th>
+                        <th class="text-center title">150</th>
+                        <th class="text-center title">150</th>
+                        <th class="text-center title">150</th>
+                    </tr>
                 </template>
             </v-data-table>
             <div class="bl_btn__center">
