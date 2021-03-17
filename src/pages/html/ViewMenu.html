@@ -6,7 +6,7 @@
             <div class="bl_post_menu_title">
                 <div class="el_menu_title">
                     <span>献立名</span>
-                    <input type="text">
+                    <span class="el_menu_title_text">豚肉と野菜炒め</span>
                 </div>
             </div>
         </div>
@@ -194,11 +194,6 @@
                     </tr>
                 </template>
             </v-data-table>
-            <div class="bl_btn__center">
-                <button class="el_add_btn" @click="add_material">
-                    <span><i class="fas fa-plus"></i>追加</span>
-                </button>
-            </div>
         </div>
         <div class="ly_post_menu_create_method">
             <div class="bl_post_menu_create_method">
@@ -213,8 +208,6 @@
                 <div class="bl_post_menu_img" v-for="(img, index) in menu_imgs">
                     <v-img v-if="img.uploadImageUrl" :src="img.uploadImageUrl" max-height="150" max-width="250"
                         contain />
-                    <v-file-input :id="'menu_img_' + index" v-model="img.input_image" accept="image/*" label="画像を選択"
-                        @change="onImagePicked" @click="selectImage(index)"></v-file-input>
                     <div class="bl_post_menu_img_title">
                         <input type="text" placeholder="画像の説明">
                     </div>
