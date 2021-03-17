@@ -1,19 +1,19 @@
-<div class="el_atricle_item">
-  <div class="el_article_item_img el_article_item_img__large">
+<div class="el_atricle_item" :class="article.item_class">
+  <div class="el_article_item_img" :class="article.img_class">
     <img :src="article.img">
   </div>
   <div class="bl_article_media">
-    <div class="el_article_item_title">
+    <div class="el_article_item_title" :class="article.title_class">
       <span>{{ article.title }}</span>
     </div>
-    <div class="el_article_item_detail">
+    <div class="el_article_item_detail" v-if="article.isDetail">
       <span>{{ article.detail }}</span>
     </div>
     <div class="el_article_item_meta_info">
-      <div class="el_article_item_meta_info_date">
+      <div class="el_article_item_meta_info_date" :class="article.date_class">
         <span>{{ article.date }}</span>
       </div>
-      <div class="el_article_item_meta_info_user">
+      <div class="el_article_item_meta_info_user" v-if="article.isIcon">
         <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon">
         </div>
       </div>

@@ -2,12 +2,19 @@ import Vue from 'vue'
 
 import PageHeader from '../pages/module/PageHeader.vue'
 import PageFooter from '../pages/module/PageFooter.vue'
+import MediaCardLarge from '../pages/module/MediaCardLarge.vue'
+import MediaCard from '../pages/module/MediaCard.vue'
+import Follower from '../pages/module/Follower.vue'
+
 
 export default {
   name: 'Account',
   components: {
     PageHeader,
-    PageFooter
+    PageFooter,
+    MediaCardLarge,
+    MediaCard,
+    Follower
   },
   data() {
     return {
@@ -30,6 +37,166 @@ export default {
       user_icon: {
         'background-image': 'url("/public/img/user_1.jpg")'
       },
+      follows: [
+        {
+          user_name: "フォローA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォローA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォローA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォローA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォローA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォローA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォローA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォローA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        
+      ],
+      followers: [
+        {
+          user_name: "フォロワーA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォロワーA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォロワーA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォロワーA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォロワーA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォロワーA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォロワーA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+        {
+          user_name: "フォロワーA",
+          user_icon: "/public/img/user_1.jpg"
+        },
+      ],
+      menus: [
+        {
+          img_src: "../../../../public/img/menu_no_image.jpg"
+          , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
+          , title_class: ['el_menu_title__small']
+          , img_class: ['el_menu_img__small']
+        },
+        {
+          img_src: "../../../../public/img/menu_no_image.jpg"
+          , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
+          , title_class: ['el_menu_title__small']
+          , img_class: ['el_menu_img__small']
+        },
+        {
+          img_src: "../../../../public/img/menu_no_image.jpg"
+          , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
+          , title_class: ['el_menu_title__small']
+          , img_class: ['el_menu_img__small']
+        },
+        {
+          img_src: "../../../../public/img/menu_no_image.jpg"
+          , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
+          , title_class: ['el_menu_title__small']
+          , img_class: ['el_menu_img__small']
+        },
+        {
+          img_src: "../../../../public/img/menu_no_image.jpg"
+          , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
+          , title_class: ['el_menu_title__small']
+          , img_class: ['el_menu_img__small']
+        },
+        {
+          img_src: "../../../../public/img/menu_no_image.jpg"
+          , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
+          , title_class: ['el_menu_title__small']
+          , img_class: ['el_menu_img__small']
+        },
+        {
+          img_src: "../../../../public/img/menu_no_image.jpg"
+          , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
+          , title_class: ['el_menu_title__small']
+          , img_class: ['el_menu_img__small']
+        },
+        {
+          img_src: "../../../../public/img/menu_no_image.jpg"
+          , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
+          , title_class: ['el_menu_title__small']
+          , img_class: ['el_menu_img__small']
+        }
+      ],
+      articles: [
+        {
+          title: "記事のタイトル記事のタイトル記事のタイトル記事の…"
+          , detail: ""
+          , date: "2021/01/29"
+          , user_icon: "../../../../public/img/user_1.jpg"
+          , img: "../../../../public/img/recommend_3.jpg"
+          , item_class: ['el_atricle_item__small']
+          , img_class: ['el_article_item_img__small']
+          , title_class: ['el_article_item_title__small']
+          , date_class: ['el_article_item_meta_info_date__small']
+          , isDetail: false
+          , isIcon: false
+        },
+        {
+          title: "記事のタイトル記事のタイトル記事のタイトル記事の…"
+          , detail: "記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細…"
+          , date: "2021/01/29"
+          , user_icon: "../../../../public/img/user_1.jpg"
+          , img: "../../../../public/img/article_no_image.png"
+          , item_class: ['el_atricle_item__small']
+          , img_class: ['el_article_item_img__small']
+          , title_class: ['el_article_item_title__small']
+          , date_class: ['el_article_item_meta_info_date__small']
+          , isDetail: false
+          , isIcon: false
+        },
+        {
+          title: "記事のタイトル記事のタイトル記事のタイトル記事の…"
+          , detail: "記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細…"
+          , date: "2021/01/29"
+          , user_icon: "../../../../public/img/user_1.jpg"
+          , img: "../../../../public/img/recommend_3.jpg"
+          , item_class: ['el_atricle_item__small']
+          , img_class: ['el_article_item_img__small']
+          , title_class: ['el_article_item_title__small']
+          , date_class: ['el_article_item_meta_info_date__small']
+          , isDetail: false
+          , isIcon: false
+        }
+      ],
     }
   },
   computed: {

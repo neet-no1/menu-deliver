@@ -266,30 +266,24 @@
 
 .ly_follow_list_inner {
     width: 100%;
-    max-width: 450px;
+    max-width: 650px;
 }
 
 .ly_follow_switch {
     width: 100%;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.bl_follow_list {
-    width: 100%;
-
-    display: flex;
-    //justify-content: center;
-    flex-wrap: wrap;
-}
-
+.bl_follow_list,
 .bl_follower_list {
     width: 100%;
 
     display: flex;
     //justify-content: center;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .el_follow_user {
@@ -302,7 +296,7 @@
     margin-top: 5px;
     margin-left: 5px;
 
-    padding: 3px;
+    padding: 3px 10px 3px 3px;
 
     background-color: #FFF;
     box-shadow: 0px 3px 6px #00000091;
