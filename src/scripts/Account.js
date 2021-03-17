@@ -34,9 +34,8 @@ export default {
       isOpen_favorite_menu: true,
       isOpen_favorite_article: false,
 
-      user_icon: {
-        'background-image': 'url("/public/img/user_1.jpg")'
-      },
+      user_icon_path: '/public/img/user_1.jpg',
+
       follows: [
         {
           user_name: "フォローA",
@@ -70,7 +69,7 @@ export default {
           user_name: "フォローA",
           user_icon: "/public/img/user_1.jpg"
         },
-        
+
       ],
       followers: [
         {
@@ -220,7 +219,10 @@ export default {
     },
     isActive_favorite: function () {
       return this.active_tab == this.favorite
-    }
+    },
+    user_icon: function(){
+      return 'background-image: url(' + this.user_icon_path + ')'
+    },
   },
   methods: {
     switch_follow_list: function (param) {
@@ -244,6 +246,24 @@ export default {
         this.isOpen_favorite_menu = false;
         this.isOpen_favorite_article = true;
       }
-    }
+    },
+    select_file: function () {
+      console.log(this.$refs.select_image)
+      this.$refs.select_image.$refs.input.click()
+    },
+    onImagePicked(file) {
+      if (file !== undefined && file !== null) {
+        if (file.name.lastIndexOf('.') <= 0) {
+          return
+        }
+        const fr = new FileReader()
+        fr.readAsDataURL(file)
+        fr.addEventListener('load', () => {
+          this.user_icon_path = fr.result
+        })
+      } else {
+        this.user_icon_path = '/public/img/menu_no_image.jpg'
+      }
+    },
   }
 }

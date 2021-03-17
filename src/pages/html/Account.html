@@ -74,7 +74,8 @@
                 <div class="ly_edit">
                     <div class="ly_edit_inner">
                         <div class="ly_edit_user_icon">
-                            <div class="el_user_icon_circle el_user_icon_circle__large" :style="user_icon"></div>
+                            <div class="el_user_icon_circle el_user_icon_circle__large" :style="user_icon" @click="select_file"></div>
+                            <v-file-input hide-input style="display: none" ref="select_image" @change="onImagePicked"></v-file-input>
                         </div>
                         <div class="ly_edit_user_info">
                             <div class="bl_info_area">
@@ -82,7 +83,7 @@
                                     <span>●ニックネーム</span>
                                 </div>
                                 <div class="el_info_edit">
-                                    <input class="el_info_edit_box" type="password" name="password" id="password"
+                                    <input class="el_info_edit_box" type="text" name="user_name" id="user_name"
                                         placeholder="">
                                 </div>
                             </div>
@@ -91,7 +92,7 @@
                                     <span>●メールアドレス</span>
                                 </div>
                                 <div class="el_info_edit">
-                                    <input class="el_info_edit_box" type="password" name="password" id="password"
+                                    <input class="el_info_edit_box" type="text" name="email" id="email"
                                         placeholder="">
                                 </div>
                             </div>
@@ -113,7 +114,7 @@
                                     <span>現在のパスワード</span>
                                 </div>
                                 <div class="el_password_edit">
-                                    <input class="el_password_edit_box" type="password" name="password" id="password"
+                                    <input class="el_password_edit_box" type="password" name="current_password" id="current_password"
                                         placeholder="">
                                 </div>
                             </div>
@@ -122,7 +123,7 @@
                                     <span>新しいパスワード</span>
                                 </div>
                                 <div class="el_password_edit">
-                                    <input class="el_password_edit_box" type="password" name="password" id="password"
+                                    <input class="el_password_edit_box" type="password" name="new_password" id="new_password"
                                         placeholder="">
                                 </div>
                             </div>
@@ -131,7 +132,7 @@
                                     <span>新しいパスワードを再入力</span>
                                 </div>
                                 <div class="el_password_edit">
-                                    <input class="el_password_edit_box" type="password" name="password" id="password"
+                                    <input class="el_password_edit_box" type="password" name="new_password_confirm" id="new_password_confirm"
                                         placeholder="">
                                 </div>
                             </div>
