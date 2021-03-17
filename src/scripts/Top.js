@@ -82,6 +82,12 @@ export default {
           , date: "2021/01/29"
           , user_icon: "../../../../public/img/user_1.jpg"
           , img: "../../../../public/img/recommend_3.jpg"
+          , item_class: ['']
+          , img_class: ['el_article_item_img__large']
+          , title_class: ['']
+          , date_class: ['']
+          , isDetail: true
+          , isIcon: true
         },
         {
           title: "記事のタイトル記事のタイトル記事のタイトル記事の…"
@@ -89,6 +95,12 @@ export default {
           , date: "2021/01/29"
           , user_icon: "../../../../public/img/user_1.jpg"
           , img: "../../../../public/img/article_no_image.png"
+          , item_class: ['']
+          , img_class: ['el_article_item_img__large']
+          , title_class: ['']
+          , date_class: ['']
+          , isDetail: true
+          , isIcon: true
         },
         {
           title: "記事のタイトル記事のタイトル記事のタイトル記事の…"
@@ -96,6 +108,12 @@ export default {
           , date: "2021/01/29"
           , user_icon: "../../../../public/img/user_1.jpg"
           , img: "../../../../public/img/recommend_3.jpg"
+          , item_class: ['']
+          , img_class: ['el_article_item_img__large']
+          , title_class: ['']
+          , date_class: ['']
+          , isDetail: true
+          , isIcon: true
         }
       ]
     }

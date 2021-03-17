@@ -107,49 +107,49 @@ export default {
       ],
       menus: [
         {
-          img_src: "../../../../public/img/menu_no_image.jpg"
+          img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
         },
         {
-          img_src: "../../../../public/img/menu_no_image.jpg"
+          img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
         },
         {
-          img_src: "../../../../public/img/menu_no_image.jpg"
+          img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
         },
         {
-          img_src: "../../../../public/img/menu_no_image.jpg"
+          img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
         },
         {
-          img_src: "../../../../public/img/menu_no_image.jpg"
+          img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
         },
         {
-          img_src: "../../../../public/img/menu_no_image.jpg"
+          img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
         },
         {
-          img_src: "../../../../public/img/menu_no_image.jpg"
+          img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
         },
         {
-          img_src: "../../../../public/img/menu_no_image.jpg"
+          img_src: "/public/img/menu_no_image.jpg"
           , title: "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁"
           , title_class: ['el_menu_title__small']
           , img_class: ['el_menu_img__small']
@@ -160,8 +160,8 @@ export default {
           title: "記事のタイトル記事のタイトル記事のタイトル記事の…"
           , detail: ""
           , date: "2021/01/29"
-          , user_icon: "../../../../public/img/user_1.jpg"
-          , img: "../../../../public/img/recommend_3.jpg"
+          , user_icon: "/public/img/user_1.jpg"
+          , img: "/public/img/recommend_3.jpg"
           , item_class: ['el_atricle_item__small']
           , img_class: ['el_article_item_img__small']
           , title_class: ['el_article_item_title__small']
@@ -173,8 +173,8 @@ export default {
           title: "記事のタイトル記事のタイトル記事のタイトル記事の…"
           , detail: "記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細…"
           , date: "2021/01/29"
-          , user_icon: "../../../../public/img/user_1.jpg"
-          , img: "../../../../public/img/article_no_image.png"
+          , user_icon: "/public/img/user_1.jpg"
+          , img: "/public/img/article_no_image.png"
           , item_class: ['el_atricle_item__small']
           , img_class: ['el_article_item_img__small']
           , title_class: ['el_article_item_title__small']
@@ -186,8 +186,8 @@ export default {
           title: "記事のタイトル記事のタイトル記事のタイトル記事の…"
           , detail: "記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細記事の詳細…"
           , date: "2021/01/29"
-          , user_icon: "../../../../public/img/user_1.jpg"
-          , img: "../../../../public/img/recommend_3.jpg"
+          , user_icon: "/public/img/user_1.jpg"
+          , img: "/public/img/recommend_3.jpg"
           , item_class: ['el_atricle_item__small']
           , img_class: ['el_article_item_img__small']
           , title_class: ['el_article_item_title__small']
