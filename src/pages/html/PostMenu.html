@@ -159,20 +159,20 @@
                     </template>
                 </v-edit-dialog>
             </template>
-            <template v-slot:body.append="">
+            <template v-slot:body.append>
                 <tr class="">
-                    <th class="text-center title">Total</th>
-                    <th class="text-center title">150</th>
-                    <th class="text-center title">150</th>
-                    <th class="text-center title">150</th>
-                    <th class="text-center title">150</th>
-                    <th class="text-center title">150</th>
-                    <th class="text-center title">150</th>
-                    <th class="text-center title">150</th>
-                    <th class="text-center title">150</th>
-                    <th class="text-center title">150</th>
-                    <th class="text-center title">150</th>
-                    <th class="text-center title">150</th>
+                    <td class="text-center title">Total</td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">{{ energy_total }}</td>
+                    <td class="text-center">{{ protein_total }}</td>
+                    <td class="text-center">{{ lipid_total }}</td>
+                    <td class="text-center">{{ carbohydrate_total }}</td>
+                    <td class="text-center">{{ calcium_total }}</td>
+                    <td class="text-center">{{ iron_total }}</td>
+                    <td class="text-center">{{ cholesterol_total }}</td>
+                    <td class="text-center">{{ dietaryFiber_total }}</td>
+                    <td class="text-center">{{ saltEquivalent_total }}</td>
                 </tr>
             </template>
         </v-data-table>

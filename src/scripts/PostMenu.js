@@ -178,6 +178,89 @@ export default {
             }
         }
     },
+    computed: {
+        energy_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.energy);
+                }, 0)
+            }
+        },
+        protein_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.protein);
+                }, 0)
+            }
+        },
+        lipid_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.lipid);
+                }, 0)
+            }
+        },
+        carbohydrate_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.carbohydrate);
+                }, 0)
+            }
+        },
+        calcium_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.calcium);
+                }, 0)
+            }
+        },
+        iron_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.iron);
+                }, 0)
+            }
+        },
+        cholesterol_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.cholesterol);
+                }, 0)
+            }
+        },
+        dietaryFiber_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.dietaryFiber);
+                }, 0)
+            }
+        },
+        saltEquivalent_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.saltEquivalent);
+                }, 0)
+            }
+        },
+    },
     mounted() {
         this.get_select_items()
     },

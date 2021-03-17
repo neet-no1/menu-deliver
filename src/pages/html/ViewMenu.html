@@ -16,29 +16,28 @@
                 :items-per-page="50">
                 <template v-slot:expanded-item="{ headers, item }">
                     <td :colspan="headers.length">
-                        <div class="el_compositions_expanded_item"><span>エネルギー</span><span>{{ item.energy }}kcal</span>
+                        <div class="el_compositions_expanded_item"><span>エネルギー</span><span>{{ item.energy }} kcal</span>
                         </div>
-                        <div class="el_compositions_expanded_item"><span>たんぱく質</span><span>{{ item.protein }}g</span>
+                        <div class="el_compositions_expanded_item"><span>たんぱく質</span><span>{{ item.protein }} g</span>
                         </div>
-                        <div class="el_compositions_expanded_item"><span>脂質</span><span>{{ item.lipid }}g</span></div>
+                        <div class="el_compositions_expanded_item"><span>脂質</span><span>{{ item.lipid }} g</span></div>
                         <div class="el_compositions_expanded_item"><span>炭水化物</span><span>{{ item.carbohydrate
-                                }}g</span></div>
-                        <div class="el_compositions_expanded_item"><span>カルシウム</span><span>{{ item.calcium }}mg</span>
+                                }} g</span></div>
+                        <div class="el_compositions_expanded_item"><span>カルシウム</span><span>{{ item.calcium }} mg</span>
                         </div>
-                        <div class="el_compositions_expanded_item"><span>鉄</span><span>{{ item.iron }}mg</span></div>
+                        <div class="el_compositions_expanded_item"><span>鉄</span><span>{{ item.iron }} mg</span></div>
                         <div class="el_compositions_expanded_item"><span>コレステロール</span><span>{{ item.cholesterol
-                                }}mg</span></div>
+                                }} mg</span></div>
                         <div class="el_compositions_expanded_item"><span>食物繊維</span><span>{{ item.dietaryFiber
-                                }}g</span></div>
+                                }} g</span></div>
                         <div class="el_compositions_expanded_item"><span>食塩相当量</span><span>{{ item.saltEquivalent
-                                }}g</span></div>
+                                }} g</span></div>
                     </td>
                 </template>
             </v-data-table>
             <div class="bl_foot_composition_total">
-                <v-data-table :headers="mobile_total_headers" :items="composition_total"
-                    class="elevation-1" disable-sort hide-default-footer
-                    hide-default-header :items-per-page="50">
+                <v-data-table :headers="mobile_total_headers" :items="composition_total" class="elevation-1"
+                    disable-sort hide-default-footer hide-default-header :items-per-page="50">
                 </v-data-table>
             </div>
         </div>
@@ -177,20 +176,20 @@
                     </v-edit-dialog>
                 </template>
 
-                <template slot="body.append" isMobile>
+                <template slot="body.append">
                     <tr>
-                        <th class="text-center title">Total</th>
-                        <th class="text-center title">150</th>
-                        <th class="text-center title">150</th>
-                        <th class="text-center title">150</th>
-                        <th class="text-center title">150</th>
-                        <th class="text-center title">150</th>
-                        <th class="text-center title">150</th>
-                        <th class="text-center title">150</th>
-                        <th class="text-center title">150</th>
-                        <th class="text-center title">150</th>
-                        <th class="text-center title">150</th>
-                        <th class="text-center title">150</th>
+                        <td class="text-center title">Total</td>
+                        <td class="text-center">-</td>
+                        <td class="text-center">-</td>
+                        <td class="text-center">{{ energy_total }}</td>
+                        <td class="text-center">{{ protein_total }}</td>
+                        <td class="text-center">{{ lipid_total }}</td>
+                        <td class="text-center">{{ carbohydrate_total }}</td>
+                        <td class="text-center">{{ calcium_total }}</td>
+                        <td class="text-center">{{ iron_total }}</td>
+                        <td class="text-center">{{ cholesterol_total }}</td>
+                        <td class="text-center">{{ dietaryFiber_total }}</td>
+                        <td class="text-center">{{ saltEquivalent_total }}</td>
                     </tr>
                 </template>
             </v-data-table>

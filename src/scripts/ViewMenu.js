@@ -17,9 +17,6 @@ export default {
         return {
             expanded: [],
             singleExpand: true,
-            total_row: {
-                isMobile: true
-            },
             mobile_total_headers: [
                 {
                     text: '栄養素',
@@ -32,44 +29,6 @@ export default {
                     align: 'end',
                     value: 'total',
                     groupable: false
-                }
-            ],
-            composition_total: [
-                {
-                    composition_name: 'エネルギー',
-                    total: 1234
-                },
-                {
-                    composition_name: 'たんぱく質',
-                    total: 1234
-                },
-                {
-                    composition_name: '脂質',
-                    total: 1234
-                },
-                {
-                    composition_name: '炭水化物',
-                    total: 1234
-                },
-                {
-                    composition_name: 'カルシウム',
-                    total: 1234
-                },
-                {
-                    composition_name: '鉄',
-                    total: 1234
-                },
-                {
-                    composition_name: 'コレステロール',
-                    total: 1234
-                },
-                {
-                    composition_name: '食物繊維',
-                    total: 1234
-                },
-                {
-                    composition_name: '食塩相当量',
-                    total: 1234
                 }
             ],
             mobile_headers: [
@@ -226,11 +185,6 @@ export default {
                 "carbohydrate": 0,
                 "calcium": 0,
                 "iron": 0,
-                "vitaminA": 0,
-                "vitaminD": 0,
-                "vitaminE": 0,
-                "vitaminK": 0,
-                "vitaminC": 0,
                 "cholesterol": 0,
                 "dietaryFiber": 0,
                 "saltEquivalent": 0
@@ -267,6 +221,129 @@ export default {
                 this.menu_imgs[i].uploadImageUrl = ''
             }
         }
+    },
+    computed: {
+        composition_total: function () {
+            return [
+                {
+                    composition_name: 'エネルギー',
+                    total: this.energy_total + ' kcal'
+                },
+                {
+                    composition_name: 'たんぱく質',
+                    total: this.protein_total + ' g'
+                },
+                {
+                    composition_name: '脂質',
+                    total: this.lipid_total + ' g'
+                },
+                {
+                    composition_name: '炭水化物',
+                    total: this.carbohydrate_total + ' g'
+                },
+                {
+                    composition_name: 'カルシウム',
+                    total: this.calcium_total + ' mg'
+                },
+                {
+                    composition_name: '鉄',
+                    total: this.iron_total + ' mg'
+                },
+                {
+                    composition_name: 'コレステロール',
+                    total: this.cholesterol_total + ' mg'
+                },
+                {
+                    composition_name: '食物繊維',
+                    total: this.dietaryFiber_total + ' g'
+                },
+                {
+                    composition_name: '食塩相当量',
+                    total: this.saltEquivalent_total + ' g'
+                }
+            ]
+        },
+        energy_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.energy);
+                }, 0)
+            }
+        },
+        protein_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.protein);
+                }, 0)
+            }
+        },
+        lipid_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.lipid);
+                }, 0)
+            }
+        },
+        carbohydrate_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.carbohydrate);
+                }, 0)
+            }
+        },
+        calcium_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.calcium);
+                }, 0)
+            }
+        },
+        iron_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.iron);
+                }, 0)
+            }
+        },
+        cholesterol_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.cholesterol);
+                }, 0)
+            }
+        },
+        dietaryFiber_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.dietaryFiber);
+                }, 0)
+            }
+        },
+        saltEquivalent_total: function () {
+            if (this.compositions.length === 0) {
+                return ''
+            } else {
+                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                    return accumulator + Number(currentValue.saltEquivalent);
+                }, 0)
+            }
+        },
     },
     mounted() {
         this.get_select_items()
