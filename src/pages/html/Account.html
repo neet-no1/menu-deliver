@@ -158,11 +158,13 @@
                             <div v-for="follower in follows">
                                 <Follower :follower=follower></Follower>
                             </div>
+                            <Pagenation :pages="follow_pages"/>
                         </div>
                         <div class="bl_follower_list" v-if="isOpen_follower">
                             <div v-for="follower in followers">
                                 <Follower :follower=follower></Follower>
                             </div>
+                            <Pagenation :pages="follower_pages"/>
                         </div>
                     </div>
                 </div>
@@ -175,19 +177,7 @@
                                 <MediaCardLarge :article=article></MediaCardLarge>
                             </div>
                         </div>
-                        <div class="pagination__wrapper">
-                            <nav class="pagination">
-                                <ul class="page-numbers">
-                                    <li><a class="pagination-next page-numbers" href="前のページ"><i
-                                                class="fa fa-chevron-left"></i></a></li>
-                                    <li><a class="page-numbers" href="1ページ目">1</a></li>
-                                    <li><span aria-current="page" class="page-numbers pagenation-current">2</span></li>
-                                    <li><a class="page-numbers" href="3ページ目">3</a></li>
-                                    <li><a class="pagination-next page-numbers" href="次のページ"><i
-                                                class="fa fa-chevron-right"></i></a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                        <Pagenation :pages="posted_article_pages"/>
                     </div>
                 </div>
             </div>
@@ -199,6 +189,7 @@
                                 <MediaCard :menu="menu"></MediaCard>
                             </div>
                         </div>
+                        <Pagenation :pages="posted_menu_pages"/>
                     </div>
                 </div>
             </div>
@@ -217,11 +208,13 @@
                             <div v-for="menu in menus">
                                 <MediaCard :menu="menu"></MediaCard>
                             </div>
+                            <Pagenation :pages="posted_article_pages"/>
                         </div>
                         <div class="bl_favorite_article_list" v-if="isOpen_favorite_article">
                             <div v-for="article in articles">
                                 <MediaCardLarge :article=article></MediaCardLarge>
                             </div>
+                            <Pagenation :pages="posted_menu_pages"/>
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ import PageFooter from '../pages/module/PageFooter.vue'
 import MediaCardLarge from '../pages/module/MediaCardLarge.vue'
 import MediaCard from '../pages/module/MediaCard.vue'
 import Follower from '../pages/module/Follower.vue'
+import Pagenation from '../pages/module/Pagenation.vue'
 
 
 export default {
@@ -14,7 +15,8 @@ export default {
     PageFooter,
     MediaCardLarge,
     MediaCard,
-    Follower
+    Follower,
+    Pagenation
   },
   data() {
     return {
@@ -35,6 +37,38 @@ export default {
       isOpen_favorite_article: false,
 
       user_icon_path: '/public/img/user_1.jpg',
+
+      posted_article_pages: {
+        number: 3,
+        current_page: 2,
+        callback: function(n) {
+          console.log('ページネーションのコールバック: ' + n)
+        }
+      },
+
+      posted_menu_pages: {
+        number: 3,
+        current_page: 2,
+        callback: function(n) {
+          console.log('ページネーションのコールバック: ' + n)
+        }
+      },
+
+      follow_pages: {
+        number: 3,
+        current_page: 2,
+        callback: function(n) {
+          console.log('ページネーションのコールバック: ' + n)
+        }
+      },
+
+      follower_pages: {
+        number: 3,
+        current_page: 2,
+        callback: function(n) {
+          console.log('ページネーションのコールバック: ' + n)
+        }
+      },
 
       follows: [
         {
