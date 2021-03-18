@@ -16,10 +16,13 @@
       </div>
     </div>
     <nav class="ly_nav">
-      <div class="ly_nav_icon">
+      <div class="ly_nav_icon" v-if="isLogin">
         <div class="el_user_icon">
           <a href="/account"><img src="../../../../public/img/user_1.jpg"></a>
         </div>
+      </div>
+      <div class="el_login_btn" v-if="!isLogin">
+        <a href="/login" class="btn-gradient-radius">Log in</a>
       </div>
       <div class="ly_nav_items">
         <div class="bl_nav_item" @click="post_menu_or_article">
