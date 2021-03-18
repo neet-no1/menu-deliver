@@ -277,6 +277,16 @@
     justify-content: center;
 }
 
+.bl_post_menu_category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    label {
+        z-index: 3;
+    }
+}
+
 .el_menu_title {
     font-size: 20px;
     text-align: center;

@@ -6,6 +6,7 @@ export default {
     name: 'PostMenu',
     data() {
         return {
+            items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
             menu_imgs_index: 0,
             menu_imgs: [
                 {
