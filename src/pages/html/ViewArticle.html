@@ -2,6 +2,18 @@
     <PageHeader />
     <News />
     <main class="ly_article_view">
+        <div class="ly_article_favorite_icon">
+            <div class="bl_article_favorite_icon">
+                <div class="ly_favorite_icon">
+                    <a href="#" class="btn_favorite_add" @click="add_favorite" v-show="!is_favorite">
+                        <span class="el_icon_heart"><i class="far fa-heart"></i></span> <span>お気に入り追加</span>
+                    </a>
+                    <a href="#" class="btn_favorite_added" @click="add_favorite" v-show="is_favorite">
+                        <span class="el_icon_heart"><i class="fas fa-heart"></i></span> <span>お気に入り追加済み</span>
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="ly_article_view_title">
             <div class="bl_article_view_title">
                 <div class="bl_article_view_title__inner">

@@ -712,3 +712,67 @@
     justify-content: center;
     align-items: center;
 }
+
+// お気に入りボタン
+
+.btn_favorite_add {
+    color: #ff8095 !important; /*文字・アイコン色*/
+}
+
+.btn_favorite_added {
+    color: pink !important; /*文字・アイコン色*/
+}
+
+.btn_favorite_add,
+.btn_favorite_added {
+    border-radius: 7px; /*角丸に*/
+    //display: inline-block;
+    height: 50px; /*高さ*/
+    width: 190px; /*幅*/
+    text-align: center; /*中身を中央寄せ*/
+    font-size: 15px; /*文字のサイズ*/
+    //line-height: 50px; /*高さと合わせる*/
+    //background: #fff9fa;
+    overflow: hidden; /*はみ出た部分を隠す*/
+    text-decoration: none; /*下線は消す*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_favorite_add .fa-heart,
+.btn_favorite_added .fa-heart {
+    text-shadow: 2px 2px 0px #4287d6;
+    font-size: 30px;
+}
+
+.btn_favorite_add span,
+.btn_favorite_added span {
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.btn_favorite_add:hover span,
+.btn_favorite_added:hover span {
+    -webkit-transform: rotateX(360deg);
+    transform: rotateX(360deg);
+}
+
+.ly_favorite_icon {
+    display: flex;
+    justify-content: flex-end;
+
+    padding-right: 20px;
+}
+
+.ly_article_favorite_icon {
+    display: flex;
+    justify-content: center;
+}
+
+.bl_article_favorite_icon {
+    min-height: 56px;
+    width: 100%;
+    max-width: #{$article-width};
+}

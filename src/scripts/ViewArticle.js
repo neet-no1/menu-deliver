@@ -16,7 +16,8 @@ export default {
             quill: null,
             user_icon: {
                 'background-image': 'url("/public/img/user_1.jpg")'
-            }
+            },
+            is_favorite: false,
         }
     },
     methods: {
@@ -45,6 +46,9 @@ export default {
         save() {
             console.log('save()')
             console.log(this.quill.getContents())
+        },
+        add_favorite() {
+            this.is_favorite = !this.is_favorite
         }
     },
     mounted() {

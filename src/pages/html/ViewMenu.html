@@ -10,6 +10,14 @@
                 </div>
             </div>
         </div>
+        <div class="ly_favorite_icon">
+            <a href="#" class="btn_favorite_add" @click="add_favorite" v-show="!is_favorite">
+                <span class="el_icon_heart"><i class="far fa-heart"></i></span> <span>お気に入り追加</span>
+            </a>
+            <a href="#" class="btn_favorite_added" @click="add_favorite" v-show="is_favorite">
+                <span class="el_icon_heart"><i class="fas fa-heart"></i></span> <span>お気に入り追加済み</span>
+            </a>
+        </div>
         <div class="el_food_composition d-block d-md-none">
             <v-data-table :headers="mobile_headers" :items="compositions" :single-expand="singleExpand"
                 :expanded.sync="expanded" show-expand class="elevation-1" disable-sort hide-default-footer

@@ -158,6 +158,7 @@ export default {
                 },
             ],
             compositions: [],
+            is_favorite: false,
         }
     },
     methods: {
@@ -220,6 +221,9 @@ export default {
             } else {
                 this.menu_imgs[i].uploadImageUrl = ''
             }
+        },
+        add_favorite() {
+            this.is_favorite = !this.is_favorite
         }
     },
     computed: {
