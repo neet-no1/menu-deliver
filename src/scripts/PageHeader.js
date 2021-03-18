@@ -4,7 +4,8 @@ export default {
     name: 'PageHeader',
     data() {
         return {
-            select_post_type: false
+            select_post_type: false,
+            isLogin: false
         }
     },
     methods: {

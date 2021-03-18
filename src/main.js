@@ -18,8 +18,7 @@ function initializeApp() {
     el: '#app',
     vuetify: vuetify,
     data: {
-      currentRoute: window.location.pathname,
-      isLogin: false
+      currentRoute: window.location.pathname
     },
     computed: {
       ViewComponent() {
