@@ -458,7 +458,8 @@
 }
 
 .ly_post_article_title,
-.ly_post_article {
+.ly_post_article,
+.ly_post_article_thumb {
     padding-top: 20px;
 
     font-family: "Noto Serif JP", sans-serif !important;
@@ -683,6 +684,13 @@
 .bl_post_question_img {
     max-width: 300px;
     padding-left: 30px;
+}
+
+.bl_post_menu_img,
+.bl_post_article_img {
+    max-width: 300px;
+    
+    margin: 0 auto;
 }
 
 .bl_post_question_btn {

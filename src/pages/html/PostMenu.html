@@ -11,6 +11,11 @@
                 <v-select :items="items" label="カテゴリ" solo></v-select>
             </div>
         </div>
+        <div class="bl_post_menu_img">
+            <v-img v-if="thumb_image_url" :src="thumb_image_url" max-height="229" contain />
+            <v-file-input v-model="thumb_input_image" accept="image/*" label="サムネイル画像を選択"
+                @change="onThumbPicked" prepend-icon="fas fa-camera"></v-file-input>
+        </div>
     </div>
     <div class="el_food_composition">
         <v-data-table :headers="headers" :items="compositions" hide-default-footer :loading="loading"

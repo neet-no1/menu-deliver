@@ -4,6 +4,13 @@
             <input type="text" placeholder="記事のタイトル">
         </div>
     </div>
+    <div class="ly_post_article_thumb">
+        <div class="bl_post_article_img">
+            <v-img v-if="thumb_image_url" :src="thumb_image_url" max-height="229" contain />
+            <v-file-input v-model="thumb_input_image" accept="image/*" label="サムネイル画像を選択"
+                @change="onThumbPicked" prepend-icon="fas fa-camera"></v-file-input>
+        </div>
+    </div>
     <div class="ly_post_article">
         <div class="bl_post_article">
             <!-- Create toolbar container -->

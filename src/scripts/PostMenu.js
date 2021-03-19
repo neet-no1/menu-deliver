@@ -7,6 +7,8 @@ export default {
     data() {
         return {
             items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+            thumb_input_image: null,
+            thumb_image_url: '',
             menu_imgs_index: 0,
             menu_imgs: [
                 {
@@ -176,6 +178,20 @@ export default {
                 })
             } else {
                 this.menu_imgs[i].uploadImageUrl = ''
+            }
+        },
+        onThumbPicked(file) {
+            if (file !== undefined && file !== null) {
+                if (file.name.lastIndexOf('.') <= 0) {
+                    return
+                }
+                const fr = new FileReader()
+                fr.readAsDataURL(file)
+                fr.addEventListener('load', () => {
+                    this.thumb_image_url = fr.result
+                })
+            } else {
+                this.thumb_image_url = ''
             }
         }
     },

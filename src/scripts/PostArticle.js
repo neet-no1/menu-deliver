@@ -5,7 +5,9 @@ export default {
     name: 'PostArticle',
     data() {
         return {
-            quill: null
+            quill: null,
+            thumb_input_image: null,
+            thumb_image_url: '',
         }
     },
     methods: {
@@ -63,6 +65,20 @@ export default {
         save() {
             console.log('save()')
             console.log(this.quill.getContents())
+        },
+        onThumbPicked(file) {
+            if (file !== undefined && file !== null) {
+                if (file.name.lastIndexOf('.') <= 0) {
+                    return
+                }
+                const fr = new FileReader()
+                fr.readAsDataURL(file)
+                fr.addEventListener('load', () => {
+                    this.thumb_image_url = fr.result
+                })
+            } else {
+                this.thumb_image_url = ''
+            }
         }
     },
     mounted() {
