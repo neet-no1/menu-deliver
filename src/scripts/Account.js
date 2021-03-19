@@ -39,7 +39,7 @@ export default {
       user_icon_path: '/public/img/user_1.jpg',
 
       posted_article_pages: {
-        number: 3,
+        total_page: 3,
         current_page: 2,
         callback: function(n) {
           console.log('ページネーションのコールバック: ' + n)
@@ -47,7 +47,7 @@ export default {
       },
 
       posted_menu_pages: {
-        number: 3,
+        total_page: 3,
         current_page: 2,
         callback: function(n) {
           console.log('ページネーションのコールバック: ' + n)
@@ -55,7 +55,7 @@ export default {
       },
 
       follow_pages: {
-        number: 3,
+        total_page: 3,
         current_page: 2,
         callback: function(n) {
           console.log('ページネーションのコールバック: ' + n)
@@ -63,7 +63,7 @@ export default {
       },
 
       follower_pages: {
-        number: 3,
+        total_page: 3,
         current_page: 2,
         callback: function(n) {
           console.log('ページネーションのコールバック: ' + n)

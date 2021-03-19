@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 /**
  * pages: {
- *   number: 3, // 総ページ数
+ *   total_page: 3, // 総ページ数
  *   current_page: 2, // 現在のページ番号
  *   callback: function(n){}, // ページ遷移を行う関数
  * }
