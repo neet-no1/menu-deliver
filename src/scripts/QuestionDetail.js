@@ -23,6 +23,18 @@ export default {
                     uploadImageUrl: '',
                 }
             ],
+            best_answer: {
+                "exist": false,
+                "id": 5
+            },
+            question_content: {
+                "id": 3,
+                "contents": "胃腸の調子が悪いのですが何かいい食べ物はありますか？",
+                "images": "/public/question_images/xxx",
+                "userName": "サンプル太朗",
+                "userIcon": "/public/user_images/xxx",
+                "mine": true
+            }
         }
     },
     methods: {

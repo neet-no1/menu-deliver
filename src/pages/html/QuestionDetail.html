@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ly_posted_question">
+                <div class="ly_posted_question" v-if="best_answer.exist">
                     <div class="bl_question_title">
                         <span class="el_icon_crown"><i class="fas fa-crown"></i></span><span>ベストアンサー</span>
                     </div>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ly_posted_question">
+                <div class="ly_posted_question" v-if="best_answer.exist">
                     <div class="bl_question_title">
                         <span>その他の回答</span>
                     </div>
@@ -83,7 +83,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="ly_posted_question">
+                <div class="ly_posted_question" v-if="!best_answer.exist">
+                    <div class="bl_question_title">
+                        <span>回答一覧</span>
+                    </div>
+                    <div class="cp_box">
+                        <div class="bl_posted_question">
+                            <div class="bl_question_posted_user">
+                                <div class="bl_user_icon">
+                                    <div class="el_user_icon_circle el_user_icon_circle__small" :style="user_icon">
+                                    </div>
+                                </div>
+                                <div class="bl_user_info">
+                                    <div class="bl_user_info_name">username</div>
+                                </div>
+                                <div class="bl_best_answer_btn" v-if="question_content.mine">
+                                    <span><i class="fas fa-crown"></i></span>ベストアンサーに選ぶ
+                                </div>
+                            </div>
+                        </div>
+                        <input id="cp02" type="checkbox">
+                        <label for="cp02"></label>
+                        <div class="cp_container">
+                            <span>
+                                イエネコの起源は、ネズミを捕獲させる目的で飼われ始めたヨーロッパヤマネコの家畜化であり、ヨーロッパヤマネコの亜種とされることもある。ヨーロッパヤマネコの学名をより記載の早いイエネコと同じFelis
+                                catusとする説もあったが、2003年にICZNの強権によりF.catusはイエネコのみを指す学名として、野生種の学名はF.silvestrisを引き続き使用することが認められた。
+
+                                一方、広義の「ネコ」は、ネコ類（ネコ科動物）の一部、あるいはその全ての包括的分類を指し、家畜種のイエネコに加えて広義のヤマネコ類を含む。特に学術用語としては、英語の「cat」と同様、トラやライオンなどといった大型種を含む全てのネコ科動物を指すことがある。
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ly_posted_question" v-if="!best_answer.exist">
                     <div class="bl_question_title">
                         <span class="el_icon_edit"><i class="fas fa-edit"></i></span><span>回答</span>
                     </div>
@@ -103,9 +134,11 @@
                             <textarea></textarea>
                         </div>
                         <div class="bl_post_question_img" v-for="(img, index) in menu_imgs">
-                            <v-img v-if="img.uploadImageUrl" :src="img.uploadImageUrl" max-height="150" max-width="250" contain />
-                            <v-file-input :id="'menu_img_' + index" v-model="img.input_image" accept="image/*" label="画像を選択"
-                                @change="onImagePicked" @click="selectImage(index)" prepend-icon="fas fa-camera"></v-file-input>
+                            <v-img v-if="img.uploadImageUrl" :src="img.uploadImageUrl" max-height="150" max-width="250"
+                                contain />
+                            <v-file-input :id="'menu_img_' + index" v-model="img.input_image" accept="image/*"
+                                label="画像を選択" @change="onImagePicked" @click="selectImage(index)"
+                                prepend-icon="fas fa-camera"></v-file-input>
                         </div>
                         <div class="bl_post_question_btn">
                             <div class="bl_post_btn">

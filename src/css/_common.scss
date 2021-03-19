@@ -784,3 +784,19 @@
     width: 100%;
     max-width: #{$article-width};
 }
+
+.bl_best_answer_btn {
+    padding-left: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    color: #999;
+
+    span{
+        font-size: 2rem;
+    }
+}
