@@ -187,3 +187,8 @@ export const GET_QUESTION_BASTANSWER = BASE_URL + '/question/bestanswer';
  * ベストアンサー決定
  */
 export const POST_QUESTION_BESTANSWER = BASE_URL + '/question/bestanswer';
+
+/**
+ * お気に入り一覧を取得
+ */
+export const GET_ACCOUNT_FAVORITES = BASE_URL + '/account/favorites';
