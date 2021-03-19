@@ -1,8 +1,28 @@
 import AjaxMock from "./ajax_mock";
 import * as URL from "../../common/api_url";
-import menu_success from "./data/menu.json";
+
+import basic_success from "./data/basic_response_success.json";
+import notice_success from "./data/notice_success.json";
+import account_auth_success from "./data/account_auth_success.json";
+import account_success from "./data/account_success.json";
+import followers_success from "./data/followers_success.json";
+import recommend_meta_success from "./data/recommend_meta_success.json";
+import menus_success from "./data/menus_success.json";
+import menu_categories_success from "./data/menu_categories_success.json";
+import menu_data_success from "./data/menu_data_success.json";
+import articles_success from "./data/articles_success.json";
+import article_data_success from "./data/article_data_success.json";
+import questions_success from "./data/questions_success.json";
+import question_categories_success from "./data/question_categories_success.json";
+import question_data_success from "./data/question_data_success.json";
+import answers_success from "./data/answers_success.json";
+import best_answer_success from "./data/best_answer_success.json";
+import menus_and_articles_success from "./data/menus_and_articles_success.json";
 
 export default class ApiMock {
+
+    POST = 'post';
+    GET = 'get';
 
     constructor() {
         console.log('ApiMock constructor');
@@ -11,239 +31,263 @@ export default class ApiMock {
     }
 
     load() {
-        $.mockjax(new AjaxMock().success(
-            URL.GET_UPLOADED_IMAGE,
-            {
-                success: 1,
-                file: {
-                    url: 'https://app.neet-professional.work/public/img/menu_no_image.jpg',
-                    // any other image data you want to store, such as width, height, color, extension, etc
-                }
-            },
-            'post'
-        ));
-
-        $.mockjax(new AjaxMock().success(
-            URL.POST_UPLOAD_IMAGE,
-            {
-                success: 1,
-                file: {
-                    url: 'https://app.neet-professional.work/public/img/menu_no_image.jpg',
-                    // any other image data you want to store, such as width, height, color, extension, etc
-                }
-            },
-            'post'
-        ));
-
-        $.mockjax(new AjaxMock().success(
-            URL.GET_POSTED_MENU,
-            menu_success,
-            'get'
-        ));
-
+        // ログイン
         $.mockjax(new AjaxMock().success(
             URL.POST_LOGIN,
-            { text: 'url' },
-            'post'
+            basic_success,
+            POST
         ));
 
+        // お知らせ情報取得
         $.mockjax(new AjaxMock().success(
-            URL.GET_NEW_ARRIVAL_PRODUCTS,
-            {
-                "status": 0,
-                "error": null,
-                "info": {
-                    "productList": [
-                        {
-                            "productId": 21,
-                            "price": 2000,
-                            "name": "product_10",
-                            "thumbnail": "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 19,
-                            "price": 2000,
-                            "name": "product_8",
-                            "thumbnail": "https://images.pexels.com/photos/336372/pexels-photo-336372.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 22,
-                            "price": 2000,
-                            "name": "product_11",
-                            "thumbnail": "https://images.pexels.com/photos/1086711/pexels-photo-1086711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 21,
-                            "price": 2000,
-                            "name": "product_10",
-                            "thumbnail": "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 21,
-                            "price": 2000,
-                            "name": "product_10",
-                            "thumbnail": "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 21,
-                            "price": 2000,
-                            "name": "product_10",
-                            "thumbnail": "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 21,
-                            "price": 2000,
-                            "name": "product_10",
-                            "thumbnail": "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 21,
-                            "price": 2000,
-                            "name": "product_10",
-                            "thumbnail": "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 21,
-                            "price": 2000,
-                            "name": "product_10",
-                            "thumbnail": "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 21,
-                            "price": 2000,
-                            "name": "product_10",
-                            "thumbnail": "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        }
-                    ]
-                }
-            },
-            'get'
+            URL.GET_NOTICE,
+            notice_success,
+            GET
         ));
 
+        // ログイン状態取得
         $.mockjax(new AjaxMock().success(
-            URL.GET_PRODUCT_SEARCH_KEYWORD,
-            {
-                "status": 0,
-                "error": null,
-                "info": {
-                    "productList": [
-                        {
-                            "productId": 21,
-                            "price": 2000,
-                            "name": "product_10",
-                            "thumbnail": "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 19,
-                            "price": 2000,
-                            "name": "product_8",
-                            "thumbnail": "https://images.pexels.com/photos/336372/pexels-photo-336372.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 22,
-                            "price": 2000,
-                            "name": "product_11",
-                            "thumbnail": "https://images.pexels.com/photos/1086711/pexels-photo-1086711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        }
-                    ]
-                }
-            },
-            'get'
+            URL.GET_ACCOUNT_AUTH,
+            account_auth_success,
+            GET
         ));
 
+        // アカウント登録
         $.mockjax(new AjaxMock().success(
-            URL.GET_PRODUCT_SEARCH_CATEGORY,
-            {
-                "status": 0,
-                "error": null,
-                "info": {
-                    "productList": [
-                        {
-                            "productId": 21,
-                            "price": 2000,
-                            "name": "product_10",
-                            "thumbnail": "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 19,
-                            "price": 2000,
-                            "name": "product_8",
-                            "thumbnail": "https://images.pexels.com/photos/336372/pexels-photo-336372.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        },
-                        {
-                            "productId": 22,
-                            "price": 2000,
-                            "name": "product_11",
-                            "thumbnail": "https://images.pexels.com/photos/1086711/pexels-photo-1086711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        }
-                    ]
-                }
-            },
-            'get'
+            URL.POST_ACCOUNT_REGIST,
+            basic_success,
+            POST
         ));
 
+        // メールアドレス有効性確認
         $.mockjax(new AjaxMock().success(
-            URL.GET_CATEGORY_LIST,
-            {
-                "status": 0,
-                "error": null,
-                "info": [
-                    {
-                        "categoryId": 1,
-                        "categoryName": "親1",
-                        "childCategoryList": [
-                            {
-                                "categoryId": 2,
-                                "categoryName": "親1_子1",
-                                "childCategoryList": null
-                            },
-                            {
-                                "categoryId": 3,
-                                "categoryName": "親1_子2",
-                                "childCategoryList": null
-                            }
-                        ]
-                    },
-                    {
-                        "categoryId": 4,
-                        "categoryName": "親2",
-                        "childCategoryList": [
-                            {
-                                "categoryId": 5,
-                                "categoryName": "親2_子1",
-                                "childCategoryList": null
-                            },
-                            {
-                                "categoryId": 6,
-                                "categoryName": "親2_子2",
-                                "childCategoryList": null
-                            }
-                        ]
-                    },
-                    {
-                        "categoryId": 7,
-                        "categoryName": "親3",
-                        "childCategoryList": [
-                            {
-                                "categoryId": 8,
-                                "categoryName": "親3_子1",
-                                "childCategoryList": null
-                            },
-                            {
-                                "categoryId": 9,
-                                "categoryName": "親3_子2",
-                                "childCategoryList": null
-                            }
-                        ]
-                    },
-                    {
-                        "categoryId": 12,
-                        "categoryName": "p4",
-                        "childCategoryList": []
-                    }
-                ]
-            },
-            'get'
+            URL.GET_ACCOUNT_EMAIL_CONFIRM,
+            basic_success,
+            GET
+        ));
+
+        // パスワードリセット
+        $.mockjax(new AjaxMock().success(
+            URL.POST_PASSWORD_RESET,
+            basic_success,
+            POST
+        ));
+
+        // アカウント情報取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_ACCOUNT_INFO,
+            account_success,
+            GET
+        ));
+
+        // アカウント情報更新
+        $.mockjax(new AjaxMock().success(
+            URL.POST_ACCOUNT_INFO_UPDATE,
+            basic_success,
+            POST
+        ));
+
+        // パスワード更新
+        $.mockjax(new AjaxMock().success(
+            URL.POST_ACCOUNT_PASSWORD_UPDATE,
+            basic_success,
+            POST
+        ));
+
+        // ユーザをフォローする
+        $.mockjax(new AjaxMock().success(
+            URL.POST_FOLLOW,
+            basic_success,
+            POST
+        ));
+
+        // フォロー・フォロワー取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_FOLLOW_LIST,
+            followers_success,
+            GET
+        ));
+
+        // おすすめ情報表示パラメタを取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_RECOMMEND_META,
+            recommend_meta_success,
+            GET
+        ));
+
+        // 新着献立取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_MENU_NEWARRIVAL,
+            menus_success,
+            GET
+        ));
+
+        // 人気献立取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_MENU_POPULAR,
+            menus_success,
+            GET
+        ));
+
+        // 投稿献立一覧取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_ACCOUNT_POSTED_MENUS,
+            menus_success,
+            GET
+        ));
+
+        // 献立検索
+        $.mockjax(new AjaxMock().success(
+            URL.GET_SEARCH_MENUS,
+            menus_success,
+            GET
+        ));
+
+        // 献立カテゴリ取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_MENU_CATEGORIES,
+            menu_categories_success,
+            GET
+        ));
+
+        // 献立投稿
+        $.mockjax(new AjaxMock().success(
+            URL.POST_MENU,
+            basic_success,
+            POST
+        ));
+
+        // 献立内容取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_MENU,
+            menu_data_success,
+            GET
+        ));
+
+        // 献立削除
+        $.mockjax(new AjaxMock().success(
+            URL.POST_MENU_DELETE,
+            basic_success,
+            POST
+        ));
+
+        // 献立お気に入り追加・解除
+        $.mockjax(new AjaxMock().success(
+            URL.POST_MENU_FAVORITE,
+            basic_success,
+            POST
+        ));
+
+        // 新着記事取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_ARTICLE_NEWARRIVAL,
+            articles_success,
+            GET
+        ));
+
+        // 投稿記事一覧取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_ACCOUNT_POSTED_ARTICLES,
+            articles_success,
+            GET
+        ));
+
+        // 記事検索
+        $.mockjax(new AjaxMock().success(
+            URL.GET_SEARCH_ARTICLES,
+            articles_success,
+            GET
+        ));
+
+        // 記事投稿
+        $.mockjax(new AjaxMock().success(
+            URL.POST_ARTICLE,
+            basic_success,
+            POST
+        ));
+
+        // 記事内容取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_ARTICLE,
+            article_data_success,
+            GET
+        ));
+
+        // 記事削除
+        $.mockjax(new AjaxMock().success(
+            URL.POST_ARTICLE_DELTE,
+            basic_success,
+            POST
+        ));
+
+        // 記事お気に入り追加・解除
+        $.mockjax(new AjaxMock().success(
+            URL.POST_ARTICLE_FAVORITE,
+            basic_success,
+            POST
+        ));
+
+        // 質問検索
+        $.mockjax(new AjaxMock().success(
+            URL.GET_SEARCH_QUESTIONS,
+            questions_success,
+            GET
+        ));
+
+        // 質問カテゴリ取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_QUESTION_CATEGORIES,
+            question_categories_success,
+            GET
+        ));
+
+        // 質問投稿
+        $.mockjax(new AjaxMock().success(
+            URL.POST_QUESTION,
+            basic_success,
+            POST
+        ));
+
+        // 質問内容取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_QUESTION,
+            question_data_success,
+            GET
+        ));
+
+        // 回答投稿
+        $.mockjax(new AjaxMock().success(
+            URL.POST_QUESTION_ANSWER,
+            basic_success,
+            POST
+        ));
+
+        // 回答一覧取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_QUESTION_ANSWERS,
+            answers_success,
+            GET
+        ));
+
+        // ベストアンサー取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_QUESTION_BESTANSWER,
+            best_answer_success,
+            GET
+        ));
+
+        // ベストアンサー決定
+        $.mockjax(new AjaxMock().success(
+            URL.POST_QUESTION_BESTANSWER,
+            basic_success,
+            POST
+        ));
+
+        // お気に入り一覧を取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_ACCOUNT_FAVORITES,
+            menus_and_articles_success,
+            GET
         ));
     }
 }

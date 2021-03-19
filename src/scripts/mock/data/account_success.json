@@ -1,0 +1,10 @@
+{
+    "code": 0,
+    "errorInfo": null,
+    "info": {
+        "id": 1,
+        "imgPath": "/public/user_images/xxx",
+        "name": "サンプル太朗",
+        "email": "aaa.bbb@gmail.com"
+    }
+}

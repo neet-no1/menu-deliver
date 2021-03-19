@@ -1,0 +1,15 @@
+{
+    "code": 0,
+    "errorInfo": null,
+    "info": {
+        "answers": [
+            {
+                "id": 3,
+                "contents": "そんなものは存在しません",
+                "images": "/public/answer_images/xxx",
+                "userName": "サンプル太朗",
+                "userIcon": "/public/user_images/xxx"
+            }
+        ]
+    }
+}

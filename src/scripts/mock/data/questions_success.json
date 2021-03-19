@@ -1,0 +1,20 @@
+{
+    "code": 0,
+    "errorInfo": null,
+    "info": {
+        "questions": [
+            {
+                "id": 3,
+                "contents": "胃腸の調子が悪いのですが何かいい食べ物はありますか？",
+                "images": "/public/question_images/xxx",
+                "userName": "サンプル太朗",
+                "userIcon": "/public/user_images/xxx",
+                "mine": true
+            }
+        ],
+        "page": {
+            "totalPages": 3,
+            "currentPage": 2
+        }
+    }
+}

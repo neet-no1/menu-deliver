@@ -181,7 +181,7 @@ export const GET_QUESTION_ANSWERS = BASE_URL + '/question/answers';
 /**
  * ベストアンサー取得
  */
-export const GET_QUESTION_BASTANSWER = BASE_URL + '/question/bestanswer';
+export const GET_QUESTION_BESTANSWER = BASE_URL + '/question/bestanswer';
 
 /**
  * ベストアンサー決定

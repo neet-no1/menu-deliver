@@ -1,0 +1,38 @@
+{
+    "code": 0,
+    "errorInfo": null,
+    "info": {
+        "menus": [
+            {
+                "id": 3,
+                "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
+                "thumbPath": "/public/menu_images/xxx",
+                "contents": "/public/menu_contents/xxx",
+                "imagePaths": [
+                    "/public/menu_images/xxx",
+                    "/public/menu_images/yyy"
+                ]
+            }
+        ],
+        "menuPages": {
+            "totalPages": 3,
+            "currentPage": 2
+        },
+        "articles": [
+            {
+                "id": 3,
+                "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
+                "thumbPath": "/public/menu_images/xxx",
+                "contents": "/public/menu_contents/xxx",
+                "imagePaths": [
+                    "/public/menu_images/xxx",
+                    "/public/menu_images/yyy"
+                ]
+            }
+        ],
+        "articlePages": {
+            "totalPages": 3,
+            "currentPage": 2
+        }
+    }
+}

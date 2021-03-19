@@ -1,0 +1,21 @@
+{
+    "code": 0,
+    "errorInfo": null,
+    "info": {
+        "articles": [
+            {
+                "id": 3,
+                "title": "体にいい健康食 part1",
+                "detail": "記事の文頭から始まるある程度の文字列",
+                "imgPath": "/public/article_images/xxx",
+                "date": "2021/03/18",
+                "userIconPath": "/public/user_images/xxx",
+                "contents": "/public/article/xxx"
+            }
+        ],
+        "page": {
+            "totalPages": 3,
+            "currentPage": 2
+        }
+    }
+}
