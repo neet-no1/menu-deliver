@@ -2,7 +2,7 @@
     <div class="ly_main_inner">
         <div class="ly_logo">
             <div class="bl_logo bl_logo__medium">
-                <img src="../../../public/img/logo.png" alt="ロゴ" title="ロゴ">
+                <img src="/public/img/logo.png" alt="ロゴ" title="ロゴ">
             </div>
         </div>
         <div class="ly_form">
@@ -13,7 +13,7 @@
                             <span>メールアドレス</span>
                         </div>
                         <div>
-                            <input class="el_input_box" type="text" name="email" id="email" placeholder="">
+                            <input class="el_input_box" type="text" placeholder="" v-model="email">
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                             <span>パスワード</span>
                         </div>
                         <div>
-                            <input class="el_input_box" type="password" name="password" id="password" placeholder="">
+                            <input class="el_input_box" type="password" placeholder=""  v-model="password">
                         </div>
                     </div>
                 </div>
