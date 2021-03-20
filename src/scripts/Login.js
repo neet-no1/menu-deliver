@@ -10,7 +10,8 @@ export default {
     },
     methods: {
         api_login: function(event) {
-            new ApiUtils().postAccess(URL.POST_LOGIN,
+            new ApiUtils().postAccess(
+                URL.POST_LOGIN,
                 {
                     'email': this.email,
                     'password': this.password
@@ -23,6 +24,27 @@ export default {
                     alert('認証に失敗しました。再度お試しください。')
                 }
             });
+        },
+        is_auth: function() {
+            new ApiUtils().getAccess(
+                URL.GET_ACCOUNT_AUTH,
+                {},
+                (response) => {
+                    if(response.code == 0) {
+                        if(response.info) {
+                            // 認証済みであればトップページへ遷移
+                            window.location.href = '/';
+                        } else {
+                            // 認証されていなければ何もしない
+                        }
+                    } else {
+                        console.log('認証状態取得に失敗しました。')
+                    }
+                }
+            )
         }
-    }
+    },
+    mounted() {
+        this.is_auth()
+    },
 }
