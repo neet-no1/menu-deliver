@@ -56,20 +56,20 @@ export default {
 
                         // 献立一覧を整形する
                         this.articles = info.articles.map((e) => {
-                            return         {
+                            return {
                                 id: e.id,
                                 title: e.title,
                                 detail: e.detail,
                                 img: e.imgPath,
                                 date: e.date,
-                                user_icon: e.userIconPath,                              
+                                user_icon: e.userIconPath,
                                 item_class: [''],
                                 img_class: ['el_article_item_img__large'],
                                 title_class: [''],
                                 date_class: [''],
                                 isDetail: true,
                                 isIcon: false,
-                              };
+                            };
                         });
 
                         // ページング情報を設定する
