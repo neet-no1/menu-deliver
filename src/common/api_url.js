@@ -192,3 +192,8 @@ export const POST_QUESTION_BESTANSWER = BASE_URL + '/question/bestanswer';
  * お気に入り一覧を取得
  */
 export const GET_ACCOUNT_FAVORITES = BASE_URL + '/account/favorites';
+
+/**
+ * 食品成分表情報取得
+ */
+export const GET_MENU_COMPOSITIONS = BASE_URL + '/menu/compositions';

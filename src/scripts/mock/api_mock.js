@@ -18,6 +18,7 @@ import question_data_success from "./data/question_data_success.json";
 import answers_success from "./data/answers_success.json";
 import best_answer_success from "./data/best_answer_success.json";
 import menus_and_articles_success from "./data/menus_and_articles_success.json";
+import compositions_success from "./data/compositions_success.json";
 
 export default class ApiMock {
 
@@ -286,6 +287,13 @@ export default class ApiMock {
         $.mockjax(new AjaxMock().success(
             URL.GET_ACCOUNT_FAVORITES,
             menus_and_articles_success,
+            this.GET
+        ));
+
+        // 食品成分表情報取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_MENU_COMPOSITIONS,
+            compositions_success,
             this.GET
         ));
     }

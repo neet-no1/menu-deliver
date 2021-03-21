@@ -51,4 +51,35 @@ export default class ApiUtils {
     })
     */
     }
+
+    formDataAccess(url, formData, callback) {
+        console.log('access URL:' + url);
+        // TODO 発行したトークンの設定を行いたい。(ヘッダに)
+        $.ajax({
+            url: url,
+            type: 'post',
+            cache: false,
+            processData: false,
+            contentType: 'multipart/form-data',
+            data: formData
+        })
+            .done(function (response) {
+                // TODO 通信成功時
+                // 何を見て何をレスポンスとして返すかを設計する
+                callback(response);
+            })
+            .fail(function (xht) {
+                // TODO 通信失敗時
+                // 何を見て何をレスポンスとして返すかを設計する
+                callback(xht);
+            })
+        /*
+    .always(function(xhr, msg) {
+        // TODO 通信完了時の処理
+        // 結果にかかわらず実行したい処理を設計する
+        // 必要なければ、削除する
+        callback(msg);
+    })
+    */
+    }
 }

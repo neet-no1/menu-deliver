@@ -1,23 +1,61 @@
 import Vue from 'vue'
 import * as URL from '../common/api_url'
 import ApiUtils from '../scripts/api_utils'
+import CommonUtils from '../scripts/common_utils'
 
 export default {
     name: 'PostMenu',
     data() {
         return {
-            items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+            // タイトル
+            title: '',
+
+            // サブタイトル
+            sub_title: '',
+
+            // カテゴリ
+            category: '',
+
+            // カテゴリリスト
+            categories: [],
+
+            // 献立表の内容が書かれたJSONファイルのパス
+            composition_json_path: '',
+
+            // 献立表の内容
+            compositions: [],
+
+            // 作り方
+            cookery: '',
+
+            // 献立表の材料を選択した際のindex
+            current_conposition_index: 0,
+
+            // 献立表の使用量を選択した際のindex
+            current_amount_index: 0,
+
+            // サムネイル画像
             thumb_input_image: null,
             thumb_image_url: '',
+
+            // 作り方のイメージ画像をクリックした際のindex
             menu_imgs_index: 0,
+            // 作り方のイメージ画像
             menu_imgs: [
                 {
                     input_image: null,
                     uploadImageUrl: '',
+                    img_description: ''
                 }
             ],
+
+            // ロード状態を見せるか
             loading: true,
-            select_items: [],
+
+            // 材料の選択肢
+            material_items: [],
+
+            // 献立表のヘッダ
             headers: [
                 {
                     text: '材料',
@@ -82,13 +120,6 @@ export default {
                     sortable: false,
                     width: '50px',
                 },
-                // {
-                //     text: 'ビタミン',
-                //     value: 'vitamin',
-                //     align: 'center',
-                //     sortable: false,
-                //     width: '250px',
-                // },
                 {
                     text: 'コレステロール',
                     value: 'cholesterol',
@@ -111,22 +142,103 @@ export default {
                     width: '50px',
                 },
             ],
-            compositions: [],
         }
     },
     methods: {
-        get_select_items() {
+        get_items() {
+            // ロード状態をオンにする
             this.loading = true
-            this.select_items = ['えび', 'いか', 'いくら', 'たこ']
+
+            // 食品成分表情報を取得する
+            this.get_material_items()
+
+            // 現状の献立データを取得する
             this.get_posted_menus()
+
+            // カテゴリを取得する
+            this.get_categories()
+
+            // ロード状態をオフにする
             this.loading = false
         },
+        get_material_items() {
+            new ApiUtils().getAccess(
+                URL.GET_MENU_COMPOSITIONS,
+                {},
+                (response) => {
+                    if (response.code == 0) {
+                        this.material_items = response.info
+                    } else {
+                        alert('エラーが発生しました。')
+                        console.log('食品成分表情報取得エラー')
+                        console.log(response)
+                    }
+                }
+            );
+        },
         get_posted_menus() {
-            new ApiUtils().getAccess(URL.GET_POSTED_MENU, {}, (response) => {
-                console.log('response: ');
-                console.log(response);
-                this.compositions = response;
-            });
+            let param = new CommonUtils().getQueryParam()
+            let menuId = param.id
+
+            if (menuId != undefined) {
+                new ApiUtils().getAccess(
+                    URL.GET_MENU,
+                    {
+                        'id': menuId
+                    },
+                    (response) => {
+                        if (response.code == 0) {
+                            let info = response.info
+                            this.title = info.title
+                            this.sub_title = info.subTitle
+                            this.category = info.categoryId
+                            this.thumb_image_url = info.thumbPath
+                            this.composition_json_path = info.contents
+
+                            // パスを元にjsonデータを取得する
+                            this.get_composition_contents()
+
+                            this.menu_imgs = info.imagePaths.map((e) => {
+                                return {
+                                    input_image: null,
+                                    uploadImageUrl: e.uploadImageUrl,
+                                    img_description: e.imageDescription
+                                }
+                            })
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('献立内容取得エラー')
+                            console.log(response)
+                        }
+                    }
+                );
+            }
+        },
+        get_composition_contents() {
+            new ApiUtils().getAccess(
+                this.composition_json_path,
+                {},
+                (response) => {
+                    this.compositions = response.contents
+                    this.cookery = response.cookery
+                }
+            )
+        },
+        get_categories() {
+            new ApiUtils().getAccess(
+                URL.GET_MENU_CATEGORIES,
+                {},
+                (response) => {
+                    console.log(response)
+                    if (response.code == 0) {
+                        this.categories = response.info
+                    } else {
+                        alert('エラーが発生しました。')
+                        console.log('献立カテゴリ取得エラー')
+                        console.log(response)
+                    }
+                }
+            );
         },
         add_material() {
             this.compositions.push({
@@ -139,11 +251,6 @@ export default {
                 "carbohydrate": 0,
                 "calcium": 0,
                 "iron": 0,
-                "vitaminA": 0,
-                "vitaminD": 0,
-                "vitaminE": 0,
-                "vitaminK": 0,
-                "vitaminC": 0,
                 "cholesterol": 0,
                 "dietaryFiber": 0,
                 "saltEquivalent": 0
@@ -154,13 +261,6 @@ export default {
                 input_image: null,
                 uploadImageUrl: '',
             })
-        },
-        post_menu(id) {
-            let element = $(id)
-            element.bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () {
-                element.removeClass('active');
-            })
-            element.addClass("active");
         },
         selectImage(index) {
             this.menu_imgs_index = index
@@ -193,16 +293,134 @@ export default {
             } else {
                 this.thumb_image_url = ''
             }
+        },
+        materialChange(e) {
+            this.$set(
+                this.compositions,
+                this.current_conposition_index,
+                {
+                    "material": e.name,
+                    "amount": 100,
+                    "waste": Math.round(10000 / (100 - e.refuse) * 10) / 10,
+                    "energy": e.energy,
+                    "protein": e.protein,
+                    "lipid": e.lipid,
+                    "carbohydrate": e.carbohydrate,
+                    "calcium": e.calcium,
+                    "iron": e.iron,
+                    "cholesterol": e.cholesterol,
+                    "dietaryFiber": e.dietaryFibers,
+                    "saltEquivalent": e.saltEquivalents
+                });
+        },
+        materialClick(index) {
+            this.current_conposition_index = index
+        },
+        amountChange(e) {
+            let comp = this.compositions[this.current_amount_index]
+            this.$set(
+                this.compositions,
+                this.current_amount_index,
+                {
+                    "material": comp.material,
+                    "amount": e,
+                    "waste": Math.round((comp.waste * e) / 10) / 10,
+                    "energy": Math.round((comp.energy * e) / 10) / 10,
+                    "protein": Math.round((comp.protein * e) / 10) / 10,
+                    "lipid": Math.round((comp.lipid * e) / 10) / 10,
+                    "carbohydrate": Math.round((comp.carbohydrate * e) / 10) / 10,
+                    "calcium": Math.round((comp.calcium * e) / 10) / 10,
+                    "iron": Math.round((comp.iron * e) / 10) / 10,
+                    "cholesterol": Math.round((comp.cholesterol * e) / 10) / 10,
+                    "dietaryFiber": Math.round((comp.dietaryFiber * e) / 10) / 10,
+                    "saltEquivalent": Math.round((comp.saltEquivalent * e) / 10) / 10,
+                }
+            );
+        },
+        amountClick(index) {
+            this.current_amount_index = index
+        },
+        post_menu(isOpen) {
+            let param = new CommonUtils().getQueryParam()
+            let menuId = param.id
+            let formData = new FormData()
+            formData.append("title", this.title);
+            formData.append("subTitle", this.sub_title);
+            formData.append("thumb", this.thumb_input_image);
+            formData.append("category", this.category);
+            formData.append("contents", this.compositions);
+            formData.append("cookery", this.cookery);
+            formData.append("files", this.menu_imgs.map((e) => e.input_image));
+            formData.append("filesDescription", this.menu_imgs.map((e) => e.img_description));
+            formData.append("opend", isOpen);
+            // let request_param = {
+            //     title: this.title,
+            //     subTitle: this.sub_title,
+            //     thumb: this.thumb_input_image,
+            //     category: this.category,
+            //     contents: this.compositions,
+            //     cookery: this.cookery,
+            //     files: this.menu_imgs.map((e) => e.input_image),
+            //     filesDescription: this.menu_imgs.map((e) => e.img_description),
+            //     opend: isOpen
+            // }
+
+            if (menuId == undefined) {
+                menuId = 0
+            }
+
+            new ApiUtils().formDataAccess(
+                URL.POST_MENU,
+                formData,
+                (response) => {
+                    if (response.code == 0) {
+                        // 成功したら、トップページへ遷移する
+                        //window.location.href = '/'
+                    } else {
+                        alert('エラーが発生しました。')
+                        console.log('献立投稿エラー')
+                        console.log(response)
+                    }
+                }
+            )
+        },
+        delete_menu() {
+            let param = new CommonUtils().getQueryParam()
+            let menuId = param.id
+
+            if (menuId != undefined) {
+                // 削除処理を行う
+                new ApiUtils().postAccess(
+                    URL.POST_MENU_DELETE,
+                    {
+                        "id": menuId
+                    },
+                    (response) => {
+                        if (response.code != 0) {
+                            alert('エラーが発生しました。')
+                            console.log('献立カテゴリ取得エラー')
+                            console.log(response)
+                        }
+                    }
+                );
+            } else {
+                // 削除対象が存在しない場合は、1つ前に戻る
+                window.history.back(-1);
+                return false;
+            }
         }
     },
     computed: {
+        composition_items: function () {
+            return this.compositions
+        },
         energy_total: function () {
             if (this.compositions.length === 0) {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.energy);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.energy) * 100);
+                }, 0) / 100
             }
         },
         protein_total: function () {
@@ -210,8 +428,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.protein);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.protein * 100));
+                }, 0) / 100
             }
         },
         lipid_total: function () {
@@ -219,8 +437,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.lipid);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.lipid * 100));
+                }, 0) / 100
             }
         },
         carbohydrate_total: function () {
@@ -228,8 +446,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.carbohydrate);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.carbohydrate * 100));
+                }, 0) / 100
             }
         },
         calcium_total: function () {
@@ -237,8 +455,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.calcium);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.calcium * 100));
+                }, 0) / 100
             }
         },
         iron_total: function () {
@@ -246,8 +464,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.iron);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.iron * 100));
+                }, 0) / 100
             }
         },
         cholesterol_total: function () {
@@ -255,8 +473,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.cholesterol);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.cholesterol * 100));
+                }, 0) / 100
             }
         },
         dietaryFiber_total: function () {
@@ -264,8 +482,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.dietaryFiber);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.dietaryFiber * 100));
+                }, 0) / 100
             }
         },
         saltEquivalent_total: function () {
@@ -273,12 +491,13 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.saltEquivalent);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.saltEquivalent * 100));
+                }, 0) / 100
             }
         },
     },
     mounted() {
-        this.get_select_items()
+        new CommonUtils().isAuthToLogin()
+        this.get_items()
     },
 }

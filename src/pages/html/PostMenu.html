@@ -3,22 +3,28 @@
         <div class="bl_post_menu_title">
             <div class="el_menu_title">
                 <span>献立名</span>
-                <input type="text">
+                <v-text-field label="" class="el_menu_title_text" v-model="title"></v-text-field>
+            </div>
+        </div>
+        <div class="ly_post_menu_sub_title">
+            <div class="ly_post_menu_sub_title_inner">
+                <v-textarea label="キャッチコピー" v-model="sub_title" rows="1" counter=200></v-textarea>
             </div>
         </div>
         <div class="bl_post_menu_title">
             <div class="bl_post_menu_category">
-                <v-select :items="items" label="カテゴリ" solo></v-select>
+                <v-select :items="categories" item-text="name" item-value="id" label="カテゴリ" v-model="category">
+                </v-select>
             </div>
         </div>
-        <div class="bl_post_menu_img">
+        <div class="bl_post_menu_thumb">
             <v-img v-if="thumb_image_url" :src="thumb_image_url" max-height="229" contain />
-            <v-file-input v-model="thumb_input_image" accept="image/*" label="サムネイル画像を選択"
-                @change="onThumbPicked" prepend-icon="fas fa-camera"></v-file-input>
+            <v-file-input v-model="thumb_input_image" accept="image/*" label="サムネイル画像を選択" @change="onThumbPicked"
+                prepend-icon="fas fa-camera"></v-file-input>
         </div>
     </div>
     <div class="el_food_composition">
-        <v-data-table :headers="headers" :items="compositions" hide-default-footer :loading="loading"
+        <v-data-table :headers="headers" :items.sync="compositions" hide-default-footer :loading="loading"
             loading-text="Loading... Please wait" :items-per-page="50">
             <!-- 使用量ヘッダ -->
             <template v-slot:header.amount="{ header }">
@@ -92,24 +98,6 @@
                     <span>(mg)</span>
                 </div>
             </template>
-            <!-- ビタミンヘッダ -->
-            <!-- <template v-slot:header.vitamin="{ header }">
-                <div>{{ header.text }}</div>
-                <div class="el_flex_around">
-                    <span>A</span>
-                    <span>D</span>
-                    <span>E</span>
-                    <span>K</span>
-                    <span>C</span>
-                </div>
-                <div class="el_flex_around">
-                    <span>(μg)</span>
-                    <span>(μg)</span>
-                    <span>(mg)</span>
-                    <span>(μg)</span>
-                    <span>(mg)</span>
-                </div>
-            </template> -->
             <!-- コレステロールヘッダ -->
             <template v-slot:header.cholesterol="{ header }">
                 <div class="el_food_composition_header">
@@ -140,31 +128,31 @@
 
             <!-- 材料項目 -->
             <template v-slot:item.material="props">
-                <v-edit-dialog :return-value.sync="props" v-if="props.item.material.length == 0">
+                <v-edit-dialog v-if="props.item.material.length == 0">
                     <div></div>
                     <template v-slot:input>
-                        <v-autocomplete v-model="props.item.material" :items="select_items" label="Select" return-object
-                            single-line>
+                        <v-autocomplete :items="material_items" label="Select" single-line item-text="name"
+                            v-on:change='materialChange' v-on:click='materialClick(props.index)' return-object>
                         </v-autocomplete>
                     </template>
                 </v-edit-dialog>
-                <v-edit-dialog :return-value.sync="props">
+                <v-edit-dialog>
                     <div>
                         {{ props.item.material }}
                     </div>
                     <template v-slot:input>
-                        <v-autocomplete v-model="props.item.material" :items="select_items" label="Select" return-object
-                            single-line>
+                        <v-autocomplete :items="material_items" label="Select" single-line item-text="name"
+                            v-on:change='materialChange' v-on:click='materialClick(props.index)' return-object>
                         </v-autocomplete>
                     </template>
                 </v-edit-dialog>
             </template>
             <!-- 使用量項目 -->
             <template v-slot:item.amount="props">
-                <v-edit-dialog :return-value.sync="props.item.amount" large persistent>
+                <v-edit-dialog @open="amountClick(props.index)" @save="amountChange(props.item.amount)">
                     <div>{{ props.item.amount }}</div>
                     <template v-slot:input>
-                        <v-text-field v-model="props.item.amount" type="number" label="Edit" single-line autofocus>
+                        <v-text-field v-model="props.item.amount" type="number" label="Edit" single-line>
                         </v-text-field>
                     </template>
                 </v-edit-dialog>
@@ -199,7 +187,7 @@
             </div>
         </div>
         <div class="bl_post_menu_create_method_input">
-            <textarea></textarea>
+            <textarea v-model="cookery"></textarea>
         </div>
         <div class="ly_post_menu_img">
             <div class="bl_post_menu_img" v-for="(img, index) in menu_imgs">
@@ -207,7 +195,7 @@
                 <v-file-input :id="'menu_img_' + index" v-model="img.input_image" accept="image/*" label="画像を選択"
                     @change="onImagePicked" @click="selectImage(index)"></v-file-input>
                 <div class="bl_post_menu_img_title">
-                    <input type="text" placeholder="画像の説明">
+                    <input type="text" placeholder="画像の説明" v-model="img.img_description">
                 </div>
             </div>
             <div class="bl_post_menu_add_img" @click="add_menu_img">
@@ -218,13 +206,13 @@
     <div class="ly_post_menu_btn">
         <div class="bl_post_menu_btn">
             <div class="bl_post_btn">
-                <div class="btn btn__success">投稿</div>
+                <div class="btn btn__success" @click="post_menu(true)">投稿</div>
             </div>
             <div class="bl_post_btn">
-                <div class="btn btn__status">保存</div>
+                <div class="btn btn__status" @click="post_menu(false)">保存</div>
             </div>
             <div class="bl_post_btn">
-                <div class="btn btn__error">削除</div>
+                <div class="btn btn__error" @click="delete_menu">削除</div>
             </div>
         </div>
     </div>

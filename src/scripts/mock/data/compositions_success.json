@@ -1,0 +1,19 @@
+{
+    "code": 0,
+    "errorInfo": null,
+    "info": [
+        {
+            "name": "かぶ　葉　生",
+            "refuse": 30,
+            "energy": 20,
+            "protein": 2.3,
+            "lipid": 0.1,
+            "carbohydrate": 3.9,
+            "calcium": 250,
+            "iron": 2.1,
+            "cholesterol": 0,
+            "dietaryFibers": 2.9,
+            "saltEquivalents": 0
+        }
+    ]
+}

@@ -4,11 +4,15 @@ import ApiUtils from '../scripts/api_utils'
 export default {
     data() {
         return {
+            // 入力パラメタ
             email: '',
             password: ''
         }
     },
     methods: {
+        /**
+         * ログイン処理
+         */
         api_login: function(event) {
             new ApiUtils().postAccess(
                 URL.POST_LOGIN,
@@ -25,6 +29,9 @@ export default {
                 }
             });
         },
+        /**
+         * ログイン状態取得
+         */
         is_auth: function() {
             new ApiUtils().getAccess(
                 URL.GET_ACCOUNT_AUTH,
