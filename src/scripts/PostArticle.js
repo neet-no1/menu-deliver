@@ -1,3 +1,7 @@
+import * as URL from '../common/api_url'
+import ApiUtils from '../scripts/api_utils'
+import CommonUtils from '../scripts/common_utils'
+
 import Quill from 'quill'
 import ImageCompress from 'quill-image-compress';
 
@@ -5,12 +9,59 @@ export default {
     name: 'PostArticle',
     data() {
         return {
+            // エディターインスタンス
             quill: null,
+
+            // タイトル
+            title: '',
+
+            // サムネイル画像
             thumb_input_image: null,
             thumb_image_url: '',
+
+            // 記事内容のパス
+            contentsPath: null,
+
         }
     },
     methods: {
+        get_items() {
+
+            // エディターを生成
+            this.create_editor()
+
+            // 記事情報を取得する
+            this.get_posted_articles()
+        },
+        get_posted_articles() {
+            let param = new CommonUtils().getQueryParam()
+            let articleId = param.id
+
+            if (articleId != undefined) {
+                new ApiUtils().getAccess(
+                    URL.GET_ARTICLE,
+                    {
+                        'id': articleId
+                    },
+                    (response) => {
+                        if (response.code == 0) {
+                            let info = response.info
+                            this.title = info.title
+                            this.category = info.categoryId
+                            this.thumb_image_url = info.imgPath
+                            this.contentsPath = info.contents
+
+                            // エディターに内容を表示
+                            this.set_contents()
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('記事内容取得エラー')
+                            console.log(response)
+                        }
+                    }
+                );
+            }
+        },
         create_editor() {
             let Font = Quill.import('formats/font')
             Font.whitelist = ['ms-mincho', 'meiryo', 'ms-gothic', 'yu-gothic'];
@@ -59,12 +110,15 @@ export default {
             };
 
             this.quill = new Quill('#editor', options);
-
-            this.quill.setContents([{ "insert": "サンプル\nテキスト\n" }, { "attributes": { "font": "meiryo" }, "insert": "あああメイリオ" }, { "insert": "\n" }, { "attributes": { "font": "ms-mincho" }, "insert": "同じじゃない" }, { "insert": "\n" }, { "attributes": { "font": "ms-gothic" }, "insert": "違う？" }, { "insert": "\n\n" }, { "attributes": { "font": "ms-gothic" }, "insert": "画像" }, { "insert": "\n" }, { "insert": "\n" }])
         },
-        save() {
-            console.log('save()')
-            console.log(this.quill.getContents())
+        set_contents() {
+            new ApiUtils().getAccess(
+                this.contentsPath,
+                {},
+                (response) => {
+                    this.quill.setContents(response)
+                }
+            )
         },
         onThumbPicked(file) {
             if (file !== undefined && file !== null) {
@@ -79,10 +133,66 @@ export default {
             } else {
                 this.thumb_image_url = ''
             }
+        },
+        post_article(isOpen) {
+            let param = new CommonUtils().getQueryParam()
+            let articleId = param.id
+            
+            if (articleId == undefined) {
+                articleId = 0
+            }
+
+            let formData = new FormData()
+            formData.append("id", articleId);
+            formData.append("title", this.title);
+            formData.append("thumb", this.thumb_input_image);
+            formData.append("contents", this.quill.getContents());
+            formData.append("opend", isOpen);
+
+            new ApiUtils().formDataAccess(
+                URL.POST_ARTICLE,
+                formData,
+                (response) => {
+                    if (response.code == 0) {
+                        // 成功したら、トップページへ遷移する
+                        window.location.href = '/'
+                    } else {
+                        alert('エラーが発生しました。')
+                        console.log('記事投稿エラー')
+                        console.log(response)
+                    }
+                }
+            )
+        },
+        delete_article() {
+            let param = new CommonUtils().getQueryParam()
+            let articleId = param.id
+
+            if (articleId != undefined) {
+                // 削除処理を行う
+                new ApiUtils().postAccess(
+                    URL.POST_ARTICLE_DELTE,
+                    {
+                        "id": articleId
+                    },
+                    (response) => {
+                        if (response.code != 0) {
+                            alert('エラーが発生しました。')
+                            console.log('記事削除エラー')
+                            console.log(response)
+                        }
+                    }
+                );
+            } else {
+                // 削除対象が存在しない場合は、1つ前に戻る
+                window.history.back(-1);
+                return false;
+            }
         }
     },
     mounted() {
-        this.create_editor()
+        new CommonUtils().isAuthToLogin()
+        this.get_items()
     },
     beforeDestroy() {
     }

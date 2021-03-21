@@ -465,6 +465,12 @@
     font-weight: 400;
 }
 
+.ly_post_article_thumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .bl_post_menu_thumb {
     max-width: 300px;
     margin: 0 auto;
@@ -691,6 +697,7 @@
 
 .bl_post_menu_img,
 .bl_post_article_img {
+    width: 100%;
     max-width: 300px;
 }
 

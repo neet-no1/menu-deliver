@@ -343,7 +343,13 @@ export default {
         post_menu(isOpen) {
             let param = new CommonUtils().getQueryParam()
             let menuId = param.id
+            
+            if (menuId == undefined) {
+                menuId = 0
+            }
+
             let formData = new FormData()
+            formData.append("id", menuId);
             formData.append("title", this.title);
             formData.append("subTitle", this.sub_title);
             formData.append("thumb", this.thumb_input_image);
@@ -353,21 +359,6 @@ export default {
             formData.append("files", this.menu_imgs.map((e) => e.input_image));
             formData.append("filesDescription", this.menu_imgs.map((e) => e.img_description));
             formData.append("opend", isOpen);
-            // let request_param = {
-            //     title: this.title,
-            //     subTitle: this.sub_title,
-            //     thumb: this.thumb_input_image,
-            //     category: this.category,
-            //     contents: this.compositions,
-            //     cookery: this.cookery,
-            //     files: this.menu_imgs.map((e) => e.input_image),
-            //     filesDescription: this.menu_imgs.map((e) => e.img_description),
-            //     opend: isOpen
-            // }
-
-            if (menuId == undefined) {
-                menuId = 0
-            }
 
             new ApiUtils().formDataAccess(
                 URL.POST_MENU,
@@ -375,7 +366,7 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         // 成功したら、トップページへ遷移する
-                        //window.location.href = '/'
+                        window.location.href = '/'
                     } else {
                         alert('エラーが発生しました。')
                         console.log('献立投稿エラー')
@@ -398,7 +389,7 @@ export default {
                     (response) => {
                         if (response.code != 0) {
                             alert('エラーが発生しました。')
-                            console.log('献立カテゴリ取得エラー')
+                            console.log('記事削除エラー')
                             console.log(response)
                         }
                     }

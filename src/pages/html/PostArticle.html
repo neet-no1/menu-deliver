@@ -1,7 +1,7 @@
 <div>
     <div class="ly_post_article_title">
         <div class="bl_post_article_title">
-            <input type="text" placeholder="記事のタイトル">
+            <input type="text" placeholder="記事のタイトル" v-model="title">
         </div>
     </div>
     <div class="ly_post_article_thumb">
@@ -50,13 +50,13 @@
     <div class="ly_post_menu_btn">
         <div class="bl_post_menu_btn">
             <div class="bl_post_btn">
-                <div class="btn btn__success" @click="save">投稿</div>
+                <div class="btn btn__success" @click="post_article(true)">投稿</div>
             </div>
             <div class="bl_post_btn">
-                <div class="btn btn__status">保存</div>
+                <div class="btn btn__status" @click="post_article(false)">保存</div>
             </div>
             <div class="bl_post_btn">
-                <div class="btn btn__error">削除</div>
+                <div class="btn btn__error" @click="delete_article">削除</div>
             </div>
         </div>
     </div>
