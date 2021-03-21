@@ -13,34 +13,13 @@
                                 <span>カテゴリ</span>
                             </div>
                             <div class="bl_search_select_box_list">
-                                <div class="el_search_select_box">
-                                    <input class="el_search_select_btn" type="checkbox" id="normal" />
-                                    <label class="btn-sticky" for="normal">通常</label>
-                                </div>
-                                <div class="el_search_select_box">
-                                    <input class="el_search_select_btn" type="checkbox" id="diet" />
-                                    <label class="btn-sticky" for="diet">ダイエット</label>
-                                </div>
-                                <div class="el_search_select_box">
-                                    <input class="el_search_select_btn" type="checkbox" id="allergies" />
-                                    <label class="btn-sticky" for="allergies">アレルギー</label>
-                                </div>
-                                <div class="el_search_select_box">
-                                    <input class="el_search_select_btn" type="checkbox" id="diabetes" />
-                                    <label class="btn-sticky" for="diabetes">糖尿</label>
-                                </div>
-                                <div class="el_search_select_box">
-                                    <input class="el_search_select_btn" type="checkbox" id="reduced_salt" />
-                                    <label class="btn-sticky" for="reduced_salt">減塩</label>
-                                </div>
-                                <div class="el_search_select_box">
-                                    <input class="el_search_select_btn" type="checkbox" id="training" />
-                                    <label class="btn-sticky" for="training">筋トレ</label>
-                                </div>
-                                <div class="el_search_select_box">
-                                    <input class="el_search_select_btn" type="checkbox" id="snack" />
-                                    <label class="btn-sticky" for="snack">おやつ</label>
-                                </div>
+                                <template v-for="(category, index) in categories">
+                                    <div class="el_search_select_box">
+                                        <input class="el_search_select_btn" type="checkbox" :id="index"
+                                            :value="category.id" v-model="checked_categories"/>
+                                        <label class="btn-sticky" :for="index">{{ category.name }}</label>
+                                    </div>
+                                </template>
                             </div>
                         </div>
                         <div class="bl_serach_keyword">
@@ -51,13 +30,13 @@
                                 <div class="bl_question_input">
                                     <div class="el_question_input">
                                         <input class="el_question_input_box" type="text" name="keyword" id="keyword"
-                                            placeholder="">
+                                            placeholder="" v-model="keyword">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="bl_search_btn">
-                            <div class="el_search_btn">
+                            <div class="el_search_btn" @click="search_menus">
                                 <span class="el_search_btn_name">
                                     <i class="fas fa-search"></i>
                                 </span>
@@ -77,18 +56,7 @@
                         </div>
                     </div>
                     <div class="pagination__wrapper">
-                        <nav class="pagination">
-                            <ul class="page-numbers">
-                                <li><a class="pagination-next page-numbers" href="前のページ"><i
-                                            class="fa fa-chevron-left"></i></a></li>
-                                <li><a class="page-numbers" href="1ページ目">1</a></li>
-                                <li><span aria-current="page" class="page-numbers pagenation-current">2</span>
-                                </li>
-                                <li><a class="page-numbers" href="3ページ目">3</a></li>
-                                <li><a class="pagination-next page-numbers" href="次のページ"><i
-                                            class="fa fa-chevron-right"></i></a></li>
-                            </ul>
-                        </nav>
+                        <Pagenation :pages="posted_menu_pages"/>
                     </div>
                 </div>
             </div>
