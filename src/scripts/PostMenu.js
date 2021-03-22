@@ -242,6 +242,7 @@ export default {
         },
         add_material() {
             this.compositions.push({
+                "comp_id": null,
                 "material": "",
                 "amount": 0,
                 "waste": 0,
@@ -299,6 +300,7 @@ export default {
                 this.compositions,
                 this.current_conposition_index,
                 {
+                    "comp_id": e.id,
                     "material": e.name,
                     "amount": 100,
                     "waste": Math.round(10000 / (100 - e.refuse) * 10) / 10,
@@ -322,6 +324,7 @@ export default {
                 this.compositions,
                 this.current_amount_index,
                 {
+                    "comp_id": comp.comp_id,
                     "material": comp.material,
                     "amount": e,
                     "waste": Math.round((comp.waste * e) / 10) / 10,
@@ -366,7 +369,7 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         // 成功したら、トップページへ遷移する
-                        window.location.href = '/'
+                        //window.location.href = '/'
                     } else {
                         alert('エラーが発生しました。')
                         console.log('献立投稿エラー')
