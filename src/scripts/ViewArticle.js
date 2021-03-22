@@ -21,9 +21,7 @@ export default {
             quill: null,
 
             // ユーザ情報のアイコン
-            user_icon: {
-                'background-image': 'url("/public/img/user_1.jpg")'
-            },
+            user_icon: {},
 
             // お気に入りボタンのフラグ
             // true: お気に入り済み

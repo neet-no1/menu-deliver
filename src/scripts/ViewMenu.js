@@ -1,10 +1,12 @@
 import Vue from 'vue'
+
 import PageHeader from '../pages/module/PageHeader.vue'
 import PageFooter from '../pages/module/PageFooter.vue'
 import News from '../pages/module/News.vue'
 
 import * as URL from '../common/api_url'
 import ApiUtils from '../scripts/api_utils'
+import CommonUtils from '../scripts/common_utils'
 
 export default {
     name: 'ViewMenu',
@@ -15,7 +17,34 @@ export default {
     },
     data() {
         return {
+            // タイトル
+            title: '',
+
+            // サブタイトル
+            sub_title: '',
+
+            // 献立表の内容が書かれたJSONファイルのパス
+            composition_json_path: '',
+
+            // ロード状態を見せるか
+            loading: true,
+
+            // 材料の選択肢
+            material_items: [],
+
+            // 献立表の内容
+            compositions: [],
+
+            // 作り方
+            cookery: '',
+
+            // お気に入りフラグ
+            // true: お気に入り追加済み
+            is_favorite: false,
+
+            // 拡張
             expanded: [],
+            // 拡張部分の表示は1つのみ
             singleExpand: true,
             mobile_total_headers: [
                 {
@@ -56,14 +85,7 @@ export default {
                 },
             ],
             menu_imgs_index: 0,
-            menu_imgs: [
-                {
-                    input_image: null,
-                    uploadImageUrl: '',
-                }
-            ],
-            loading: true,
-            select_items: [],
+            menu_imgs: [],
             headers: [
                 {
                     text: '材料',
@@ -128,13 +150,6 @@ export default {
                     sortable: false,
                     width: '50px',
                 },
-                // {
-                //     text: 'ビタミン',
-                //     value: 'vitamin',
-                //     align: 'center',
-                //     sortable: false,
-                //     width: '250px',
-                // },
                 {
                     text: 'コレステロール',
                     value: 'cholesterol',
@@ -157,73 +172,113 @@ export default {
                     width: '50px',
                 },
             ],
-            compositions: [],
-            is_favorite: false,
         }
     },
     methods: {
-        get_select_items() {
+        get_items() {
+            // ロード状態をオンにする
             this.loading = true
-            this.select_items = ['えび', 'いか', 'いくら', 'たこ']
+
+            // 食品成分表情報を取得する
+            this.get_material_items()
+
+            // 現状の献立データを取得する
             this.get_posted_menus()
+
+            // カテゴリを取得する
+            //this.get_categories()
+
+            // ロード状態をオフにする
             this.loading = false
         },
-        get_posted_menus() {
-            new ApiUtils().getAccess(URL.GET_POSTED_MENU, {}, (response) => {
-                console.log('response: ');
-                console.log(response);
-                this.compositions = response;
-            });
-        },
-        add_material() {
-            this.compositions.push({
-                "material": "",
-                "amount": 0,
-                "waste": 0,
-                "energy": 0,
-                "protein": 0,
-                "lipid": 0,
-                "carbohydrate": 0,
-                "calcium": 0,
-                "iron": 0,
-                "cholesterol": 0,
-                "dietaryFiber": 0,
-                "saltEquivalent": 0
-            })
-        },
-        add_menu_img() {
-            this.menu_imgs.push({
-                input_image: null,
-                uploadImageUrl: '',
-            })
-        },
-        post_menu(id) {
-            let element = $(id)
-            element.bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () {
-                element.removeClass('active');
-            })
-            element.addClass("active");
-        },
-        selectImage(index) {
-            this.menu_imgs_index = index
-        },
-        onImagePicked(file) {
-            let i = this.menu_imgs_index
-            if (file !== undefined && file !== null) {
-                if (file.name.lastIndexOf('.') <= 0) {
-                    return
+        get_material_items() {
+            new ApiUtils().getAccess(
+                URL.GET_MENU_COMPOSITIONS,
+                {},
+                (response) => {
+                    if (response.code == 0) {
+                        this.material_items = response.info
+                    } else {
+                        alert('エラーが発生しました。')
+                        console.log('食品成分表情報取得エラー')
+                        console.log(response)
+                    }
                 }
-                const fr = new FileReader()
-                fr.readAsDataURL(file)
-                fr.addEventListener('load', () => {
-                    this.menu_imgs[i].uploadImageUrl = fr.result
-                })
-            } else {
-                this.menu_imgs[i].uploadImageUrl = ''
+            );
+        },
+        get_posted_menus() {
+            let param = new CommonUtils().getQueryParam()
+            let menuId = param.id
+
+            if (menuId != undefined) {
+                new ApiUtils().getAccess(
+                    URL.GET_MENU,
+                    {
+                        'id': menuId
+                    },
+                    (response) => {
+                        if (response.code == 0) {
+                            let info = response.info
+                            this.title = info.title
+                            this.sub_title = info.subTitle
+                            //this.category = info.categoryId
+                            //this.thumb_image_url = info.thumbPath
+                            this.composition_json_path = info.contents
+
+                            // パスを元にjsonデータを取得する
+                            this.get_composition_contents()
+
+                            this.menu_imgs = info.imagePaths.map((e) => {
+                                return {
+                                    input_image: null,
+                                    uploadImageUrl: e.uploadImageUrl,
+                                    img_description: e.imageDescription
+                                }
+                            })
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('献立内容取得エラー')
+                            console.log(response)
+                        }
+                    }
+                );
             }
         },
+        get_composition_contents() {
+            new ApiUtils().getAccess(
+                this.composition_json_path,
+                {},
+                (response) => {
+                    this.compositions = response.contents
+                    this.cookery = response.cookery
+                }
+            )
+        },
         add_favorite() {
+            new CommonUtils().isAuthToLogin()
             this.is_favorite = !this.is_favorite
+
+            let param = new CommonUtils().getQueryParam()
+            let menuId = param.id
+
+            if (menuId != undefined) {
+                new ApiUtils().postAccess(
+                    URL.POST_ARTICLE_FAVORITE,
+                    {
+                        "id": menuId,
+                        "added": this.is_favorite
+                    },
+                    (response) => {
+                        if (response.code == 0) {
+                            // 成功時は何もしない
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('お気に入り追加・解除エラー')
+                            console.log(response)
+                        }
+                    }
+                );
+            }
         }
     },
     computed: {
@@ -272,8 +327,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.energy);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.energy) * 100);
+                }, 0) / 100
             }
         },
         protein_total: function () {
@@ -281,8 +336,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.protein);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.protein * 100));
+                }, 0) / 100
             }
         },
         lipid_total: function () {
@@ -290,8 +345,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.lipid);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.lipid * 100));
+                }, 0) / 100
             }
         },
         carbohydrate_total: function () {
@@ -299,8 +354,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.carbohydrate);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.carbohydrate * 100));
+                }, 0) / 100
             }
         },
         calcium_total: function () {
@@ -308,8 +363,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.calcium);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.calcium * 100));
+                }, 0) / 100
             }
         },
         iron_total: function () {
@@ -317,8 +372,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.iron);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.iron * 100));
+                }, 0) / 100
             }
         },
         cholesterol_total: function () {
@@ -326,8 +381,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.cholesterol);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.cholesterol * 100));
+                }, 0) / 100
             }
         },
         dietaryFiber_total: function () {
@@ -335,8 +390,8 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.dietaryFiber);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.dietaryFiber * 100));
+                }, 0) / 100
             }
         },
         saltEquivalent_total: function () {
@@ -344,12 +399,37 @@ export default {
                 return ''
             } else {
                 return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
-                    return accumulator + Number(currentValue.saltEquivalent);
-                }, 0)
+                    return accumulator + (Math.round(currentValue.saltEquivalent * 100));
+                }, 0) / 100
+            }
+        },
+        width() {
+            switch (this.$vuetify.breakpoint.name) {
+                case 'xs':
+                    console.log('xs')
+                    this.$vuetify.breakpoint.name = 'sm'
+                    break;
+                case 'sm':
+                    console.log('sm')
+                    break;
+                case 'md':
+                    console.log('md')
+                    break;
+                case 'lg':
+                    console.log('lg')
+                    break;
+                case 'xl':
+                    console.log('xl')
+                    break;
             }
         },
     },
     mounted() {
-        this.get_select_items()
+        this.get_items()
     },
+    beforeCreate() {
+        console.log('width')
+        console.log(this.$vuetify.breakpoint)
+        this.$vuetify.breakpoint.thresholds.xs = 0
+    }
 }

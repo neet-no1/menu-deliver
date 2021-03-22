@@ -2,14 +2,6 @@
     <PageHeader />
     <News />
     <main>
-        <div class="ly_post_menu_title">
-            <div class="bl_post_menu_title">
-                <div class="el_menu_title">
-                    <span>献立名</span>
-                    <span class="el_menu_title_text">豚肉と野菜炒め</span>
-                </div>
-            </div>
-        </div>
         <div class="ly_favorite_icon">
             <a href="#" class="btn_favorite_add" @click="add_favorite" v-show="!is_favorite">
                 <span class="el_icon_heart"><i class="far fa-heart"></i></span> <span>お気に入り追加</span>
@@ -18,10 +10,23 @@
                 <span class="el_icon_heart"><i class="fas fa-heart"></i></span> <span>お気に入り追加済み</span>
             </a>
         </div>
+        <div class="ly_post_menu_title">
+            <div class="bl_post_menu_title">
+                <div class="el_menu_title">
+                    <span>献立名</span>
+                    <span class="el_menu_title_text">{{ title }}</span>
+                </div>
+            </div>
+            <div class="ly_post_menu_sub_title">
+                <div class="ly_post_menu_sub_title_inner">
+                    {{ sub_title }}
+                </div>
+            </div>
+        </div>
         <div class="el_food_composition d-block d-md-none">
             <v-data-table :headers="mobile_headers" :items="compositions" :single-expand="singleExpand"
                 :expanded.sync="expanded" show-expand class="elevation-1" disable-sort hide-default-footer
-                :items-per-page="50">
+                :items-per-page="50" item-key="comp_id">
                 <template v-slot:expanded-item="{ headers, item }">
                     <td :colspan="headers.length">
                         <div class="el_compositions_expanded_item"><span>エネルギー</span><span>{{ item.energy }} kcal</span>
@@ -152,38 +157,6 @@
                     </div>
                 </template>
 
-                <!-- 材料項目 -->
-                <template v-slot:item.material="props">
-                    <v-edit-dialog :return-value.sync="props" v-if="props.item.material.length == 0">
-                        <div></div>
-                        <template v-slot:input>
-                            <v-autocomplete v-model="props.item.material" :items="select_items" label="Select"
-                                return-object single-line>
-                            </v-autocomplete>
-                        </template>
-                    </v-edit-dialog>
-                    <v-edit-dialog :return-value.sync="props">
-                        <div>
-                            {{ props.item.material }}
-                        </div>
-                        <template v-slot:input>
-                            <v-autocomplete v-model="props.item.material" :items="select_items" label="Select"
-                                return-object single-line>
-                            </v-autocomplete>
-                        </template>
-                    </v-edit-dialog>
-                </template>
-                <!-- 使用量項目 -->
-                <template v-slot:item.amount="props">
-                    <v-edit-dialog :return-value.sync="props.item.amount" large persistent>
-                        <div>{{ props.item.amount }}</div>
-                        <template v-slot:input>
-                            <v-text-field v-model="props.item.amount" type="number" label="Edit" single-line autofocus>
-                            </v-text-field>
-                        </template>
-                    </v-edit-dialog>
-                </template>
-
                 <template slot="body.append">
                     <tr>
                         <td class="text-center title">Total</td>
@@ -209,14 +182,14 @@
                 </div>
             </div>
             <div class="bl_post_menu_create_method_input">
-                <textarea readonly></textarea>
+                <textarea readonly :value="cookery"></textarea>
             </div>
             <div class="ly_post_menu_img">
                 <div class="bl_post_menu_img" v-for="(img, index) in menu_imgs">
                     <v-img v-if="img.uploadImageUrl" :src="img.uploadImageUrl" max-height="150" max-width="250"
                         contain />
                     <div class="bl_post_menu_img_title">
-                        <input type="text" placeholder="画像の説明">
+                        {{ img.img_description }}
                     </div>
                 </div>
             </div>

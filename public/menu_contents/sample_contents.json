@@ -1,6 +1,7 @@
 {
     "contents": [
         {
+            "comp_id": 1,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -15,6 +16,7 @@
             "saltEquivalent": 0
         },
         {
+            "comp_id": 2,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -29,6 +31,7 @@
             "saltEquivalent": 0
         },
         {
+            "comp_id": 3,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -43,6 +46,7 @@
             "saltEquivalent": 0
         },
         {
+            "comp_id": 4,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -57,6 +61,7 @@
             "saltEquivalent": 0
         },
         {
+            "comp_id": 5,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -71,6 +76,7 @@
             "saltEquivalent": 0
         },
         {
+            "comp_id": 6,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -85,6 +91,7 @@
             "saltEquivalent": 0
         },
         {
+            "comp_id": 7,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -99,5 +106,5 @@
             "saltEquivalent": 0
         }
     ],
-    "cookery": "卵に砂糖混ぜ、白っぽくもったりするまで混ぜます。オーブン180度に予熱します"
+    "cookery": "作り方色々\r\n\r\n改行もしてみる"
 }
