@@ -7,7 +7,9 @@
         "detail": "記事の文頭から始まるある程度の文字列",
         "imgPath": "/public/article_images/recommend_5.jpg",
         "date": "2021/03/18",
-        "userIconPath": "/public/user_images/xxx",
+        "userId": 32,
+        "userName": "サンプル太朗",
+        "userIconPath": "/public/user_images/user_1.jpg",
         "contents": "/public/article_contents/sample4.json"
     }
 }

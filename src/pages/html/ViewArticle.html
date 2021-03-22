@@ -12,12 +12,12 @@
                         <span class="el_icon_heart"><i class="fas fa-heart"></i></span> <span>お気に入り追加済み</span>
                     </a>
                 </div>
-            </div>
+            </div> 
         </div>
         <div class="ly_article_view_title">
             <div class="bl_article_view_title">
                 <div class="bl_article_view_title__inner">
-                    <span>【Windows】Scoop+VSCode+PHPでローカルデバッグ環境を構築する</span>
+                    <span>{{ title }}</span>
                 </div>
             </div>
         </div>
@@ -34,9 +34,9 @@
                     </div>
                 </div>
                 <div class="bl_user_info">
-                    <div class="bl_user_info_name">username</div>
-                    <div class="el_follow_btn">
-                        <a href="#" class="btn-flat-double-border">フォロー！</a>
+                    <div class="bl_user_info_name">{{ user_name }}</div>
+                    <div class="el_follow_btn" @click="add_follow">
+                        <a class="btn-flat-double-border">フォロー！</a>
                     </div>
                 </div>
             </div>
