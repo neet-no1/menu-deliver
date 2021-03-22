@@ -1,6 +1,5 @@
 <div>
     <PageHeader />
-    <News />
     <main>
         <div class="ly_question">
             <div class="ly_question_inner">
@@ -16,25 +15,22 @@
                                     </div>
                                 </div>
                                 <div class="bl_user_info">
-                                    <div class="bl_user_info_name">username</div>
+                                    <div class="bl_user_info_name">{{ user_name }}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="bl_post_question_answer">
-                            <textarea></textarea>
+                            <textarea v-model="contents"></textarea>
                         </div>
-                        <div class="bl_post_question_img" v-for="(img, index) in menu_imgs">
-                            <v-img v-if="img.uploadImageUrl" :src="img.uploadImageUrl" max-height="150" max-width="250"
+                        <div class="bl_post_question_img">
+                            <v-img v-if="uploadImageUrl" :src="uploadImageUrl" max-height="150" max-width="250"
                                 contain />
-                            <v-file-input :id="'menu_img_' + index" v-model="img.input_image" accept="image/*"
-                                label="画像を選択" @change="onImagePicked" @click="selectImage(index)"
+                            <v-file-input v-model="input_image" accept="image/*" label="画像を選択" @change="onImagePicked"
                                 prepend-icon="fas fa-camera"></v-file-input>
                         </div>
                         <div class="bl_post_question_btn">
-                            <div class="bl_post_btn">
-                                <a href="/question">
+                            <div class="bl_post_btn" @click="post_question">
                                     <div class="btn btn__success">質問する</div>
-                                </a>
                             </div>
                         </div>
                     </div>
