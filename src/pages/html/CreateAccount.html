@@ -2,13 +2,13 @@
     <div class="ly_main_inner">
         <div class="ly_logo">
             <div class="bl_logo bl_logo__medium">
-                <img src="../../../public/img/logo.png" alt="ロゴ" title="ロゴ">
+                <img src="/public/img/logo.png" alt="ロゴ" title="ロゴ">
             </div>
         </div>
         <div class="ly_title">
             <div class="bl_title">
                 <div class="el_icon">
-                    <img class="el_icon_user" src="../../../public/svg/user-solid.svg">
+                    <img class="el_icon_user" src="/public/svg/user-solid.svg">
                 </div>
                 <div class="el_title">
                     <span>アカウント登録</span>
@@ -23,7 +23,7 @@
                             <span>メールアドレス</span>
                         </div>
                         <div>
-                            <input class="el_input_box" type="text" name="email" id="email" placeholder="">
+                            <input class="el_input_box" type="text" name="email" id="email" placeholder="" v-model="email">
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                             <span>パスワード</span>
                         </div>
                         <div>
-                            <input class="el_input_box" type="password" name="password" id="password" placeholder="">
+                            <input class="el_input_box" type="password" name="password" id="password" placeholder="" v-model="password">
                         </div>
                     </div>
                 </div>
@@ -43,12 +43,12 @@
                             <span>パスワード再入力</span>
                         </div>
                         <div>
-                            <input class="el_input_box" type="password" name="password_confirm" id="password_confirm" placeholder="">
+                            <input class="el_input_box" type="password" name="password_confirm" id="password_confirm" placeholder="" v-model="password_confirm">
                         </div>
                     </div>
                 </div>
                 <div class="bl_btn">
-                    <div class="el_btn" @click="api_login">
+                    <div class="el_btn" @click="create_account">
                         <span class="el_btn_name">登録</span>
                     </div>
                 </div>
