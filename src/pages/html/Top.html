@@ -6,7 +6,7 @@
       <div class="ly_recommend_article">
         <div class="ly_recommend_article_inner">
           <div class="bl_recommend_article">
-            <img src="../../../public/img/recommend_1.jpg">
+            <img :src="recommend.image_path">
           </div>
         </div>
       </div>
@@ -19,7 +19,7 @@
           </div>
           <div class="ly_recent_menu_items">
             <div class="bl_recent_menu">
-              <div v-for="menu in menus">
+              <div v-for="menu in menu_new_arrival">
                 <MediaCard :menu="menu"></MediaCard>
               </div>
             </div>
@@ -35,7 +35,7 @@
           </div>
           <div class="ly_popular_menu_items">
             <div class="bl_popular_menu">
-              <div v-for="menu in menus">
+              <div v-for="menu in menu_popular">
                 <MediaCard :menu="menu"></MediaCard>
               </div>
             </div>
@@ -51,7 +51,7 @@
           </div>
           <div class="ly_article_items">
             <div class="bl_new_article">
-              <template v-for="article in articles">
+              <template v-for="article in article_new_arrival">
                 <div class="el_new_article">
                   <div class="el_new_icon">
                     <span>\NEW/</span>
@@ -61,8 +61,8 @@
               </template>
             </div>
             <div class="bl_article">
-              <div v-for="menu in menus">
-                <MediaCard :menu="menu"></MediaCard>
+              <div v-for="article in article_new_arrival_small">
+                <MediaCard :menu="article"></MediaCard>
               </div>
             </div>
           </div>
