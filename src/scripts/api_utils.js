@@ -9,9 +9,6 @@ export default class ApiUtils {
         this.hostname = hostname ? hostname : location.hostname;
         // 8080 などのポート番号
         this.port = port ? port : location.port;
-        console.log('ApiUtils schema: ' + schema);
-        console.log('ApiUtils hostname: ' + hostname);
-        console.log('ApiUtils port: ' + port);
     }
 
     getAccess(url, parameter, callback) {

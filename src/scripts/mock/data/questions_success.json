@@ -2,7 +2,7 @@
     "code": 0,
     "errorInfo": null,
     "info": {
-        "questions": [
+        "questionsNewArrival": [
             {
                 "id": 3,
                 "contents": "胃腸の調子が悪いのですが何かいい食べ物はありますか？",
@@ -12,7 +12,35 @@
                 "mine": true
             }
         ],
-        "page": {
+        "questionsSolved": [
+            {
+                "id": 4,
+                "contents": "胃腸の調子が悪いのですが何かいい食べ物はありますか？",
+                "images": "/public/question_images/xxx",
+                "userName": "サンプル太朗",
+                "userIcon": "/public/user_images/xxx",
+                "mine": true
+            }
+        ],
+        "questionsUnsolved": [
+            {
+                "id": 5,
+                "contents": "胃腸の調子が悪いのですが何かいい食べ物はありますか？",
+                "images": "/public/question_images/xxx",
+                "userName": "サンプル太朗",
+                "userIcon": "/public/user_images/xxx",
+                "mine": true
+            }
+        ],
+        "pageNewArrival": {
+            "totalPages": 3,
+            "currentPage": 2
+        },
+        "pageSolved": {
+            "totalPages": 3,
+            "currentPage": 2
+        },
+        "pageUnsolved": {
             "totalPages": 3,
             "currentPage": 2
         }
