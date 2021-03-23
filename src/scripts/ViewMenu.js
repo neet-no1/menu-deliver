@@ -426,10 +426,5 @@ export default {
     },
     mounted() {
         this.get_items()
-    },
-    beforeCreate() {
-        console.log('width')
-        console.log(this.$vuetify.breakpoint)
-        this.$vuetify.breakpoint.thresholds.xs = 0
     }
 }

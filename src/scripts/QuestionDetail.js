@@ -1,4 +1,9 @@
 import Vue from 'vue'
+
+import * as URL from '../common/api_url'
+import ApiUtils from '../scripts/api_utils'
+import CommonUtils from '../scripts/common_utils'
+
 import PageHeader from '../pages/module/PageHeader.vue'
 import PageFooter from '../pages/module/PageFooter.vue'
 import News from '../pages/module/News.vue'
@@ -12,32 +17,193 @@ export default {
     },
     data() {
         return {
-            quill: null,
-            user_icon: {
-                'background-image': 'url("/public/img/user_1.jpg")'
-            },
-            menu_imgs_index: 0,
-            menu_imgs: [
-                {
-                    input_image: null,
-                    uploadImageUrl: '',
-                }
-            ],
-            best_answer: {
-                "exist": false,
-                "id": 5
-            },
-            question_content: {
-                "id": 3,
-                "contents": "胃腸の調子が悪いのですが何かいい食べ物はありますか？",
-                "images": "/public/question_images/xxx",
-                "userName": "サンプル太朗",
-                "userIcon": "/public/user_images/xxx",
-                "mine": true
-            }
+
+            // 質問内容
+            contents: '',
+
+            // 質問投稿ユーザ名
+            user_name: '',
+
+            // 質問投稿ユーザアイコン
+            user_icon: {},
+
+            // 質問画像パス
+            question_img_url: '',
+
+            // 回答画像
+            input_image: null,
+            uploadImageUrl: '',
+
+            // ベストアンサー
+            best_answer: {},
+            best_answer_contents: {},
+
+            // 質問が自分のものかどうか
+            mine: false,
+
+            // 回答一覧
+            answers: [],
+
+            // 現在のユーザが認証済みかどうか
+            is_auth: false,
+
+            // 回答ユーザ名
+            answer_user_name: '',
+
+            // 回答ユーザアイコン
+            answer_user_icon: '',
+
+            // 回答内容
+            answer_contents: '',
         }
     },
     methods: {
+        get_items() {
+            // ベストアンサーを取得する
+            this.get_best_answer()
+
+            // 質問内容を取得する
+            this.get_question()
+
+            // 認証済みユーザか確認する
+            this.get_is_auth()
+        },
+        get_question() {
+            let param = new CommonUtils().getQueryParam()
+            let questionId = param.id
+
+            if (questionId != undefined) {
+                new ApiUtils().getAccess(
+                    URL.GET_QUESTION,
+                    {
+                        'id': questionId
+                    },
+                    (response) => {
+                        if (response.code == 0) {
+                            let info = response.info
+
+                            this.user_name = info.userName
+                            this.contents = info.contents
+                            this.user_icon = {
+                                'background-image': 'url(' + info.userIcon + ')'
+                            }
+                            this.question_img_url = info.images
+
+                            this.mine = info.mine
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('質問内容取得エラー')
+                            console.log(response)
+                        }
+                    }
+                );
+            }
+        },
+        get_best_answer() {
+            let param = new CommonUtils().getQueryParam()
+            let questionId = param.id
+
+            if (questionId != undefined) {
+                new ApiUtils().getAccess(
+                    URL.GET_QUESTION_BESTANSWER,
+                    {
+                        "id": questionId
+                    },
+                    (response) => {
+                        if (response.code == 0) {
+                            this.best_answer = response.info
+
+                            // 回答一覧を取得する
+                            this.get_answers()
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('ベストアンサー取得エラー')
+                            console.log(response)
+                        }
+                    }
+                );
+            }
+        },
+        get_answers() {
+            let param = new CommonUtils().getQueryParam()
+            let questionId = param.id
+
+            if (questionId != undefined) {
+                new ApiUtils().getAccess(
+                    URL.GET_QUESTION_ANSWERS,
+                    {
+                        "id": questionId
+                    },
+                    (response) => {
+                        if (response.code == 0) {
+                            if (this.best_answer.exist) {
+                                this.answers = response.info.answers.map((e) => {
+                                    return {
+                                        id: e.id,
+                                        user_name: e.userName,
+                                        user_icon: {
+                                            'background-image': 'url(' + e.userIcon + ')'
+                                        },
+                                        contents: e.contents,
+                                        img: e.images
+                                    }
+                                }).filter(e => this.best_answer.id != e.id)
+                                this.best_answer_contents = response.info.answers.map((e) => {
+                                    return {
+                                        id: e.id,
+                                        user_name: e.userName,
+                                        user_icon: {
+                                            'background-image': 'url(' + e.userIcon + ')'
+                                        },
+                                        contents: e.contents,
+                                        img: e.images
+                                    }
+                                }).filter(e => this.best_answer.id == e.id)[0]
+                            } else {
+                                this.answers = response.info.answers.map((e) => {
+                                    return {
+                                        id: e.id,
+                                        user_name: e.userName,
+                                        user_icon: {
+                                            'background-image': 'url(' + e.userIcon + ')'
+                                        },
+                                        contents: e.contents,
+                                        img: e.images
+                                    }
+                                })
+                            }
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('回答一覧取得エラー')
+                            console.log(response)
+                        }
+                    }
+                );
+            }
+        },
+        decide_best_answer(answer) {
+            let param = new CommonUtils().getQueryParam()
+            let questionId = param.id
+            if (questionId != undefined) {
+                new ApiUtils().postAccess(
+                    URL.POST_QUESTION_BESTANSWER,
+                    {
+                        "questionId": questionId,
+                        "answerId": answer.id
+                    },
+                    (response) => {
+                        if (response.code == 0) {
+                            // 成功したら、再度ページを開きなおす
+                            window.location.href = '/question/detail?id=' + questionId
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('ベストアンサー決定エラー')
+                            console.log(response)
+                        }
+                    }
+                );
+            }
+        },
         onImagePicked(file) {
             let i = this.menu_imgs_index
             if (file !== undefined && file !== null) {
@@ -47,14 +213,78 @@ export default {
                 const fr = new FileReader()
                 fr.readAsDataURL(file)
                 fr.addEventListener('load', () => {
-                    this.menu_imgs[i].uploadImageUrl = fr.result
+                    this.uploadImageUrl = fr.result
                 })
             } else {
-                this.menu_imgs[i].uploadImageUrl = ''
+                this.uploadImageUrl = ''
             }
         },
-        selectImage(index) {
-            this.menu_imgs_index = index
+        get_is_auth() {
+            new ApiUtils().getAccess(
+                URL.GET_ACCOUNT_AUTH,
+                {},
+                (response) => {
+                    if (response.code == 0) {
+                        if (response.info) {
+                            this.is_auth = true
+
+                            // ユーザ情報を取得する
+                            this.get_account()
+                        } else {
+                            this.is_auth = false
+                        }
+                    } else {
+                        console.log('認証状態取得に失敗しました。')
+                        this.is_auth = false
+                    }
+                }
+            )
         },
+        get_account() {
+            new ApiUtils().getAccess(
+                URL.GET_ACCOUNT_INFO,
+                {},
+                (response) => {
+                    if (response.code == 0) {
+                        this.answer_user_name = response.info.name
+                        this.answer_user_icon = {
+                            'background-image': 'url(' + response.info.imgPath + ')'
+                        }
+                    } else {
+                        alert('エラーが発生しました。')
+                        console.log('アカウント情報取得エラー')
+                        console.log(response)
+                    }
+                }
+            )
+        },
+        post_answer() {
+            let param = new CommonUtils().getQueryParam()
+            let questionId = param.id
+            if (questionId != undefined) {
+
+                let formData = new FormData()
+                formData.append("contents", this.answer_contents)
+                formData.append("file", this.input_image)
+
+                new ApiUtils().formDataAccess(
+                    URL.POST_QUESTION_ANSWER,
+                    formData,
+                    (response) => {
+                        if (response.code == 0) {
+                            // 成功したら、再度ページを開きなおす
+                            window.location.href = '/question/detail?id=' + questionId
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('回答投稿エラー')
+                            console.log(response)
+                        }
+                    }
+                );
+            }
+        },
+    },
+    mounted() {
+        this.get_items()
     }
 }

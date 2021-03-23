@@ -6,9 +6,23 @@
             {
                 "id": 3,
                 "contents": "そんなものは存在しません",
-                "images": "/public/answer_images/xxx",
+                "images": "/public/answer_images/recommend_1.jpg",
                 "userName": "サンプル太朗",
-                "userIcon": "/public/user_images/xxx"
+                "userIcon": "/public/user_images/user_1.jpg"
+            },
+            {
+                "id": 4,
+                "contents": "そんなものは存在しません",
+                "images": "/public/answer_images/recommend_1.jpg",
+                "userName": "サンプル太朗",
+                "userIcon": "/public/user_images/user_1.jpg"
+            },
+            {
+                "id": 5,
+                "contents": "そんなものは存在しません",
+                "images": "/public/answer_images/recommend_1.jpg",
+                "userName": "サンプル太朗",
+                "userIcon": "/public/user_images/user_1.jpg"
             }
         ]
     }
