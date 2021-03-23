@@ -12,13 +12,13 @@
   <div class="ly_header_inner">
     <div class="ly_header_logo">
       <div class="bl_logo">
-        <a href="/"><img src="../../../../public/img/logo.png" alt="ロゴ" title="ロゴ"></a>
+        <a href="/"><img src="/public/img/logo.png" alt="ロゴ" title="ロゴ"></a>
       </div>
     </div>
     <nav class="ly_nav">
       <div class="ly_nav_icon" v-if="isLogin">
         <div class="el_user_icon">
-          <a href="/account"><img src="../../../../public/img/user_1.jpg"></a>
+          <a href="/account"><img :src="user_icon"></a>
         </div>
       </div>
       <div class="el_login_btn" v-if="!isLogin">
