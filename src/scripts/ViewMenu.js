@@ -185,8 +185,8 @@ export default {
             // 現状の献立データを取得する
             this.get_posted_menus()
 
-            // カテゴリを取得する
-            //this.get_categories()
+            // お気に入り状態を取得
+            this.get_favorite_state()
 
             // ロード状態をオフにする
             this.loading = false
@@ -278,6 +278,28 @@ export default {
                         }
                     }
                 );
+            }
+        },
+        get_favorite_state() {
+            let param = new CommonUtils().getQueryParam()
+            let menuId = param.id
+
+            if (menuId != undefined) {
+                new ApiUtils().getAccess(
+                    URL.GET_FAVORITE_MENU_ITEM,
+                    {
+                        id: menuId
+                    },
+                    (response) => {
+                        if (response.code == 0) {
+                            this.is_favorite = response.info
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('献立のお気に入り追加状態を取得エラー')
+                            console.log(response)
+                        }
+                    }
+                )
             }
         }
     },

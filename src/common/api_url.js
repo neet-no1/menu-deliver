@@ -197,3 +197,13 @@ export const GET_ACCOUNT_FAVORITES = BASE_URL + '/account/favorites';
  * 食品成分表情報取得
  */
 export const GET_MENU_COMPOSITIONS = BASE_URL + '/menu/compositions';
+
+/**
+ * 献立のお気に入り追加状態を取得
+ */
+export const GET_FAVORITE_MENU_ITEM = BASE_URL + '/favorite/menu/item';
+
+/**
+ * 記事のお気に入り追加状態を取得
+ */
+ export const GET_FAVORITE_ARTICLE_ITEM = BASE_URL + '/favorite/article/item';

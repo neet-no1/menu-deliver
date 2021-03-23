@@ -19,6 +19,8 @@ import answers_success from "./data/answers_success.json";
 import best_answer_success from "./data/best_answer_success.json";
 import menus_and_articles_success from "./data/menus_and_articles_success.json";
 import compositions_success from "./data/compositions_success.json";
+import favorite_menu_item_success from "./data/favorite_menu_item_success.json";
+import favorite_article_item_success from "./data/favorite_article_item_success.json";
 
 export default class ApiMock {
 
@@ -294,6 +296,20 @@ export default class ApiMock {
         $.mockjax(new AjaxMock().success(
             URL.GET_MENU_COMPOSITIONS,
             compositions_success,
+            this.GET
+        ));
+
+        // 献立のお気に入り追加状態を取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_FAVORITE_MENU_ITEM,
+            favorite_menu_item_success,
+            this.GET
+        ));
+
+        // 記事のお気に入り追加状態を取得
+        $.mockjax(new AjaxMock().success(
+            URL.GET_FAVORITE_ARTICLE_ITEM,
+            favorite_article_item_success,
             this.GET
         ));
     }

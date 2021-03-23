@@ -44,6 +44,9 @@ export default {
 
             // 記事情報を取得する
             this.get_posted_articles()
+
+            // お気に入り状態取得
+            this.get_favorite_state()
         },
         get_posted_articles() {
             let param = new CommonUtils().getQueryParam()
@@ -151,6 +154,28 @@ export default {
                     }
                 }
             )
+        },
+        get_favorite_state() {
+            let param = new CommonUtils().getQueryParam()
+            let articleId = param.id
+
+            if (articleId != undefined) {
+                new ApiUtils().getAccess(
+                    URL.GET_FAVORITE_ARTICLE_ITEM,
+                    {
+                        id: articleId
+                    },
+                    (response) => {
+                        if (response.code == 0) {
+                            this.is_favorite = response.info
+                        } else {
+                            alert('エラーが発生しました。')
+                            console.log('記事のお気に入り追加状態を取得エラー')
+                            console.log(response)
+                        }
+                    }
+                )
+            }
         }
     },
     mounted() {
