@@ -69,6 +69,7 @@ export default {
                                 date_class: [''],
                                 isDetail: true,
                                 isIcon: false,
+                                link: '/article/item?id=' + e.id
                             };
                         });
 

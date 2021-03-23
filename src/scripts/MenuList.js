@@ -88,6 +88,7 @@ export default {
                                 img_src: e.thumbPath,
                                 title_class: ['el_menu_title__small'],
                                 img_class: ['el_menu_img__small'],
+                                link: '/menu/item?id=' + e.id
                             }
                         });
 

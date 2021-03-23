@@ -77,6 +77,7 @@ export default {
                 title: e.title,
                 title_class: ['el_menu_title__large'],
                 img_class: ['el_menu_img__large'],
+                link: '/menu/item?id=' + e.id
               }
             })
           } else {
@@ -99,6 +100,7 @@ export default {
                 title: e.title,
                 title_class: ['el_menu_title__large'],
                 img_class: ['el_menu_img__large'],
+                link: '/menu/item?id=' + e.id
               }
             })
           } else {
@@ -130,7 +132,8 @@ export default {
                   title_class: [''],
                   date_class: [''],
                   isDetail: true,
-                  isIcon: true
+                  isIcon: true,
+                  link: '/article/item?id=' + e.id
                 }
               })
               this.article_new_arrival_small = info.articles.slice(3).map((e) => {
@@ -139,6 +142,7 @@ export default {
                   title: e.title,
                   title_class: ['el_menu_title__large'],
                   img_class: ['el_menu_img__large'],
+                  link: '/article/item?id=' + e.id
                 }
               })
             } else {
@@ -154,7 +158,8 @@ export default {
                   title_class: [''],
                   date_class: [''],
                   isDetail: true,
-                  isIcon: true
+                  isIcon: true,
+                  link: '/article/item?id=' + e.id
                 }
               })
             }

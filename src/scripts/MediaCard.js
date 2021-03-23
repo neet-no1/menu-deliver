@@ -17,6 +17,10 @@ export default {
 
             setTimeout(() => (this.loading = false), 2000)
         },
+        click_link() {
+            // リンク先に遷移する
+            window.location.href = this.menu.link
+        }
     },
     computed: {
         status_posted() {

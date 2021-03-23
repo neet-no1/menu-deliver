@@ -12,6 +12,12 @@ export default {
             }
         }
     },
+    methods: {
+        click_link() {
+            // リンク先に遷移する
+            window.location.href = this.article.link
+        }
+    },
     computed: {
         status_posted() {
             return this.article.status === 'posted'
