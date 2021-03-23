@@ -6,12 +6,90 @@
             {
                 "id": 3,
                 "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
-                "thumbPath": "/public/menu_images/xxx",
-                "contents": "/public/menu_contents/xxx",
+                "thumbPath": "/public/menu_images/recommend_3.jpg",
+                "contents": "/public/menu_contents/sample_contents.json",
                 "imagePaths": [
-                    "/public/menu_images/xxx",
-                    "/public/menu_images/yyy"
-                ]
+                    "/public/menu_images/recommend_3.jpg",
+                    "/public/menu_images/recommend_3.jpg"
+                ],
+                "opened": true
+            },
+            {
+                "id": 3,
+                "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
+                "thumbPath": "/public/menu_images/recommend_3.jpg",
+                "contents": "/public/menu_contents/sample_contents.json",
+                "imagePaths": [
+                    "/public/menu_images/recommend_3.jpg",
+                    "/public/menu_images/recommend_3.jpg"
+                ],
+                "opened": false
+            },
+            {
+                "id": 3,
+                "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
+                "thumbPath": "/public/menu_images/recommend_3.jpg",
+                "contents": "/public/menu_contents/sample_contents.json",
+                "imagePaths": [
+                    "/public/menu_images/recommend_3.jpg",
+                    "/public/menu_images/recommend_3.jpg"
+                ],
+                "opened": true
+            },
+            {
+                "id": 3,
+                "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
+                "thumbPath": "/public/menu_images/recommend_3.jpg",
+                "contents": "/public/menu_contents/sample_contents.json",
+                "imagePaths": [
+                    "/public/menu_images/recommend_3.jpg",
+                    "/public/menu_images/recommend_3.jpg"
+                ],
+                "opened": true
+            },
+            {
+                "id": 3,
+                "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
+                "thumbPath": "/public/menu_images/recommend_3.jpg",
+                "contents": "/public/menu_contents/sample_contents.json",
+                "imagePaths": [
+                    "/public/menu_images/recommend_3.jpg",
+                    "/public/menu_images/recommend_3.jpg"
+                ],
+                "opened": true
+            },
+            {
+                "id": 3,
+                "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
+                "thumbPath": "/public/menu_images/recommend_3.jpg",
+                "contents": "/public/menu_contents/sample_contents.json",
+                "imagePaths": [
+                    "/public/menu_images/recommend_3.jpg",
+                    "/public/menu_images/recommend_3.jpg"
+                ],
+                "opened": false
+            },
+            {
+                "id": 3,
+                "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
+                "thumbPath": "/public/menu_images/recommend_3.jpg",
+                "contents": "/public/menu_contents/sample_contents.json",
+                "imagePaths": [
+                    "/public/menu_images/recommend_3.jpg",
+                    "/public/menu_images/recommend_3.jpg"
+                ],
+                "opened": true
+            },
+            {
+                "id": 3,
+                "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
+                "thumbPath": "/public/menu_images/recommend_3.jpg",
+                "contents": "/public/menu_contents/sample_contents.json",
+                "imagePaths": [
+                    "/public/menu_images/recommend_3.jpg",
+                    "/public/menu_images/recommend_3.jpg"
+                ],
+                "opened": false
             }
         ],
         "menuPages": {
@@ -21,13 +99,43 @@
         "articles": [
             {
                 "id": 3,
-                "title": "豚肉の生姜焼き、ほうれん草の胡麻和え、味噌汁",
-                "thumbPath": "/public/menu_images/xxx",
-                "contents": "/public/menu_contents/xxx",
-                "imagePaths": [
-                    "/public/menu_images/xxx",
-                    "/public/menu_images/yyy"
-                ]
+                "title": "体にいい健康食 part1",
+                "detail": "記事の文頭から始まるある程度の文字列",
+                "imgPath": "/public/article_images/recommend_5.jpg",
+                "date": "2021/03/18",
+                "userIconPath": "/public/user_images/user_1.jpg",
+                "contents": "/public/article_contents/sample4.json",
+                "opened": true
+            },
+            {
+                "id": 4,
+                "title": "体にいい健康食 part1",
+                "detail": "記事の文頭から始まるある程度の文字列",
+                "imgPath": "/public/article_images/recommend_5.jpg",
+                "date": "2021/03/18",
+                "userIconPath": "/public/user_images/user_1.jpg",
+                "contents": "/public/article_contents/sample4.json",
+                "opened": false
+            },
+            {
+                "id": 5,
+                "title": "体にいい健康食 part1",
+                "detail": "記事の文頭から始まるある程度の文字列",
+                "imgPath": "/public/article_images/recommend_5.jpg",
+                "date": "2021/03/18",
+                "userIconPath": "/public/user_images/user_1.jpg",
+                "contents": "/public/article_contents/sample4.json",
+                "opened": true
+            },
+            {
+                "id": 6,
+                "title": "体にいい健康食 part1",
+                "detail": "記事の文頭から始まるある程度の文字列",
+                "imgPath": "/public/article_images/recommend_5.jpg",
+                "date": "2021/03/18",
+                "userIconPath": "/public/user_images/user_1.jpg",
+                "contents": "/public/article_contents/sample4.json",
+                "opened": true
             }
         ],
         "articlePages": {

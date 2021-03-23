@@ -18,11 +18,11 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         this.news_list = response.info
-                      } else {
+                    } else {
                         alert('エラーが発生しました。')
                         console.log('お知らせ情報取得エラー')
                         console.log(response)
-                      }
+                    }
                 }
             )
         }

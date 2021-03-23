@@ -5,8 +5,8 @@
         "follows": [
             {
                 "id": 3,
-                "imgPath": "/public/user_images/xxx",
-                "name": "サンプル太朗"
+                "imgPath": "/public/user_images/user_1.jpg",
+                "name": "サンプル太朗1"
             }
         ],
         "followPage": {
@@ -16,8 +16,8 @@
         "followers": [
             {
                 "id": 3,
-                "imgPath": "/public/user_images/xxx",
-                "name": "サンプル太朗"
+                "imgPath": "/public/user_images/user_1.jpg",
+                "name": "サンプル太朗2"
             }
         ],
         "followerPage": {

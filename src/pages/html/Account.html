@@ -55,7 +55,7 @@
                                     <span>●ニックネーム</span>
                                 </div>
                                 <div class="el_info">
-                                    <span>testaaa</span>
+                                    <span>{{ user_name }}</span>
                                 </div>
                             </div>
                             <div class="bl_info_area">
@@ -63,7 +63,7 @@
                                     <span>●メールアドレス</span>
                                 </div>
                                 <div class="el_info">
-                                    <span>sample@example.com</span>
+                                    <span>{{ user_email }}</span>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                     <div class="ly_edit_inner">
                         <div class="ly_edit_user_icon">
                             <div class="el_user_icon_circle el_user_icon_circle__large" :style="user_icon" @click="select_file"></div>
-                            <v-file-input hide-input style="display: none" ref="select_image" @change="onImagePicked"></v-file-input>
+                            <v-file-input hide-input style="display: none" ref="select_image" @change="onImagePicked" v-model="user_icon_edit"></v-file-input>
                         </div>
                         <div class="ly_edit_user_info">
                             <div class="bl_info_area">
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="el_info_edit">
                                     <input class="el_info_edit_box" type="text" name="user_name" id="user_name"
-                                        placeholder="">
+                                        placeholder="" v-model="user_name_edit">
                                 </div>
                             </div>
                             <div class="bl_info_area">
@@ -93,12 +93,12 @@
                                 </div>
                                 <div class="el_info_edit">
                                     <input class="el_info_edit_box" type="text" name="email" id="email"
-                                        placeholder="">
+                                        placeholder="" v-model="user_email_edit">
                                 </div>
                             </div>
                         </div>
                         <div class="bl_edit_btn">
-                            <div class="el_edit_btn">
+                            <div class="el_edit_btn" @click="user_info_update">
                                 <span class="el_edit_btn_name">更新</span>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="el_password_edit">
                                     <input class="el_password_edit_box" type="password" name="current_password" id="current_password"
-                                        placeholder="">
+                                        placeholder="" v-model="current_password">
                                 </div>
                             </div>
                             <div class="bl_info_area">
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="el_password_edit">
                                     <input class="el_password_edit_box" type="password" name="new_password" id="new_password"
-                                        placeholder="">
+                                        placeholder="" v-model="new_password">
                                 </div>
                             </div>
                             <div class="bl_info_area">
@@ -133,12 +133,12 @@
                                 </div>
                                 <div class="el_password_edit">
                                     <input class="el_password_edit_box" type="password" name="new_password_confirm" id="new_password_confirm"
-                                        placeholder="">
+                                        placeholder="" v-model="new_password_confirm">
                                 </div>
                             </div>
                         </div>
                         <div class="bl_edit_btn">
-                            <div class="el_edit_btn">
+                            <div class="el_edit_btn" @click="password_update">
                                 <span class="el_edit_btn_name">変更</span>
                             </div>
                         </div>
@@ -205,13 +205,13 @@
                             </div>
                         </div>
                         <div class="bl_favorite_menu_list" v-if="isOpen_favorite_menu">
-                            <div v-for="menu in menus">
+                            <div v-for="menu in favorite_menus">
                                 <MediaCard :menu="menu"></MediaCard>
                             </div>
                             <Pagenation :pages="posted_article_pages"/>
                         </div>
                         <div class="bl_favorite_article_list" v-if="isOpen_favorite_article">
-                            <div v-for="article in articles">
+                            <div v-for="article in favorite_articles">
                                 <MediaCardLarge :article=article></MediaCardLarge>
                             </div>
                             <Pagenation :pages="posted_menu_pages"/>
