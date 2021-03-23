@@ -74,8 +74,10 @@
                 <div class="ly_edit">
                     <div class="ly_edit_inner">
                         <div class="ly_edit_user_icon">
-                            <div class="el_user_icon_circle el_user_icon_circle__large" :style="user_icon" @click="select_file"></div>
-                            <v-file-input hide-input style="display: none" ref="select_image" @change="onImagePicked" v-model="user_icon_edit"></v-file-input>
+                            <div class="el_user_icon_circle el_user_icon_circle__large" :style="user_icon"
+                                @click="select_file"></div>
+                            <v-file-input hide-input style="display: none" ref="select_image" @change="onImagePicked"
+                                v-model="user_icon_edit"></v-file-input>
                         </div>
                         <div class="ly_edit_user_info">
                             <div class="bl_info_area">
@@ -92,8 +94,8 @@
                                     <span>●メールアドレス</span>
                                 </div>
                                 <div class="el_info_edit">
-                                    <input class="el_info_edit_box" type="text" name="email" id="email"
-                                        placeholder="" v-model="user_email_edit">
+                                    <input class="el_info_edit_box" type="text" name="email" id="email" placeholder=""
+                                        v-model="user_email_edit">
                                 </div>
                             </div>
                         </div>
@@ -114,8 +116,8 @@
                                     <span>現在のパスワード</span>
                                 </div>
                                 <div class="el_password_edit">
-                                    <input class="el_password_edit_box" type="password" name="current_password" id="current_password"
-                                        placeholder="" v-model="current_password">
+                                    <input class="el_password_edit_box" type="password" name="current_password"
+                                        id="current_password" placeholder="" v-model="current_password">
                                 </div>
                             </div>
                             <div class="bl_info_area">
@@ -123,8 +125,8 @@
                                     <span>新しいパスワード</span>
                                 </div>
                                 <div class="el_password_edit">
-                                    <input class="el_password_edit_box" type="password" name="new_password" id="new_password"
-                                        placeholder="" v-model="new_password">
+                                    <input class="el_password_edit_box" type="password" name="new_password"
+                                        id="new_password" placeholder="" v-model="new_password">
                                 </div>
                             </div>
                             <div class="bl_info_area">
@@ -132,8 +134,8 @@
                                     <span>新しいパスワードを再入力</span>
                                 </div>
                                 <div class="el_password_edit">
-                                    <input class="el_password_edit_box" type="password" name="new_password_confirm" id="new_password_confirm"
-                                        placeholder="" v-model="new_password_confirm">
+                                    <input class="el_password_edit_box" type="password" name="new_password_confirm"
+                                        id="new_password_confirm" placeholder="" v-model="new_password_confirm">
                                 </div>
                             </div>
                         </div>
@@ -158,13 +160,13 @@
                             <div v-for="follower in follows">
                                 <Follower :follower=follower></Follower>
                             </div>
-                            <Pagenation :pages="follow_pages"/>
+                            <Pagenation :pages="follow_pages" />
                         </div>
                         <div class="bl_follower_list" v-if="isOpen_follower">
                             <div v-for="follower in followers">
                                 <Follower :follower=follower></Follower>
                             </div>
-                            <Pagenation :pages="follower_pages"/>
+                            <Pagenation :pages="follower_pages" />
                         </div>
                     </div>
                 </div>
@@ -177,7 +179,7 @@
                                 <MediaCardLarge :article=article></MediaCardLarge>
                             </div>
                         </div>
-                        <Pagenation :pages="posted_article_pages"/>
+                        <Pagenation :pages="posted_article_pages" />
                     </div>
                 </div>
             </div>
@@ -189,7 +191,7 @@
                                 <MediaCard :menu="menu"></MediaCard>
                             </div>
                         </div>
-                        <Pagenation :pages="posted_menu_pages"/>
+                        <Pagenation :pages="posted_menu_pages" />
                     </div>
                 </div>
             </div>
@@ -208,13 +210,13 @@
                             <div v-for="menu in favorite_menus">
                                 <MediaCard :menu="menu"></MediaCard>
                             </div>
-                            <Pagenation :pages="posted_article_pages"/>
+                            <Pagenation :pages="posted_article_pages" />
                         </div>
                         <div class="bl_favorite_article_list" v-if="isOpen_favorite_article">
                             <div v-for="article in favorite_articles">
                                 <MediaCardLarge :article=article></MediaCardLarge>
                             </div>
-                            <Pagenation :pages="posted_menu_pages"/>
+                            <Pagenation :pages="posted_menu_pages" />
                         </div>
                     </div>
                 </div>
