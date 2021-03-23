@@ -27,6 +27,7 @@ export default class ApiUtils {
             type: type,
             cache: false,
             dataType: 'json',
+            async : false,
             data: parameter
         })
             .done(function (response) {
@@ -57,6 +58,7 @@ export default class ApiUtils {
             type: 'post',
             cache: false,
             processData: false,
+            async : false,
             contentType: 'multipart/form-data',
             data: formData
         })
