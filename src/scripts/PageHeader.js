@@ -8,7 +8,7 @@ export default {
         return {
             // モーダルを開く
             select_post_type: false,
-            
+
             // ログインしているか
             isLogin: false,
 
@@ -22,11 +22,13 @@ export default {
                 URL.GET_ACCOUNT_AUTH,
                 {},
                 (response) => {
-                    if(response.code == 0) {
+                    if (response.code == 0) {
                         this.isLogin = response.info
 
-                        // アカウント情報取得
-                        this.get_account_info()
+                        // ログインしていたら、アカウント情報取得
+                        if (this.isLogin) {
+                            this.get_account_info()
+                        }
                     } else {
                         alert('エラーが発生しました。')
                         console.log('ログイン状態取得エラー')
@@ -40,7 +42,7 @@ export default {
                 URL.GET_ACCOUNT_INFO,
                 {},
                 (response) => {
-                    if(response.code == 0) {
+                    if (response.code == 0) {
                         this.user_icon = response.info.imgPath
                     } else {
                         alert('エラーが発生しました。')
@@ -50,14 +52,14 @@ export default {
                 }
             )
         },
-        post_menu_or_article: function() {
+        post_menu_or_article: function () {
             this.select_post_type = this.select_post_type == false
         },
-        close_modal: function() {
+        close_modal: function () {
             this.select_post_type = false
         },
-        close_modal_cancel: function(event) {
-            if(event) {
+        close_modal_cancel: function (event) {
+            if (event) {
                 event.preventDefault()
                 event.stopPropagation()
             }
