@@ -1,7 +1,7 @@
 {
     "contents": [
         {
-            "comp_id": 1,
+            "compId": 1,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -16,7 +16,7 @@
             "saltEquivalent": 0
         },
         {
-            "comp_id": 2,
+            "compId": 2,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -31,7 +31,7 @@
             "saltEquivalent": 0
         },
         {
-            "comp_id": 3,
+            "compId": 3,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -46,7 +46,7 @@
             "saltEquivalent": 0
         },
         {
-            "comp_id": 4,
+            "compId": 4,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -61,7 +61,7 @@
             "saltEquivalent": 0
         },
         {
-            "comp_id": 5,
+            "compId": 5,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -76,7 +76,7 @@
             "saltEquivalent": 0
         },
         {
-            "comp_id": 6,
+            "compId": 6,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,
@@ -91,7 +91,7 @@
             "saltEquivalent": 0
         },
         {
-            "comp_id": 7,
+            "compId": 7,
             "material": "かぶ　葉　生",
             "amount": 100,
             "waste": 142.9,

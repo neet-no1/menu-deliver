@@ -242,7 +242,7 @@ export default {
         },
         add_material() {
             this.compositions.push({
-                "comp_id": null,
+                "compId": null,
                 "material": "",
                 "amount": 0,
                 "waste": 0,
@@ -300,7 +300,7 @@ export default {
                 this.compositions,
                 this.current_conposition_index,
                 {
-                    "comp_id": e.id,
+                    "compId": e.id,
                     "material": e.name,
                     "amount": 100,
                     "waste": Math.round(10000 / (100 - e.refuse) * 10) / 10,
@@ -324,7 +324,7 @@ export default {
                 this.compositions,
                 this.current_amount_index,
                 {
-                    "comp_id": comp.comp_id,
+                    "compId": comp.compId,
                     "material": comp.material,
                     "amount": e,
                     "waste": Math.round((comp.waste * e) / 10) / 10,
@@ -360,8 +360,11 @@ export default {
             formData.append("contents", this.compositions);
             formData.append("cookery", this.cookery);
             formData.append("files", this.menu_imgs.map((e) => e.input_image));
-            formData.append("filesDescription", this.menu_imgs.map((e) => e.img_description));
+            //formData.append("filesDescription", this.menu_imgs.map((e) => e.img_description));
             formData.append("opend", isOpen);
+            this.menu_imgs.map(e => {
+                formData.append("filesDescription", e.input_image);
+            });
 
             new ApiUtils().formDataAccess(
                 URL.POST_MENU,
