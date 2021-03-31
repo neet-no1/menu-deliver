@@ -27,6 +27,11 @@ export default {
             )
         }
     },
+    computed: {
+        disable_news: function() {
+            return news_list.length != 0
+        }
+    },
     mounted() {
         this.get_news()
     }
