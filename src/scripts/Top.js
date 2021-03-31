@@ -20,6 +20,8 @@ export default {
     return {
       // おすすめ情報
       recommend: {},
+      // おすすめ情報表示・非表示
+      disable_recommend: false,
 
       // 新着献立
       menu_new_arrival: [],
@@ -53,9 +55,13 @@ export default {
         {},
         (response) => {
           if (response.code == 0) {
-            this.recommend = {
-              id: response.info.id,
-              image_path: response.info.imgPath
+            // idが-1の時以外は出力する
+            if(response.info.id != -1) {
+              this.disable_recommend = true
+              this.recommend = {
+                id: response.info.id,
+                image_path: response.info.imgPath
+              }
             }
           } else {
             alert('エラーが発生しました。')

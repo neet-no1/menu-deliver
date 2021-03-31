@@ -66,7 +66,7 @@ export const GET_FOLLOW_LIST = BASE_URL + '/follow/list';
 /**
  * おすすめ情報表示パラメタを取得
  */
-export const GET_RECOMMEND_META = BASE_URL + '/reccomend/meta';
+export const GET_RECOMMEND_META = BASE_URL + '/recommend/meta';
 
 /**
  * 新着献立取得

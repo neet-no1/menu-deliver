@@ -3,7 +3,7 @@
   <News />
   <main class="ly_top">
     <div class="ly_top_inner">
-      <div class="ly_recommend_article">
+      <div class="ly_recommend_article" v-if="disable_recommend">
         <div class="ly_recommend_article_inner">
           <div class="bl_recommend_article">
             <img :src="recommend.image_path">
