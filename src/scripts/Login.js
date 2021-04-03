@@ -14,12 +14,13 @@ export default {
          * ログイン処理
          */
         api_login: function(event) {
-            new ApiUtils().postAccess(
+            let formData = new FormData()
+            formData.append("email", this.email);
+            formData.append("password", this.password);
+
+            new ApiUtils().formDataAccess(
                 URL.POST_LOGIN,
-                {
-                    'email': this.email,
-                    'password': this.password
-                },
+                formData,
                 (response) => {
                 if(response.code == 0) {
                     // トップページへ遷移
@@ -40,7 +41,7 @@ export default {
                     if(response.code == 0) {
                         if(response.info) {
                             // 認証済みであればトップページへ遷移
-                            window.location.href = '/';
+                            //window.location.href = '/';
                         } else {
                             // 認証されていなければ何もしない
                         }
