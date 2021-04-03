@@ -212,6 +212,8 @@ export default {
                         }
                     }
                 );
+            } else {
+                this.add_material()
             }
         },
         get_composition_contents() {
@@ -219,7 +221,7 @@ export default {
                 this.composition_json_path,
                 {},
                 (response) => {
-                    this.compositions = response.contents
+                    this.compositions = JSON.parse(response.contents)
                     this.cookery = response.cookery
                 }
             )
@@ -357,13 +359,14 @@ export default {
             formData.append("subTitle", this.sub_title);
             formData.append("thumb", this.thumb_input_image);
             formData.append("category", this.category);
-            formData.append("contents", this.compositions);
             formData.append("cookery", this.cookery);
-            formData.append("files", this.menu_imgs.map((e) => e.input_image));
-            //formData.append("filesDescription", this.menu_imgs.map((e) => e.img_description));
-            formData.append("opend", isOpen);
+            formData.append("opened", isOpen);
+            formData.append("contents", JSON.stringify(this.compositions));
             this.menu_imgs.map(e => {
-                formData.append("filesDescription", e.input_image);
+                formData.append("files", e.input_image)
+            });
+            this.menu_imgs.map(e => {
+                formData.append("filesDescription", e.img_description);
             });
 
             new ApiUtils().formDataAccess(
@@ -372,7 +375,7 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         // 成功したら、トップページへ遷移する
-                        //window.location.href = '/'
+                        window.location.href = '/'
                     } else {
                         alert('エラーが発生しました。')
                         console.log('献立投稿エラー')

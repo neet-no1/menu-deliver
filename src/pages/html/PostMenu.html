@@ -128,21 +128,13 @@
 
             <!-- 材料項目 -->
             <template v-slot:item.material="props">
-                <v-edit-dialog v-if="props.item.material.length == 0">
-                    <div></div>
-                    <template v-slot:input>
-                        <v-autocomplete :items="material_items" label="Select" single-line item-text="name"
-                            v-on:change='materialChange' v-on:click='materialClick(props.index)' return-object>
-                        </v-autocomplete>
-                    </template>
-                </v-edit-dialog>
-                <v-edit-dialog>
+                <v-edit-dialog @open='materialClick(props.index)'>
                     <div>
                         {{ props.item.material }}
                     </div>
                     <template v-slot:input>
                         <v-autocomplete :items="material_items" label="Select" single-line item-text="name"
-                            v-on:change='materialChange' v-on:click='materialClick(props.index)' return-object>
+                            v-on:change='materialChange' return-object>
                         </v-autocomplete>
                     </template>
                 </v-edit-dialog>

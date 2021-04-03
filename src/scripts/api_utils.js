@@ -12,32 +12,35 @@ export default class ApiUtils {
     }
 
     getAccess(url, parameter, callback) {
-        return this.access(url, parameter, 'get', callback);
+        return this.access(url, parameter, 'GET', callback);
     }
 
     postAccess(url, parameter, callback) {
-        this.access(url, parameter, 'post', callback);
+        this.access(url, JSON.stringify(parameter), 'POST', callback);
     }
 
     access(url, parameter, type, callback) {
-        console.log('access URL:' + url);
         // TODO 発行したトークンの設定を行いたい。(ヘッダに)
         $.ajax({
             url: url,
             type: type,
             cache: false,
             dataType: 'json',
-            async : false,
-            data: parameter
+            async: false,
+            data: parameter,
+            mimeType: 'UTF-8',
+            contentType: 'application/json'
         })
             .done(function (response) {
                 // TODO 通信成功時
                 // 何を見て何をレスポンスとして返すかを設計する
                 callback(response);
             })
-            .fail(function (xht) {
+            .fail(function (xht, textStatus, errorThrown) {
                 // TODO 通信失敗時
                 // 何を見て何をレスポンスとして返すかを設計する
+                console.log("textStatus     : " + textStatus);    // タイムアウト、パースエラー
+                console.log("errorThrown    : " + errorThrown.message); // 例外情報
                 callback(xht);
             })
         /*
@@ -52,14 +55,17 @@ export default class ApiUtils {
 
     formDataAccess(url, formData, callback) {
         console.log('access URL:' + url);
+        console.log('data:');
+        console.log(formData);
         // TODO 発行したトークンの設定を行いたい。(ヘッダに)
         $.ajax({
             url: url,
             type: 'post',
             cache: false,
             processData: false,
-            async : false,
-            contentType: 'multipart/form-data',
+            async: false,
+            contentType: false,
+            mimeType: 'UTF-8',
             data: formData
         })
             .done(function (response) {
@@ -67,9 +73,11 @@ export default class ApiUtils {
                 // 何を見て何をレスポンスとして返すかを設計する
                 callback(response);
             })
-            .fail(function (xht) {
+            .fail(function (xht, textStatus, errorThrown) {
                 // TODO 通信失敗時
                 // 何を見て何をレスポンスとして返すかを設計する
+                console.log("textStatus     : " + textStatus);    // タイムアウト、パースエラー
+                console.log("errorThrown    : " + errorThrown.message); // 例外情報
                 callback(xht);
             })
         /*
