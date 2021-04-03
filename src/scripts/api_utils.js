@@ -71,7 +71,7 @@ export default class ApiUtils {
             .done(function (response) {
                 // TODO 通信成功時
                 // 何を見て何をレスポンスとして返すかを設計する
-                callback(response);
+                callback(JSON.parse(response));
             })
             .fail(function (xht, textStatus, errorThrown) {
                 // TODO 通信失敗時
