@@ -26,7 +26,7 @@ export default {
                         // アカウント登録が完了したら、仮完了画面へ遷移
                         window.location.href = '/create/account/predone';
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('パスワードリセットエラー')
                         console.log(response)
                     }

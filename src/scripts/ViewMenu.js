@@ -199,7 +199,7 @@ export default {
                     if (response.code == 0) {
                         this.material_items = response.info
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('食品成分表情報取得エラー')
                         console.log(response)
                     }
@@ -236,7 +236,7 @@ export default {
                                 }
                             })
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('献立内容取得エラー')
                             console.log(response)
                         }
@@ -272,7 +272,7 @@ export default {
                         if (response.code == 0) {
                             // 成功時は何もしない
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('お気に入り追加・解除エラー')
                             console.log(response)
                         }
@@ -294,7 +294,7 @@ export default {
                         if (response.code == 0) {
                             this.is_favorite = response.info
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('献立のお気に入り追加状態を取得エラー')
                             console.log(response)
                         }

@@ -74,7 +74,7 @@ export default {
                             // エディターに内容を表示
                             this.set_contents()
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('記事内容取得エラー')
                             console.log(response)
                         }
@@ -107,7 +107,7 @@ export default {
                 this.contentsPath,
                 {},
                 (response) => {
-                    this.quill.setContents(response)
+                    this.quill.setContents(JSON.parse(response))
                 }
             )
         },
@@ -129,7 +129,7 @@ export default {
                         if (response.code == 0) {
                             // 成功時は何もしない
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('お気に入り追加・解除エラー')
                             console.log(response)
                         }
@@ -148,7 +148,7 @@ export default {
                     if (response.code == 0) {
                         // 成功時は何もしない
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('フォローエラー')
                         console.log(response)
                     }
@@ -169,7 +169,7 @@ export default {
                         if (response.code == 0) {
                             this.is_favorite = response.info
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('記事のお気に入り追加状態を取得エラー')
                             console.log(response)
                         }

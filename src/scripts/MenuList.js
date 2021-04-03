@@ -61,7 +61,7 @@ export default {
                         // 献立一覧を整形する
                         this.categories = response.info
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('献立カテゴリ取得エラー')
                         console.log(response)
                     }
@@ -102,7 +102,7 @@ export default {
                             }
                         };
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('献立検索エラー')
                         console.log(response)
                     }

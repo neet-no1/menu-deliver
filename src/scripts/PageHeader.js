@@ -30,7 +30,7 @@ export default {
                             this.get_account_info()
                         }
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('ログイン状態取得エラー')
                         console.log(response)
                     }
@@ -45,7 +45,7 @@ export default {
                     if (response.code == 0) {
                         this.user_icon = response.info.imgPath
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('アカウント情報取得エラー')
                         console.log(response)
                     }

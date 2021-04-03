@@ -43,7 +43,7 @@ export default {
                             'background-image': 'url(' + response.info.imgPath + ')'
                         }
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('アカウント情報取得エラー')
                         console.log(response)
                     }
@@ -78,7 +78,7 @@ export default {
                         // 成功したら、質問一覧ページへ遷移する
                         window.location.href = '/question'
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('質問投稿エラー')
                         console.log(response)
                     }

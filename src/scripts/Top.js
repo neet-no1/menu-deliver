@@ -64,7 +64,7 @@ export default {
               }
             }
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('おすすめ情報表示パラメタ取得エラー')
             console.log(response)
           }
@@ -87,7 +87,7 @@ export default {
               }
             })
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('新着献立取得エラー')
             console.log(response)
           }
@@ -110,7 +110,7 @@ export default {
               }
             })
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('人気献立取得エラー')
             console.log(response)
           }
@@ -170,7 +170,7 @@ export default {
               })
             }
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('新着記事取得エラー')
             console.log(response)
           }

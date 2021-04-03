@@ -157,7 +157,7 @@ export default {
             this.user_name_edit = info.name
             this.user_email_edit = info.email
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('アカウント情報取得エラー')
             console.log(response)
           }
@@ -205,7 +205,7 @@ export default {
               }
             }
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('フォロー・フォロワー取得エラー')
             console.log(response)
           }
@@ -249,7 +249,7 @@ export default {
               }
             }
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('投稿記事一覧取得エラー')
             console.log(response)
           }
@@ -286,7 +286,7 @@ export default {
               }
             }
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('投稿献立一覧取得エラー')
             console.log(response)
           }
@@ -351,7 +351,7 @@ export default {
               }
             }
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('お気に入り一覧取得エラー')
             console.log(response)
           }
@@ -411,7 +411,7 @@ export default {
             // 成功したら、ページを開きなおすへ遷移する
             window.location.href = '/account'
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('ユーザ情報更新エラー')
             console.log(response)
           }
@@ -431,7 +431,7 @@ export default {
             // 成功したら、ページを開きなおすへ遷移する
             window.location.href = '/account'
           } else {
-            alert('エラーが発生しました。')
+            alert(response.errorInfo.errorMessage)
             console.log('パスワード更新エラー')
             console.log(response)
           }

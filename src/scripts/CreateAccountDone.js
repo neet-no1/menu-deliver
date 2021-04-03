@@ -26,7 +26,7 @@ export default {
                             // メールアドレスの確認が出来たら、TOPページへ遷移する
                             window.location.href = '/';
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('メールアドレス有効性確認エラー')
                             console.log(response)
                         }

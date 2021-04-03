@@ -26,7 +26,7 @@ export default {
                     // トップページへ遷移
                     window.location.href = '/';
                 } else {
-                    alert('認証に失敗しました。再度お試しください。')
+                    alert(response.errorInfo.errorMessage)
                 }
             });
         },

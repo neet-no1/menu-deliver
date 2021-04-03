@@ -169,7 +169,7 @@ export default {
                     if (response.code == 0) {
                         this.material_items = response.info
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('食品成分表情報取得エラー')
                         console.log(response)
                     }
@@ -206,7 +206,7 @@ export default {
                                 }
                             })
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('献立内容取得エラー')
                             console.log(response)
                         }
@@ -235,7 +235,7 @@ export default {
                     if (response.code == 0) {
                         this.categories = response.info
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('献立カテゴリ取得エラー')
                         console.log(response)
                     }
@@ -348,7 +348,7 @@ export default {
         post_menu(isOpen) {
             let param = new CommonUtils().getQueryParam()
             let menuId = param.id
-            
+
             if (menuId == undefined) {
                 menuId = 0
             }
@@ -377,7 +377,7 @@ export default {
                         // 成功したら、トップページへ遷移する
                         window.location.href = '/'
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('献立投稿エラー')
                         console.log(response)
                     }
@@ -397,9 +397,12 @@ export default {
                     },
                     (response) => {
                         if (response.code != 0) {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('記事削除エラー')
                             console.log(response)
+                        } else {
+                            // 成功したら、トップページへ遷移する
+                            window.location.href = '/'
                         }
                     }
                 );

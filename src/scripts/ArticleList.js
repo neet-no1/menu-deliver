@@ -83,7 +83,7 @@ export default {
                             }
                         };
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('記事検索エラー')
                         console.log(response)
                     }

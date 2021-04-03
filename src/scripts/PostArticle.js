@@ -54,7 +54,7 @@ export default {
                             // エディターに内容を表示
                             this.set_contents()
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('記事内容取得エラー')
                             console.log(response)
                         }
@@ -116,7 +116,7 @@ export default {
                 this.contentsPath,
                 {},
                 (response) => {
-                    this.quill.setContents(response)
+                    this.quill.setContents(JSON.parse(response))
                 }
             )
         },
@@ -137,7 +137,7 @@ export default {
         post_article(isOpen) {
             let param = new CommonUtils().getQueryParam()
             let articleId = param.id
-            
+
             if (articleId == undefined) {
                 articleId = 0
             }
@@ -146,8 +146,8 @@ export default {
             formData.append("id", articleId);
             formData.append("title", this.title);
             formData.append("thumb", this.thumb_input_image);
-            formData.append("contents", this.quill.getContents());
-            formData.append("opend", isOpen);
+            formData.append("contents", JSON.stringify(this.quill.getContents()));
+            formData.append("opened", isOpen);
 
             new ApiUtils().formDataAccess(
                 URL.POST_ARTICLE,
@@ -157,7 +157,7 @@ export default {
                         // 成功したら、トップページへ遷移する
                         window.location.href = '/'
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('記事投稿エラー')
                         console.log(response)
                     }
@@ -177,9 +177,12 @@ export default {
                     },
                     (response) => {
                         if (response.code != 0) {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('記事削除エラー')
                             console.log(response)
+                        } else {
+                            // 成功したら、トップページへ遷移する
+                            window.location.href = '/'
                         }
                     }
                 );

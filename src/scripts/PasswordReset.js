@@ -22,7 +22,7 @@ export default {
                         // パスワードリセットが完了したらログイン画面へ遷移する
                         window.location.href = '/login';
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('パスワードリセットエラー')
                         console.log(response)
                     }

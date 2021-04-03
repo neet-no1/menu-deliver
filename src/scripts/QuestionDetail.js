@@ -91,7 +91,7 @@ export default {
 
                             this.mine = info.mine
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('質問内容取得エラー')
                             console.log(response)
                         }
@@ -116,7 +116,7 @@ export default {
                             // 回答一覧を取得する
                             this.get_answers()
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('ベストアンサー取得エラー')
                             console.log(response)
                         }
@@ -173,7 +173,7 @@ export default {
                                 })
                             }
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('回答一覧取得エラー')
                             console.log(response)
                         }
@@ -196,7 +196,7 @@ export default {
                             // 成功したら、再度ページを開きなおす
                             window.location.href = '/question/detail?id=' + questionId
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('ベストアンサー決定エラー')
                             console.log(response)
                         }
@@ -251,7 +251,7 @@ export default {
                             'background-image': 'url(' + response.info.imgPath + ')'
                         }
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('アカウント情報取得エラー')
                         console.log(response)
                     }
@@ -275,7 +275,7 @@ export default {
                             // 成功したら、再度ページを開きなおす
                             window.location.href = '/question/detail?id=' + questionId
                         } else {
-                            alert('エラーが発生しました。')
+                            alert(response.errorInfo.errorMessage)
                             console.log('回答投稿エラー')
                             console.log(response)
                         }

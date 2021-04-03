@@ -86,7 +86,7 @@ export default {
                     if (response.code == 0) {
                         this.categories = response.info
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('質問カテゴリ取得エラー')
                         console.log(response)
                     }
@@ -136,7 +136,7 @@ export default {
                             }
                         }
                     } else {
-                        alert('エラーが発生しました。')
+                        alert(response.errorInfo.errorMessage)
                         console.log('質問検索エラー')
                         console.log(response)
                     }
