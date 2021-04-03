@@ -26,7 +26,7 @@
         <div class="el_food_composition d-block d-md-none">
             <v-data-table :headers="mobile_headers" :items="compositions" :single-expand="singleExpand"
                 :expanded.sync="expanded" show-expand class="elevation-1" disable-sort hide-default-footer
-                :items-per-page="50" item-key="comp_id">
+                :items-per-page="50" item-key="compId">
                 <template v-slot:expanded-item="{ headers, item }">
                     <td :colspan="headers.length">
                         <div class="el_compositions_expanded_item"><span>エネルギー</span><span>{{ item.energy }} kcal</span>

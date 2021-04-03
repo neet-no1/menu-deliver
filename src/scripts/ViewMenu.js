@@ -249,7 +249,7 @@ export default {
                 this.composition_json_path,
                 {},
                 (response) => {
-                    this.compositions = response.contents
+                    this.compositions = JSON.parse(response.contents)
                     this.cookery = response.cookery
                 }
             )
@@ -345,10 +345,11 @@ export default {
             ]
         },
         energy_total: function () {
+            console.log(this.compositions)
             if (this.compositions.length === 0) {
                 return ''
             } else {
-                return this.compositions.reduce(function (accumulator, currentValue, currentIndex, array) {
+                return this.compositions.reduce((accumulator, currentValue, currentIndex, array) => {
                     return accumulator + (Math.round(currentValue.energy) * 100);
                 }, 0) / 100
             }
