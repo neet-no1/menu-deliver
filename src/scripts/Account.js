@@ -388,13 +388,28 @@ export default {
         if (file.name.lastIndexOf('.') <= 0) {
           return
         }
-        const fr = new FileReader()
-        fr.readAsDataURL(file)
-        fr.addEventListener('load', () => {
-          this.user_icon_path = fr.result
-        })
+
+        let vc = this
+        let payload = {
+            quality: 0.6,
+            maxWidth: 350,
+            maxHeight: 220,
+            success(result) {
+                const fr = new FileReader()
+                fr.readAsDataURL(result)
+                fr.addEventListener('load', () => {
+                    vc.user_icon_path = fr.result
+                })
+
+                vc.user_icon_edit = result
+            },
+            error(err) {
+              console.log(err.message);
+            },
+        }
+        new Compressor(file, payload)
       } else {
-        this.user_icon_path = '/public/user_images/user_no_image.jpg'
+        this.user_icon_path = '/public/user_images/no_image'
       }
     },
     user_info_update() {

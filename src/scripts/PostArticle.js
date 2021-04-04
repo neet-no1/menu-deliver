@@ -125,11 +125,26 @@ export default {
                 if (file.name.lastIndexOf('.') <= 0) {
                     return
                 }
-                const fr = new FileReader()
-                fr.readAsDataURL(file)
-                fr.addEventListener('load', () => {
-                    this.thumb_image_url = fr.result
-                })
+
+                let vc = this
+                let payload = {
+                    quality: 0.6,
+                    maxWidth: 350,
+                    maxHeight: 220,
+                    success(result) {
+                        const fr = new FileReader()
+                        fr.readAsDataURL(result)
+                        fr.addEventListener('load', () => {
+                            vc.thumb_image_url = fr.result
+                        })
+
+                        vc.thumb_input_image = result
+                    },
+                    error(err) {
+                      console.log(err.message);
+                    },
+                }
+                new Compressor(file, payload)
             } else {
                 this.thumb_image_url = ''
             }
