@@ -263,7 +263,7 @@ export default {
 
             if (menuId != undefined) {
                 new ApiUtils().postAccess(
-                    URL.POST_ARTICLE_FAVORITE,
+                    URL.POST_MENU_FAVORITE,
                     {
                         "id": menuId,
                         "added": this.is_favorite
