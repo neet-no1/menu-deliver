@@ -3,6 +3,9 @@
     <News />
     <main>
         <div class="ly_favorite_icon">
+            <div class="bl_edit_btn" v-if="mine">
+                <div class="btn btn__status" @click="edit_menu">編集</div>
+            </div>
             <a href="#" class="btn_favorite_add" @click="add_favorite" v-show="!is_favorite">
                 <span class="el_icon_heart"><i class="far fa-heart"></i></span> <span>お気に入り追加</span>
             </a>

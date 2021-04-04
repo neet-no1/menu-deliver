@@ -17,6 +17,9 @@ export default {
     },
     data() {
         return {
+            // 自分の投稿であるか
+            mine: false,
+
             // エディターインスタンス
             quill: null,
 
@@ -70,6 +73,7 @@ export default {
                             }
                             this.user_name = info.userName
                             this.user_id = info.userId
+                            this.mine = info.mine
 
                             // エディターに内容を表示
                             this.set_contents()
@@ -176,7 +180,16 @@ export default {
                     }
                 )
             }
-        }
+        },
+        edit_article() {
+            let param = new CommonUtils().getQueryParam()
+            let articleId = param.id
+
+            if (articleId != undefined) {
+                // リンク先に遷移する
+                window.location.href = '/post/article?id=' + articleId
+            }
+        },
     },
     mounted() {
         this.get_items()

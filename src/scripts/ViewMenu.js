@@ -17,6 +17,9 @@ export default {
     },
     data() {
         return {
+            // 自分の投稿であるか
+            mine: false,
+
             // タイトル
             title: '',
 
@@ -221,9 +224,8 @@ export default {
                             let info = response.info
                             this.title = info.title
                             this.sub_title = info.subTitle
-                            //this.category = info.categoryId
-                            //this.thumb_image_url = info.thumbPath
                             this.composition_json_path = info.contents
+                            this.mine = info.mine
 
                             // パスを元にjsonデータを取得する
                             this.get_composition_contents()
@@ -301,7 +303,16 @@ export default {
                     }
                 )
             }
-        }
+        },
+        edit_menu() {
+            let param = new CommonUtils().getQueryParam()
+            let menuId = param.id
+
+            if (menuId != undefined) {
+                // リンク先に遷移する
+                window.location.href = '/post/menu?id=' + menuId
+            }
+        },
     },
     computed: {
         composition_total: function () {

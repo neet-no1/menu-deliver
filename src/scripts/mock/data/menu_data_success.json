@@ -17,6 +17,8 @@
                 "imageDescription": "焼き終わった後です",
                 "uploadImageUrl": "/public/menu_images/recommend_3.jpg"
             }
-        ]
+        ],
+        "opened": true,
+        "mine": true
     }
 }

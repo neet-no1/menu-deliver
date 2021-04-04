@@ -10,6 +10,8 @@
         "userId": 32,
         "userName": "サンプル太朗",
         "userIconPath": "/public/user_images/user_1.jpg",
-        "contents": "/public/article_contents/sample4.json"
+        "contents": "/public/article_contents/sample4.json",
+        "opened": true,
+        "mine": true
     }
 }
