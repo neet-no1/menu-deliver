@@ -142,6 +142,13 @@ export default {
                     sortable: false,
                     width: '50px',
                 },
+                {
+                    text: '削除',
+                    value: 'delete',
+                    align: 'center',
+                    sortable: false,
+                    width: '30px',
+                },
             ],
         }
     },
@@ -291,7 +298,7 @@ export default {
                         vc.menu_imgs[i].input_image = result
                     },
                     error(err) {
-                      console.log(err.message);
+                        console.log(err.message);
                     },
                 }
                 new Compressor(file, payload)
@@ -320,7 +327,7 @@ export default {
                         vc.thumb_input_image = result
                     },
                     error(err) {
-                      console.log(err.message);
+                        console.log(err.message);
                     },
                 }
                 new Compressor(file, payload)
@@ -442,7 +449,12 @@ export default {
                 window.history.back(-1);
                 return false;
             }
-        }
+        },
+        deleteItem(item) {
+            console.log('delete')
+            let editedIndex = this.compositions.indexOf(item)
+            this.compositions.splice(editedIndex, 1)
+        },
     },
     computed: {
         composition_items: function () {

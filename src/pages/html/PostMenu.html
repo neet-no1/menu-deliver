@@ -125,6 +125,11 @@
                     <span>(g)</span>
                 </div>
             </template>
+            <template v-slot:header.delete="{ header }">
+                <div class="el_food_composition_header">
+                    <span>{{ header.text }}</span>
+                </div>
+            </template>
 
             <!-- 材料項目 -->
             <template v-slot:item.material="props">
@@ -139,6 +144,16 @@
                     </template>
                 </v-edit-dialog>
             </template>
+
+            <!-- 削除アイコン -->
+            <template v-slot:item.delete="{ item }">
+                <div @click="deleteItem(item)">
+                    <v-icon small>
+                        fas fa-trash-alt
+                    </v-icon>
+                </div>
+            </template>
+
             <!-- 使用量項目 -->
             <template v-slot:item.amount="props">
                 <v-edit-dialog @open="amountClick(props.index)" @save="amountChange(props.item.amount)">
