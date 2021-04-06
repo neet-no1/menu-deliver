@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Compressor from 'compressorjs'
 
 import * as URL from '../common/api_url'
 import ApiUtils from '../scripts/api_utils'
@@ -279,6 +280,7 @@ export default {
             if (questionId != undefined) {
 
                 let formData = new FormData()
+                formData.append("id", questionId)
                 formData.append("contents", this.answer_contents)
                 formData.append("file", this.input_image)
 

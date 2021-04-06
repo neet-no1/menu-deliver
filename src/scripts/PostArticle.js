@@ -1,6 +1,7 @@
 import * as URL from '../common/api_url'
 import ApiUtils from '../scripts/api_utils'
 import CommonUtils from '../scripts/common_utils'
+import Compressor from 'compressorjs'
 
 import Quill from 'quill'
 import ImageCompress from 'quill-image-compress';

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Compressor from 'compressorjs'
 
 import * as URL from '../common/api_url'
 import ApiUtils from '../scripts/api_utils'
