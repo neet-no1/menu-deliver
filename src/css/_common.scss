@@ -817,7 +817,7 @@
 
     color: #999;
 
-    span{
+    span {
         font-size: 2rem;
     }
 }
@@ -827,10 +827,18 @@
 
     display: flex;
     justify-content: center;
-
 }
 
 .ly_post_menu_sub_title_inner {
     width: 100%;
     max-width: 600px;
+}
+
+.field-icon {
+    color: #555;
+    float: right;
+    margin-right: 15px;
+    margin-top: -30px;
+    position: relative;
+    z-index: 2;
 }

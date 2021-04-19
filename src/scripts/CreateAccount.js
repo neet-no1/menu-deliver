@@ -10,6 +10,8 @@ export default {
             email: '',
             password: '',
             password_confirm: '',
+            visible_password: false,
+            visible_password_confirm: false,
         }
     },
     methods: {
@@ -32,6 +34,14 @@ export default {
                     }
                 }
             )
+        }
+    },
+    computed: {
+        visible_password_type: function () {
+            return this.visible_password ? 'text' : 'password'
+        },
+        visible_password_confirm_type: function () {
+            return this.visible_password_confirm ? 'text' : 'password'
         }
     },
 }
