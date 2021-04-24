@@ -1,5 +1,8 @@
 # menu-deliver
 
+menu-deliverとは[menu-deliver](https://www.menu-deliver.com/about)サービスのWEBフロントエンドプロジェクトである。
+
+# 環境構築
 ## 前提条件
 ・[node.js](https://nodejs.org/ja/download/)をインストールしていること  
 
@@ -8,6 +11,8 @@
 最初に以下を実行
 
 ```
+$ git clone https://github.com/neet-no1/menu-deliver.git
+$ cd menu-deliver
 $ npm install
 ```
 
@@ -23,6 +28,7 @@ $ npm run dev
 $ npm run start
 ```
 
+# 開発における情報
 ## フォルダ構成
 `src/pages/`：vueファイルを格納。templateタグとscriptタグで構成される。templateタグにはHTMLを記載する。scriptタグには対象JSファイルへのリンクを記載する。  
 `src/scripts/`：jsファイルを格納。vue.jsを使用したJavaScriptを記載。vueファイルにより読み込まれる。  
