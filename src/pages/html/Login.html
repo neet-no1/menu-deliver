@@ -23,7 +23,13 @@
                             <span>パスワード</span>
                         </div>
                         <div>
-                            <input class="el_input_box" type="password" placeholder=""  v-model="password">
+                            <input class="el_input_box" :type="visible_password_type" placeholder=""  v-model="password">
+                            <span class="field-icon" v-show="visible_password" @click="visible_password = !visible_password">
+                                <i class="far fa-eye"></i>
+                            </span>
+                            <span class="field-icon" v-show="!visible_password" @click="visible_password = !visible_password">
+                                <i class="far fa-eye-slash"></i>
+                            </span>
                         </div>
                     </div>
                 </div>

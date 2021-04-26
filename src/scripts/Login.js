@@ -6,7 +6,8 @@ export default {
         return {
             // 入力パラメタ
             email: '',
-            password: ''
+            password: '',
+            visible_password: false,
         }
     },
     methods: {
@@ -51,6 +52,11 @@ export default {
                 }
             )
         }
+    },
+    computed: {
+        visible_password_type: function () {
+            return this.visible_password ? 'text' : 'password'
+        },
     },
     mounted() {
         this.is_auth()

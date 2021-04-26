@@ -23,7 +23,8 @@
                             <span>メールアドレス</span>
                         </div>
                         <div>
-                            <input class="el_input_box" type="text" name="email" id="email" placeholder="" v-model="email">
+                            <input class="el_input_box" type="text" name="email" id="email" placeholder=""
+                                v-model="email">
                         </div>
                     </div>
                 </div>
@@ -31,9 +32,23 @@
                     <div class="el_input">
                         <div class="el_input_title">
                             <span>パスワード</span>
+                            <div>
+                                <span class="sub_title">
+                                    (英大小文字、数値を入れて8文字以上)
+                                </span>
+                            </div>
                         </div>
                         <div>
-                            <input class="el_input_box" type="password" name="password" id="password" placeholder="" v-model="password">
+                            <input class="el_input_box" :type="visible_password_type" name="password" id="password"
+                                placeholder="" v-model="password">
+                            <span class="field-icon" v-show="visible_password"
+                                @click="visible_password = !visible_password">
+                                <i class="far fa-eye"></i>
+                            </span>
+                            <span class="field-icon" v-show="!visible_password"
+                                @click="visible_password = !visible_password">
+                                <i class="far fa-eye-slash"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -43,7 +58,16 @@
                             <span>パスワード再入力</span>
                         </div>
                         <div>
-                            <input class="el_input_box" type="password" name="password_confirm" id="password_confirm" placeholder="" v-model="password_confirm">
+                            <input class="el_input_box" :type="visible_password_confirm_type" name="password_confirm"
+                                id="password_confirm" placeholder="" v-model="password_confirm">
+                            <span class="field-icon" v-show="visible_password_confirm"
+                                @click="visible_password_confirm = !visible_password_confirm">
+                                <i class="far fa-eye"></i>
+                            </span>
+                            <span class="field-icon" v-show="!visible_password_confirm"
+                                @click="visible_password_confirm = !visible_password_confirm">
+                                <i class="far fa-eye-slash"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
