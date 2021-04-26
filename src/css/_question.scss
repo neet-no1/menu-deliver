@@ -1,6 +1,7 @@
 .ly_question,
 .ly_menu,
-.ly_article {
+.ly_article,
+.ly_about {
     width: 100%;
 
     display: flex;
@@ -11,7 +12,8 @@
 
 .ly_question_inner,
 .ly_menu_inner,
-.ly_article_inner {
+.ly_article_inner,
+.ly_about_inner {
     width: 100%;
     max-width: #{$container-width};
     padding-right: #{$container-padding};
