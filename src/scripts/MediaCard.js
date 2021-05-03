@@ -19,7 +19,7 @@ export default {
         },
         click_link() {
             // リンク先に遷移する
-            window.location.href = this.menu.link
+            this.$router.push(this.menu.link)
         }
     },
     computed: {

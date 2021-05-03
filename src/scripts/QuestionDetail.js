@@ -70,8 +70,7 @@ export default {
             this.get_is_auth()
         },
         get_question() {
-            let param = new CommonUtils().getQueryParam()
-            let questionId = param.id
+            let questionId = this.$route.query.id
 
             if (questionId != undefined) {
                 new ApiUtils().getAccess(
@@ -101,8 +100,7 @@ export default {
             }
         },
         get_best_answer() {
-            let param = new CommonUtils().getQueryParam()
-            let questionId = param.id
+            let questionId = this.$route.query.id
 
             if (questionId != undefined) {
                 new ApiUtils().getAccess(
@@ -126,8 +124,7 @@ export default {
             }
         },
         get_answers() {
-            let param = new CommonUtils().getQueryParam()
-            let questionId = param.id
+            let questionId = this.$route.query.id
 
             if (questionId != undefined) {
                 new ApiUtils().getAccess(
@@ -183,8 +180,8 @@ export default {
             }
         },
         decide_best_answer(answer) {
-            let param = new CommonUtils().getQueryParam()
-            let questionId = param.id
+            let questionId = this.$route.query.id
+
             if (questionId != undefined) {
                 new ApiUtils().postAccess(
                     URL.POST_QUESTION_BESTANSWER,
@@ -195,7 +192,7 @@ export default {
                     (response) => {
                         if (response.code == 0) {
                             // 成功したら、再度ページを開きなおす
-                            window.location.href = '/question/detail?id=' + questionId
+                            this.$router.push('/question/detail?id=' + questionId)
                         } else {
                             alert(response.errorInfo.errorMessage)
                             console.log('ベストアンサー決定エラー')
@@ -275,8 +272,8 @@ export default {
             )
         },
         post_answer() {
-            let param = new CommonUtils().getQueryParam()
-            let questionId = param.id
+            let questionId = this.$route.query.id
+            
             if (questionId != undefined) {
 
                 let formData = new FormData()
@@ -290,7 +287,7 @@ export default {
                     (response) => {
                         if (response.code == 0) {
                             // 成功したら、再度ページを開きなおす
-                            window.location.href = '/question/detail?id=' + questionId
+                            this.$router.push('/question/detail?id=' + questionId)
                         } else {
                             alert(response.errorInfo.errorMessage)
                             console.log('回答投稿エラー')

@@ -26,7 +26,7 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         // アカウント登録が完了したら、仮完了画面へ遷移
-                        window.location.href = '/create/account/predone';
+                        this.$router.push('/create/account/predone')
                     } else {
                         alert(response.errorInfo.errorMessage)
                         console.log('パスワードリセットエラー')

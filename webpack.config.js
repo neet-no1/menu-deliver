@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-
+const { VueLoaderPlugin } = require('vue-loader')
 const enabledSourceMap = process.env.NODE_ENV === "development";
 
 module.exports = {
@@ -10,10 +10,11 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
+  mode: 'development',
   module: {
     rules: [
       {
-        test: /\.json$/,
+        test: /\\.json$/,
         use: {
           loader: 'json-loader'
         }
@@ -50,7 +51,8 @@ module.exports = {
               // 0 => no loaders (default);
               // 1 => postcss-loader;
               // 2 => postcss-loader, sass-loader
-              importLoaders: 2
+              importLoaders: 2,
+              esModule: false
             },
           },
           {
@@ -70,7 +72,8 @@ module.exports = {
           test: /\.(png|jpg|gif|svg)$/,
           loader: 'file-loader',
           options: {
-            name: '[path][name].[ext]'
+            name: '[path][name].[ext]',
+            esModule: false
           }
       }
     ]
@@ -81,18 +84,22 @@ module.exports = {
     }
   },
   devServer: {
-    host: '0.0.0.0',
-    historyApiFallback: true,
-    noInfo: true
+    //host: '0.0.0.0',
+    //historyApiFallback: true,
+    //noInfo: true
+    contentBase: path.join(__dirname, ''),
+    compress: true,
+    port: 8080,
   },
-  devtool: '#eval-source-map',
+  //devtool: '#eval-source-map',
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
       "window.$": "jquery",
       "window.jQuery": "jquery"
-    })
+    }),
+    new VueLoaderPlugin()
   ]
 }
 
@@ -102,13 +109,22 @@ if (process.env.ENABLE_MOCK === 'false') {
   }
 }
 
+module.exports.plugins = (module.exports.plugins || []).concat([
+  new webpack.DefinePlugin({
+    'process.env': {
+      ENABLE_MOCK: process.env.ENABLE_MOCK
+    }
+  })
+])
+
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
+  //module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        NODE_ENV: '"production"',
+        ENABLE_MOCK: process.env.ENABLE_MOCK
       }
     }),
 /*    new webpack.optimize.UglifyJsPlugin({
@@ -117,6 +133,6 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
 */
-    new webpack.optimize.OccurrenceOrderPlugin()
+    //new webpack.optimize.OccurrenceOrderPlugin()
   ])
 }

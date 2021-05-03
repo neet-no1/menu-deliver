@@ -424,7 +424,7 @@ export default {
         (response) => {
           if (response.code == 0) {
             // 成功したら、ページを開きなおすへ遷移する
-            window.location.href = '/account'
+            this.$router.push('/account')
           } else {
             alert(response.errorInfo.errorMessage)
             console.log('ユーザ情報更新エラー')
@@ -444,7 +444,7 @@ export default {
         (response) => {
           if (response.code == 0) {
             // 成功したら、ページを開きなおすへ遷移する
-            window.location.href = '/account'
+            this.$router.push('/account')
           } else {
             alert(response.errorInfo.errorMessage)
             console.log('パスワード更新エラー')

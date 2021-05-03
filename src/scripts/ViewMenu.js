@@ -210,8 +210,7 @@ export default {
             );
         },
         get_posted_menus() {
-            let param = new CommonUtils().getQueryParam()
-            let menuId = param.id
+            let menuId = this.$route.query.id
 
             if (menuId != undefined) {
                 new ApiUtils().getAccess(
@@ -260,8 +259,7 @@ export default {
             new CommonUtils().isAuthToLogin()
             this.is_favorite = !this.is_favorite
 
-            let param = new CommonUtils().getQueryParam()
-            let menuId = param.id
+            let menuId = this.$route.query.id
 
             if (menuId != undefined) {
                 new ApiUtils().postAccess(
@@ -283,8 +281,7 @@ export default {
             }
         },
         get_favorite_state() {
-            let param = new CommonUtils().getQueryParam()
-            let menuId = param.id
+            let menuId = this.$route.query.id
 
             if (menuId != undefined) {
                 new ApiUtils().getAccess(
@@ -305,12 +302,11 @@ export default {
             }
         },
         edit_menu() {
-            let param = new CommonUtils().getQueryParam()
-            let menuId = param.id
+            let menuId = this.$route.query.id
 
             if (menuId != undefined) {
                 // リンク先に遷移する
-                window.location.href = '/post/menu?id=' + menuId
+                this.$router.push('/post/menu?id=' + menuId)
             }
         },
     },

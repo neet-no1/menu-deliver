@@ -185,7 +185,8 @@ export default {
             );
         },
         get_posted_menus() {
-            let param = new CommonUtils().getQueryParam()
+            console.log(this.$route.query)
+            let param = this.$route.query
             let menuId = param.id
 
             if (menuId != undefined) {
@@ -384,8 +385,7 @@ export default {
             this.current_amount_index = index
         },
         post_menu(isOpen) {
-            let param = new CommonUtils().getQueryParam()
-            let menuId = param.id
+            let menuId = this.$route.query.id
 
             if (menuId == undefined) {
                 menuId = 0
@@ -413,7 +413,7 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         // 成功したら、トップページへ遷移する
-                        window.location.href = '/'
+                        this.$router.push('/')
                     } else {
                         alert(response.errorInfo.errorMessage)
                         console.log('献立投稿エラー')
@@ -423,8 +423,7 @@ export default {
             )
         },
         delete_menu() {
-            let param = new CommonUtils().getQueryParam()
-            let menuId = param.id
+            let menuId = this.$route.query.id
 
             if (menuId != undefined) {
                 // 削除処理を行う
@@ -440,7 +439,7 @@ export default {
                             console.log(response)
                         } else {
                             // 成功したら、トップページへ遷移する
-                            window.location.href = '/'
+                            this.$router.push('/')
                         }
                     }
                 );

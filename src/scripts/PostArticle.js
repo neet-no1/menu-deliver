@@ -35,8 +35,7 @@ export default {
             this.get_posted_articles()
         },
         get_posted_articles() {
-            let param = new CommonUtils().getQueryParam()
-            let articleId = param.id
+            let articleId = this.$route.query.id
 
             if (articleId != undefined) {
                 new ApiUtils().getAccess(
@@ -151,8 +150,7 @@ export default {
             }
         },
         post_article(isOpen) {
-            let param = new CommonUtils().getQueryParam()
-            let articleId = param.id
+            let articleId = this.$route.query.id
 
             if (articleId == undefined) {
                 articleId = 0
@@ -171,7 +169,7 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         // 成功したら、トップページへ遷移する
-                        window.location.href = '/'
+                        this.$router.push('/')
                     } else {
                         alert(response.errorInfo.errorMessage)
                         console.log('記事投稿エラー')
@@ -181,8 +179,7 @@ export default {
             )
         },
         delete_article() {
-            let param = new CommonUtils().getQueryParam()
-            let articleId = param.id
+            let articleId = this.$route.query.id
 
             if (articleId != undefined) {
                 // 削除処理を行う
@@ -198,7 +195,7 @@ export default {
                             console.log(response)
                         } else {
                             // 成功したら、トップページへ遷移する
-                            window.location.href = '/'
+                            this.$router.push('/')
                         }
                     }
                 );

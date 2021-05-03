@@ -15,7 +15,7 @@ export default {
     methods: {
         click_link() {
             // リンク先に遷移する
-            window.location.href = this.article.link
+            this.$router.push(this.article.link)
         }
     },
     computed: {

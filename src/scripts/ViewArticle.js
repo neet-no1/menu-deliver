@@ -52,8 +52,7 @@ export default {
             this.get_favorite_state()
         },
         get_posted_articles() {
-            let param = new CommonUtils().getQueryParam()
-            let articleId = param.id
+            let articleId = this.$route.query.id
 
             if (articleId != undefined) {
                 new ApiUtils().getAccess(
@@ -119,8 +118,7 @@ export default {
             new CommonUtils().isAuthToLogin()
             this.is_favorite = !this.is_favorite
 
-            let param = new CommonUtils().getQueryParam()
-            let articleId = param.id
+            let articleId = this.$route.query.id
 
             if (articleId != undefined) {
                 new ApiUtils().postAccess(
@@ -160,8 +158,7 @@ export default {
             )
         },
         get_favorite_state() {
-            let param = new CommonUtils().getQueryParam()
-            let articleId = param.id
+            let articleId = this.$route.query.id
 
             if (articleId != undefined) {
                 new ApiUtils().getAccess(
@@ -182,12 +179,11 @@ export default {
             }
         },
         edit_article() {
-            let param = new CommonUtils().getQueryParam()
-            let articleId = param.id
+            let articleId = this.$route.query.id
 
             if (articleId != undefined) {
                 // リンク先に遷移する
-                window.location.href = '/post/article?id=' + articleId
+                this.$router.push('/post/article?id=' + articleId)
             }
         },
     },
