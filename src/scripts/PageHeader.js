@@ -63,6 +63,12 @@ export default {
                 event.preventDefault()
                 event.stopPropagation()
             }
+        },
+        openPostArticle() {
+            this.$router.push('/post/article')
+        },
+        openPostMenu() {
+            this.$router.push('/post/menu')
         }
     },
     mounted() {

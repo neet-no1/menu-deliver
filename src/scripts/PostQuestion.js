@@ -92,7 +92,7 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         // 成功したら、質問一覧ページへ遷移する
-                        window.location.href = '/question'
+                        this.$router.push('/question')
                     } else {
                         alert(response.errorInfo.errorMessage)
                         console.log('質問投稿エラー')

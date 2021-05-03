@@ -20,7 +20,7 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         // パスワードリセットが完了したらログイン画面へ遷移する
-                        window.location.href = '/login';
+                        this.$router.push('/login')
                     } else {
                         alert(response.errorInfo.errorMessage)
                         console.log('パスワードリセットエラー')

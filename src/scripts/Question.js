@@ -145,11 +145,11 @@ export default {
         },
         open_question(question) {
             // 質問詳細ページを開く
-            window.location.href = '/question/detail?id=' + question.id
+            this.$router.push('/question/detail?id=' + question.id)
         },
         open_post_question() {
             // 質問投稿ページを開く
-            window.location.href = '/post/question'
+            this.$router.push('/post/question')
         }
     },
     computed: {

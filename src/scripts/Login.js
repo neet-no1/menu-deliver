@@ -25,7 +25,7 @@ export default {
                 (response) => {
                 if(response.code == 0) {
                     // トップページへ遷移
-                    window.location.href = '/';
+                    this.$router.push('/')
                 } else {
                     alert(response.errorInfo.errorMessage)
                 }
@@ -42,7 +42,7 @@ export default {
                     if(response.code == 0) {
                         if(response.info) {
                             // 認証済みであればトップページへ遷移
-                            //window.location.href = '/';
+                            this.$router.push('/')
                         } else {
                             // 認証されていなければ何もしない
                         }

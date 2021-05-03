@@ -24,7 +24,7 @@ export default class CommonUtils {
                         // 認証済みであれば何もしない
                     } else {
                         // 認証されていなければログインページへ遷移
-                        window.location.href = '/login';
+                        this.$router.push('/login')
                     }
                 } else {
                     console.log('認証状態取得に失敗しました。')
