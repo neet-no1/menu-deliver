@@ -51,6 +51,13 @@ export default {
                             this.thumb_image_url = info.imgPath
                             this.contentsPath = info.contents
 
+                            // 画像データを取得
+                            if (this.thumb_image_url != '') {
+                                new ApiUtils().getImage(this.thumb_image_url, (response) => {
+                                    this.thumb_input_image = response
+                                })
+                            }
+
                             // エディターに内容を表示
                             this.set_contents()
                         } else {
@@ -141,7 +148,7 @@ export default {
                         vc.thumb_input_image = result
                     },
                     error(err) {
-                      console.log(err.message);
+                        console.log(err.message);
                     },
                 }
                 new Compressor(file, payload)
