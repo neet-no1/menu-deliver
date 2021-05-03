@@ -204,6 +204,13 @@ export default {
                             this.thumb_image_url = info.thumbPath
                             this.composition_json_path = info.contents
 
+                            // 画像データを取得
+                            if (this.thumb_image_url != '') {
+                                new ApiUtils().getImage(this.thumb_image_url, (response) => {
+                                    this.thumb_input_image = response
+                                })
+                            }
+
                             // パスを元にjsonデータを取得する
                             this.get_composition_contents()
 
@@ -212,6 +219,15 @@ export default {
                                     input_image: null,
                                     uploadImageUrl: e.uploadImageUrl,
                                     img_description: e.imageDescription
+                                }
+                            })
+
+                            // 画像データを取得
+                            this.menu_imgs.map((e) => {
+                                if (e.uploadImageUrl != '') {
+                                    new ApiUtils().getImage(e.uploadImageUrl, (response) => {
+                                        e.input_image = response
+                                    })
                                 }
                             })
                         } else {

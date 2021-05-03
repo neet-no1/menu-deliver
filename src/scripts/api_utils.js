@@ -89,4 +89,21 @@ export default class ApiUtils {
     })
     */
     }
+
+    /**
+     * 画像ファイル取得
+     * @param {*} url 画像URL
+     * @param {*} callback 取得データ処理コールバック関数
+     */
+    getImage(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                callback(this.response);
+            }
+        }
+        xhr.send();
+    }
 }
