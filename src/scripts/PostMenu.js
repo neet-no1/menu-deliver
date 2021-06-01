@@ -383,7 +383,7 @@ export default {
                 {
                     "compId": comp.compId,
                     "material": comp.material,
-                    "amount": e,
+                    "amount": Number(e),
                     "waste": Math.round((comp.waste * e) / 10) / 10,
                     "energy": Math.round((comp.energy * e) / 10) / 10,
                     "protein": Math.round((comp.protein * e) / 10) / 10,
