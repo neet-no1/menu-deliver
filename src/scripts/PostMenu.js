@@ -411,6 +411,9 @@ export default {
                 menuId = 0
             }
 
+            const target = Object.assign([], this.compositions)
+            target.forEach(element => delete element.base);
+
             let formData = new FormData()
             formData.append("id", menuId);
             formData.append("title", this.title);
@@ -419,7 +422,7 @@ export default {
             formData.append("category", this.category);
             formData.append("cookery", this.cookery);
             formData.append("opened", isOpen);
-            formData.append("contents", JSON.stringify(this.compositions));
+            formData.append("contents", JSON.stringify(target));
             this.menu_imgs.map(e => {
                 formData.append("files", e.input_image)
             });
