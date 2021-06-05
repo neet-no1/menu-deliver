@@ -281,7 +281,8 @@ export default {
                 "iron": 0,
                 "cholesterol": 0,
                 "dietaryFiber": 0,
-                "saltEquivalent": 0
+                "saltEquivalent": 0,
+                "base": null
             })
         },
         add_menu_img() {
@@ -369,22 +370,24 @@ export default {
                     "iron": e.iron,
                     "cholesterol": e.cholesterol,
                     "dietaryFiber": e.dietaryFibers,
-                    "saltEquivalent": e.saltEquivalents
+                    "saltEquivalent": e.saltEquivalents,
+                    "base": e
                 });
         },
         materialClick(index) {
             this.current_conposition_index = index
         },
-        amountChange(e) {
-            let comp = this.compositions[this.current_amount_index]
+        amountChange(amount) {
+            let e = Number(amount)
+            let comp = this.compositions[this.current_amount_index].base
             this.$set(
                 this.compositions,
                 this.current_amount_index,
                 {
-                    "compId": comp.compId,
-                    "material": comp.material,
-                    "amount": Number(e),
-                    "waste": Math.round((comp.waste * e) / 10) / 10,
+                    "compId": comp.id,
+                    "material": comp.name,
+                    "amount": e,
+                    "waste": Math.round((e * 100) / (100 - comp.refuse) * 10) / 10,
                     "energy": Math.round((comp.energy * e) / 10) / 10,
                     "protein": Math.round((comp.protein * e) / 10) / 10,
                     "lipid": Math.round((comp.lipid * e) / 10) / 10,
@@ -392,8 +395,9 @@ export default {
                     "calcium": Math.round((comp.calcium * e) / 10) / 10,
                     "iron": Math.round((comp.iron * e) / 10) / 10,
                     "cholesterol": Math.round((comp.cholesterol * e) / 10) / 10,
-                    "dietaryFiber": Math.round((comp.dietaryFiber * e) / 10) / 10,
-                    "saltEquivalent": Math.round((comp.saltEquivalent * e) / 10) / 10,
+                    "dietaryFiber": Math.round((comp.dietaryFibers * e) / 10) / 10,
+                    "saltEquivalent": Math.round((comp.saltEquivalents * e) / 10) / 10,
+                    "base": comp
                 }
             );
         },
