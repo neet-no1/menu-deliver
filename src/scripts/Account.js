@@ -155,6 +155,13 @@ export default {
             this.user_icon_path = info.imgPath
             this.user_email = info.email
 
+            // 画像データを取得
+            if (this.user_icon_path != '') {
+              new ApiUtils().getImage(this.user_icon_path, (response) => {
+                this.user_icon_edit = response
+              })
+            }
+
             this.user_name_edit = info.name
             this.user_email_edit = info.email
           } else {
@@ -392,21 +399,21 @@ export default {
 
         let vc = this
         let payload = {
-            quality: 0.6,
-            maxWidth: 350,
-            maxHeight: 220,
-            success(result) {
-                const fr = new FileReader()
-                fr.readAsDataURL(result)
-                fr.addEventListener('load', () => {
-                    vc.user_icon_path = fr.result
-                })
+          quality: 0.6,
+          maxWidth: 350,
+          maxHeight: 220,
+          success(result) {
+            const fr = new FileReader()
+            fr.readAsDataURL(result)
+            fr.addEventListener('load', () => {
+              vc.user_icon_path = fr.result
+            })
 
-                vc.user_icon_edit = result
-            },
-            error(err) {
-              console.log(err.message);
-            },
+            vc.user_icon_edit = result
+          },
+          error(err) {
+            console.log(err.message);
+          },
         }
         new Compressor(file, payload)
       } else {
