@@ -3,6 +3,7 @@ import Vue from 'vue'
 import * as URL from '../common/api_url'
 import ApiUtils from '../scripts/api_utils'
 import CommonUtils from '../scripts/common_utils'
+import Compressor from 'compressorjs'
 
 import PageHeader from '../pages/module/PageHeader.vue'
 import PageFooter from '../pages/module/PageFooter.vue'
