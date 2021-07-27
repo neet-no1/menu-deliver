@@ -248,6 +248,14 @@ export default {
                 (response) => {
                     this.compositions = JSON.parse(response.contents)
                     this.cookery = response.cookery
+
+                    this.compositions.forEach(composition => {
+                        this.material_items.forEach(item => {
+                            if (item.id == composition.compId) {
+                                composition.base = item
+                            }
+                        })
+                    })
                 }
             )
         },
