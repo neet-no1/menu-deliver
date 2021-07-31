@@ -25,7 +25,7 @@
     </div>
     <div class="el_food_composition">
         <v-data-table :headers="headers" :items.sync="compositions" hide-default-footer :loading="loading"
-            loading-text="Loading... Please wait" :items-per-page="50">
+            loading-text="Loading... Please wait" :items-per-page="-1">
             <!-- 使用量ヘッダ -->
             <template v-slot:header.amount="{ header }">
                 <div class="el_food_composition_header">
