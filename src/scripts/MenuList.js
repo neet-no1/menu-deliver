@@ -73,7 +73,7 @@ export default {
                 URL.GET_SEARCH_MENUS,
                 {
                     "keyword": this.keyword,
-                    "categories": this.checked_categories,
+                    "categories": this.checked_categories.join(','),
                     "page": this.page
                 },
                 (response) => {
