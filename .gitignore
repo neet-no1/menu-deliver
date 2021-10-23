@@ -4,3 +4,5 @@ dist/
 
 src/css/style.css
 src/css/style.css.map
+
+package-lock.json
