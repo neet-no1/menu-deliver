@@ -14,7 +14,7 @@ export default class CommonUtils {
     /**
      * ログインしていなければログインページへ遷移
      */
-    isAuthToLogin() {
+    isAuthToLogin(_this) {
         new ApiUtils().getAccess(
             URL.GET_ACCOUNT_AUTH,
             {},
@@ -24,7 +24,7 @@ export default class CommonUtils {
                         // 認証済みであれば何もしない
                     } else {
                         // 認証されていなければログインページへ遷移
-                        this.$router.push('/login')
+                        _this.$router.push('/login')
                     }
                 } else {
                     console.log('認証状態取得に失敗しました。')

@@ -13,6 +13,7 @@ export default {
     methods: {
         email_confirm() {
             let key = this.$route.query.key
+            let _this = this;
 
             if (key != undefined) {
                 new ApiUtils().getAccess(
@@ -23,7 +24,7 @@ export default {
                     (response) => {
                         if (response.code == 0) {
                             // メールアドレスの確認が出来たら、TOPページへ遷移する
-                            this.$router.push('/')
+                            _this.$router.push('/')
                         } else {
                             alert(response.errorInfo.errorMessage)
                             console.log('メールアドレス有効性確認エラー')
@@ -34,7 +35,7 @@ export default {
             }
         },
         go_to_top() {
-            this.$router.push('/')
+            _this.$router.push('/')
         }
     },
     mounted() {

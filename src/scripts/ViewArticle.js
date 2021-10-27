@@ -115,7 +115,7 @@ export default {
             )
         },
         add_favorite() {
-            new CommonUtils().isAuthToLogin()
+            new CommonUtils().isAuthToLogin(this)
             this.is_favorite = !this.is_favorite
 
             let articleId = this.$route.query.id
@@ -140,7 +140,7 @@ export default {
             }
         },
         add_follow() {
-            new CommonUtils().isAuthToLogin()
+            new CommonUtils().isAuthToLogin(this)
             new ApiUtils().postAccess(
                 URL.POST_FOLLOW,
                 {

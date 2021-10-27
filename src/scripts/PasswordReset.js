@@ -12,6 +12,8 @@ export default {
     },
     methods: {
         password_reset() {
+            let _this = this;
+
             new ApiUtils().postAccess(
                 URL.POST_PASSWORD_RESET,
                 {
@@ -20,7 +22,7 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         // パスワードリセットが完了したらログイン画面へ遷移する
-                        this.$router.push('/login')
+                        _this.$router.push('/login')
                     } else {
                         alert(response.errorInfo.errorMessage)
                         console.log('パスワードリセットエラー')

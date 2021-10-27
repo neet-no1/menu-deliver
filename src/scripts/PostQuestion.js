@@ -86,13 +86,15 @@ export default {
             formData.append("contents", this.contents)
             formData.append("file", this.input_image)
 
+            let _this = this;
+
             new ApiUtils().formDataAccess(
                 URL.POST_QUESTION,
                 formData,
                 (response) => {
                     if (response.code == 0) {
                         // 成功したら、質問一覧ページへ遷移する
-                        this.$router.push('/question')
+                        _this.$router.push('/question')
                     } else {
                         alert(response.errorInfo.errorMessage)
                         console.log('質問投稿エラー')
@@ -103,7 +105,7 @@ export default {
         },
     },
     mounted() {
-        new CommonUtils().isAuthToLogin()
+        new CommonUtils().isAuthToLogin(this)
         this.get_account()
     }
 }

@@ -16,6 +16,7 @@ export default {
     },
     methods: {
         create_account() {
+            let _this = this;
             new ApiUtils().postAccess(
                 URL.POST_ACCOUNT_REGIST,
                 {
@@ -26,7 +27,7 @@ export default {
                 (response) => {
                     if (response.code == 0) {
                         // アカウント登録が完了したら、仮完了画面へ遷移
-                        this.$router.push('/create/account/predone')
+                        _this.$router.push('/create/account/predone')
                     } else {
                         alert(response.errorInfo.errorMessage)
                         console.log('パスワードリセットエラー')
