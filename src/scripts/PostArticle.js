@@ -170,13 +170,15 @@ export default {
             formData.append("contents", JSON.stringify(this.quill.getContents()));
             formData.append("opened", isOpen);
 
+            let _this = this;
+
             new ApiUtils().formDataAccess(
                 URL.POST_ARTICLE,
                 formData,
                 (response) => {
                     if (response.code == 0) {
                         // 成功したら、トップページへ遷移する
-                        this.$router.push('/')
+                        _this.$router.push('/')
                     } else {
                         alert(response.errorInfo.errorMessage)
                         console.log('記事投稿エラー')
@@ -187,6 +189,8 @@ export default {
         },
         delete_article() {
             let articleId = this.$route.query.id
+
+            let _this = this;
 
             if (articleId != undefined) {
                 // 削除処理を行う
@@ -202,7 +206,7 @@ export default {
                             console.log(response)
                         } else {
                             // 成功したら、トップページへ遷移する
-                            this.$router.push('/')
+                            _this.$router.push('/')
                         }
                     }
                 );

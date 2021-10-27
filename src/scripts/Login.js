@@ -19,13 +19,15 @@ export default {
             formData.append("email", this.email);
             formData.append("password", this.password);
 
+            let _this = this;
+
             new ApiUtils().formDataAccess(
                 URL.POST_LOGIN,
                 formData,
                 (response) => {
                 if(response.code == 0) {
                     // トップページへ遷移
-                    this.$router.push('/')
+                    _this.$router.push('/')
                 } else {
                     alert(response.errorInfo.errorMessage)
                 }
@@ -35,6 +37,8 @@ export default {
          * ログイン状態取得
          */
         is_auth: function() {
+            let _this = this;
+
             new ApiUtils().getAccess(
                 URL.GET_ACCOUNT_AUTH,
                 {},
@@ -42,7 +46,7 @@ export default {
                     if(response.code == 0) {
                         if(response.info) {
                             // 認証済みであればトップページへ遷移
-                            this.$router.push('/')
+                            _this.$router.push('/')
                         } else {
                             // 認証されていなければ何もしない
                         }

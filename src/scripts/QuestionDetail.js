@@ -183,6 +183,8 @@ export default {
             let questionId = this.$route.query.id
 
             if (questionId != undefined) {
+                let _this = this;
+
                 new ApiUtils().postAccess(
                     URL.POST_QUESTION_BESTANSWER,
                     {
@@ -192,7 +194,7 @@ export default {
                     (response) => {
                         if (response.code == 0) {
                             // 成功したら、再度ページを開きなおす
-                            this.$router.push('/question/detail?id=' + questionId)
+                            _this.$router.push('/question/detail?id=' + questionId)
                         } else {
                             alert(response.errorInfo.errorMessage)
                             console.log('ベストアンサー決定エラー')
@@ -281,13 +283,15 @@ export default {
                 formData.append("contents", this.answer_contents)
                 formData.append("file", this.input_image)
 
+                let _this = this;
+
                 new ApiUtils().formDataAccess(
                     URL.POST_QUESTION_ANSWER,
                     formData,
                     (response) => {
                         if (response.code == 0) {
                             // 成功したら、再度ページを開きなおす
-                            this.$router.push('/question/detail?id=' + questionId)
+                            _this.$router.push('/question/detail?id=' + questionId)
                         } else {
                             alert(response.errorInfo.errorMessage)
                             console.log('回答投稿エラー')

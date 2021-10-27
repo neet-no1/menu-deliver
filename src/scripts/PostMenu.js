@@ -438,13 +438,15 @@ export default {
                 formData.append("filesDescription", e.img_description);
             });
 
+            let _this = this;
+
             new ApiUtils().formDataAccess(
                 URL.POST_MENU,
                 formData,
                 (response) => {
                     if (response.code == 0) {
                         // 成功したら、トップページへ遷移する
-                        this.$router.push('/')
+                        _this.$router.push('/')
                     } else {
                         alert(response.errorInfo.errorMessage)
                         console.log('献立投稿エラー')
@@ -457,6 +459,9 @@ export default {
             let menuId = this.$route.query.id
 
             if (menuId != undefined) {
+
+                let _this = this;
+
                 // 削除処理を行う
                 new ApiUtils().postAccess(
                     URL.POST_MENU_DELETE,
@@ -470,7 +475,7 @@ export default {
                             console.log(response)
                         } else {
                             // 成功したら、トップページへ遷移する
-                            this.$router.push('/')
+                            _this.$router.push('/')
                         }
                     }
                 );
