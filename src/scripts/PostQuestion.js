@@ -105,7 +105,7 @@ export default {
         },
     },
     mounted() {
-        new CommonUtils().isAuthToLogin()
+        new CommonUtils().isAuthToLogin(this)
         this.get_account()
     }
 }

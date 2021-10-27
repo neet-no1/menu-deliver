@@ -256,7 +256,7 @@ export default {
             )
         },
         add_favorite() {
-            new CommonUtils().isAuthToLogin()
+            new CommonUtils().isAuthToLogin(this)
             this.is_favorite = !this.is_favorite
 
             let menuId = this.$route.query.id

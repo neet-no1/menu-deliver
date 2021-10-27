@@ -14,8 +14,7 @@ export default class CommonUtils {
     /**
      * ログインしていなければログインページへ遷移
      */
-    isAuthToLogin() {
-        let _this = this;
+    isAuthToLogin(_this) {
         new ApiUtils().getAccess(
             URL.GET_ACCOUNT_AUTH,
             {},
