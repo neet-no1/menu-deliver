@@ -1,3 +1,11 @@
+* {
+    font-family: $default-font;
+    font-size: $default-font-size;
+    color: $default-color;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 :root {
     --ggs: #{$ggs};
 }
@@ -60,14 +68,8 @@
 }
 
 .el_nav_icon {
-    font-size: 35px;
+    font-size: 25px;
     line-height: 0;
-}
-
-.el_asterisk {
-    color: #00afcc;
-    font-size: 30px;
-    font-weight: 30px;
 }
 
 .btn_stripe {

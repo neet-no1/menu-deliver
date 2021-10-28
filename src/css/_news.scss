@@ -24,8 +24,9 @@
 
 .el_news_message {
     color: #F00;
-    font-size: 15px;
-    font-weight: 18px;
+    font-size: $default-font-size;
+    font-weight: 400;
+    line-height: 2;
 }
 
 /*

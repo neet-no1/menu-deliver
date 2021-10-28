@@ -17,20 +17,15 @@
 
 .ly_header {
     width: 100%;
-
     display: flex;
     justify-content: center;
-
-    background-color: #E6E4F9;
+    background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+    padding: 5px 0px;
 }
 
 .ly_header_inner {
-    padding-top: 5px;
-    padding-bottom: 5px;
     width: 100%;
     max-width: #{$container-width};
-    padding-right: #{$container-padding};
-    padding-left: #{$container-padding};
     display: flex;
     justify-content: space-between;
 }

@@ -2,73 +2,56 @@
   <PageHeader />
   <News />
   <main class="ly_top">
-    <div class="ly_top_inner">
-      <div class="ly_recommend_article" v-if="disable_recommend">
-        <div class="ly_recommend_article_inner">
-          <div class="bl_recommend_article">
-            <img :src="recommend.image_path">
+    <VueSlickCarousel v-bind="settings" v-if="menu_popular.length">
+      <div v-for="menu in menu_popular">
+        <MediaCard :menu="menu"></MediaCard>
+      </div>
+    </VueSlickCarousel>
+    <section class="ly_recommend_article" v-if="disable_recommend">
+      <div class="ly_recommend_article_inner">
+        <div class="bl_recommend_article">
+          <img src="/public/img/logo_white.png" alt="logo" class="logo">
+          <img src="/public/img/top-eyecatch.jpg" alt="eyecatch" class="eyecatch">
+        </div>
+      </div>
+    </section>
+    <section class="ly_recent_menu">
+      <div class="container">
+        <h1>
+          <span>＊</span>
+          新着献立
+          <span>＊</span>
+        </h1>
+        <div class="flex-card-area">
+          <div v-for="menu in menu_new_arrival">
+            <MediaCard :menu="menu"></MediaCard>
           </div>
         </div>
       </div>
-      <div class="ly_recent_menu">
-        <div class="ly_recent_menu_inner">
-          <div class="bl_top_title">
-            <span class="el_asterisk">＊</span>
-            新着献立
-            <span class="el_asterisk">＊</span>
-          </div>
-          <div class="ly_recent_menu_items">
-            <div class="bl_recent_menu">
-              <div v-for="menu in menu_new_arrival">
-                <MediaCard :menu="menu"></MediaCard>
-              </div>
+    </section>
+    <section class="ly_articles">
+      <div class="container">
+        <h1>
+          <span>＊</span>
+          記事
+          <span>＊</span>
+        </h1>
+        <div class="bl_new_article">
+          <template v-for="article in article_new_arrival">
+            <div class="el_new_article">
+              <MediaCardLarge :article=article></MediaCardLarge>
             </div>
-          </div>
+          </template>
+        </div>
+        <div class="bl_article">
+          <template v-for="article in article_new_arrival">
+            <div class="el_new_article">
+              <MediaCardLarge :article=article></MediaCardLarge>
+            </div>
+          </template>
         </div>
       </div>
-      <div class="ly_popular_menu">
-        <div class="ly_popular_menu_inner">
-          <div class="bl_top_title">
-            <span class="el_asterisk">＊</span>
-            人気献立
-            <span class="el_asterisk">＊</span>
-          </div>
-          <div class="ly_popular_menu_items">
-            <div class="bl_popular_menu">
-              <div v-for="menu in menu_popular">
-                <MediaCard :menu="menu"></MediaCard>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="ly_articles">
-        <div class="ly_articles_inner">
-          <div class="bl_top_title">
-            <span class="el_asterisk">＊</span>
-            <span>記事</span>
-            <span class="el_asterisk">＊</span>
-          </div>
-          <div class="ly_article_items">
-            <div class="bl_new_article">
-              <template v-for="article in article_new_arrival">
-                <div class="el_new_article">
-                  <div class="el_new_icon">
-                    <span>\NEW/</span>
-                  </div>
-                  <MediaCardLarge :article=article></MediaCardLarge>
-                </div>
-              </template>
-            </div>
-            <div class="bl_article">
-              <div v-for="article in article_new_arrival_small">
-                <MediaCard :menu="article"></MediaCard>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   </main>
   <PageFooter />
 </div>
