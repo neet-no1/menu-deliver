@@ -6,6 +6,7 @@ import PageFooter from '../pages/module/PageFooter.vue'
 import News from '../pages/module/News.vue'
 import MediaCard from '../pages/module/MediaCard.vue'
 import MediaCardLarge from '../pages/module/MediaCardLarge.vue'
+import VueSlickCarousel from 'vue-slick-carousel'
 
 export default {
   name: 'Top',
@@ -14,7 +15,8 @@ export default {
     PageFooter,
     News,
     MediaCard,
-    MediaCardLarge
+    MediaCardLarge,
+    VueSlickCarousel
   },
   data() {
     return {
@@ -33,6 +35,16 @@ export default {
       article_new_arrival: [],
       article_new_arrival_small: [],
 
+      // スライドショー設定
+      settings: {
+        arrows: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: true,
+        centerMode: true,
+        slidesToShow: 5,
+        centerPadding: '10px',
+      },
     }
   },
   methods: {
@@ -56,7 +68,7 @@ export default {
         (response) => {
           if (response.code == 0) {
             // idが-1の時以外は出力する
-            if(response.info.id != -1) {
+            if (response.info.id != -1) {
               this.disable_recommend = true
               this.recommend = {
                 id: response.info.id,

@@ -32,3 +32,7 @@
 @import './account';
 @import './question';
 @import './about';
+// slick
+@import '../../node_modules/vue-slick-carousel/dist/vue-slick-carousel.css';
+@import '../../node_modules/vue-slick-carousel/dist/vue-slick-carousel-theme.css';
+@import './slick';
